@@ -1,5 +1,5 @@
 ---
-name: Anne Chovie
+name: Minsik Oh
 image: images/member.jpg
 description: Bark Ops Engineer
 role: programmer
