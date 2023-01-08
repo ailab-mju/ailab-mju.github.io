@@ -1,11 +1,11 @@
 ---
 name: Minsik Oh
 image: images/member.jpg
-description: Bark Ops Engineer
-role: programmer
+description: Assistant Professor
+role: pi
 
 links:
-  home-page: annechovie.com
+  home-page: https://minsik-bioinfo.github.io/online-cv/
   email: msoh@mju.ac.kr
 ---
 
