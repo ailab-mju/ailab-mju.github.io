@@ -1,12 +1,9 @@
 ---
 name: 정성훈 (Sung Hoon Jung)
 image: images/member.jpg
-description: Treat Researcher
+description: Natrual Language Processing
 role: intern
 group: alum
-aliases:
-  - F. Cited
-  - F Cited
 links:
   home-page: felixcited.com
   email: felix@cited.com
