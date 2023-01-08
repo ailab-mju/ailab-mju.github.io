@@ -1,8 +1,8 @@
 ---
-name: Felix Cited
+name: 정성훈 (Sung Hoon Jung)
 image: images/member.jpg
 description: Treat Researcher
-role: phd
+role: intern
 group: alum
 aliases:
   - F. Cited
