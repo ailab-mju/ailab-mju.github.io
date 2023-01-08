@@ -2,7 +2,7 @@
 name: 봉현수 (Hyunsu Bong)
 image: images/bhs.jpeg
 description: Gene expression generation, GAN
-role: intern
+role: undergrad
 group: intern
 links:
   home-page: felixcited.com
