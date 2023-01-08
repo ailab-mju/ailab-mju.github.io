@@ -10,7 +10,7 @@ nav:
 
 
 {% include section.html %}
-
+# <i class="fas fa-users"></i>Professor
 {%
   include list.html
   data="members"
@@ -20,7 +20,7 @@ nav:
 tttttttttttt
 
 {% include section.html %}
-
+# <i class="fas fa-users"></i>Research Interns
 {%
   include list.html
   data="members"
