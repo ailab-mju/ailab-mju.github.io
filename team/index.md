@@ -2,7 +2,7 @@
 title: Members
 nav:
   order: 3
-  tooltip: About our team
+  tooltip: Members
 ---
 
 # <i class="fas fa-users"></i>Members
