@@ -14,4 +14,46 @@
   tags:
     - time-series analysis
     - miRNA-mRNA target prediction
-     
+
+- id: doi:10.3389/fgene.2021.652623
+  date: 2021-5-10
+  tags:
+    - kernel canonical correlation analysis
+    - gene regulatroy network
+    
+- id: doi:10.1093/bib/bbaa032
+  date: 2021-1
+  tags:
+    - machine learning
+    - multi-omics integration
+    
+- id: doi:10.3389/fgene.2020.564792
+  date: 2020-11-12
+  tags:
+    - deep learning
+    - auto-encoder
+    - tensor-decomposition
+    - multi-omics integration
+    - drug response prediction
+    
+- id: doi:10.1093/bioinformatics/bty275
+  date: 2018-7-1
+  tags:
+    - convolutional neural network
+    - deep learning
+    - protein family prediction
+    
+- id: doi:10.1016/j.ymeth.2017.06.004
+  date: 2017-7-15
+  tags:
+    - web-based tool
+    - visualization
+    - miRNA-mRNA target prediction
+    
+- id: doi:10.1371/journal.pone.0174999
+  date: 2017-3-31
+  tags:
+    - web-based tool
+    - miRNA-mRNA target prediction
+    - literature mining
+    
