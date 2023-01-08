@@ -3,7 +3,7 @@ name: 정성훈 (Sung Hoon Jung)
 image: images/member.jpg
 description: Natrual Language Processing
 role: undergrad
-group: alum
+group: intern
 links:
   home-page: felixcited.com
   email: felix@cited.com
