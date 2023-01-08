@@ -29,7 +29,7 @@
     
 - id: doi:10.3389/fgene.2020.564792
   date: 2020-11-12
-  tags:
+  tags: 
     - deep learning
     - auto-encoder
     - tensor-decomposition
