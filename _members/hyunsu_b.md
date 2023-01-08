@@ -1,6 +1,6 @@
 ---
 name: 봉현수 (Hyunsu Bong)
-image: images/bhs.jpg
+image: images/bhs.jpeg
 description: Gene expression generation, GAN
 role: intern
 group: intern
