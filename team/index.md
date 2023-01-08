@@ -7,6 +7,16 @@ nav:
 
 # <i class="fas fa-users"></i>Members
 
+
+
+{% include section.html %}
+
+{%
+  include list.html
+  data="members"
+  component="portrait"
+  filters="role: pi"
+%}
 tttttttttttt
 
 {% include section.html %}
@@ -29,9 +39,24 @@ tttttttttttt
   component="portrait"
   filters="role: programmer"
 %}
-
-{% include section.html %}
-
+{%
+  include list.html
+  data="members"
+  component="portrait"
+  filters="role: pi"
+%}
+{%
+  include list.html
+  data="members"
+  component="portrait"
+  filters="role: phd"
+%}
+{%
+  include list.html
+  data="members"
+  component="portrait"
+  filters="role: programmer"
+%}
 {%
   include list.html
   data="members"
