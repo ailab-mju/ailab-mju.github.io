@@ -10,7 +10,7 @@ nav:
 
 
 {% include section.html %}
-#Professor
+# Professor
 {%
   include list.html
   data="members"
@@ -20,60 +20,60 @@ nav:
 tttttttttttt
 
 {% include section.html %}
-#Research Interns
+# Research Interns
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: pi"
+  filters="role: intern"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: phd"
+  filters="role: intern"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: programmer"
+  filters="role: intern"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: pi"
+  filters="role: intern"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: phd"
+  filters="role: intern"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: programmer"
+  filters="role: intern"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: pi"
+  filters="role: intern"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: phd"
+  filters="role: intern"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: programmer"
+  filters="role: intern"
 %}
 {:.center}
 
