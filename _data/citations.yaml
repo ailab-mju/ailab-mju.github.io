@@ -1,4 +1,61 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY FROM SOURCES.YAML (AND ELSEWHERE)
 # See https://github.com/greenelab/lab-website-template/wiki/Citations
 
-
+- id: doi:10.1038/s41467-022-30925-0
+  title: "Adipocyte HIF2\u03B1 functions as a thermostat via PKA C\u03B1 regulation\
+    \ in beige adipocytes"
+  authors:
+  - Ji Seul Han
+  - Yong Geun Jeon
+  - Minsik Oh
+  - Gung Lee
+  - Hahn Nahmgoong
+  - Sang Mun Han
+  - Jeehye Choi
+  - Ye Young Kim
+  - Kyung Cheul Shin
+  - Jiwon Kim
+  - Kyuri Jo
+  - Sung Sik Choe
+  - Eun Jung Park
+  - Sun Kim
+  - Jae Bum Kim
+  publisher: Nature Communications
+  date: '2022-06-07'
+  link: https://doi.org/grmbtw
+  tags:
+  - knowledge graphs
+  - network analysis
+  _cache: ba2b8f51d035a22b8aa61cfaa2e7c36449297c77e0b3d196d5a7817bd351df88
+- id: doi:10.1109/BigData52589.2021.9671953
+  title: 'IDEA: Integrating Divisive and Ensemble-Agglomerate hierarchical clustering
+    framework for arbitrary shape data'
+  authors:
+  - Hongryul Ahn
+  - Inuk Jung
+  - Heejoon Chae
+  - Minsik Oh
+  - Inyoung Kim
+  - Sun Kim
+  publisher: 2021 IEEE International Conference on Big Data (Big Data)
+  date: ''
+  link: https://doi.org/grmbtx
+  tags:
+  - clustering
+  _cache: 90a2dcb80a61dc686f0d26ab1026e0752370cb636dcb1dd375d6564c344c6760
+- id: doi:10.1093/bioinformatics/btz306
+  title: 'mirTime: identifying condition-specific targets of microRNA in time-series
+    transcript data using Gaussian process model and spherical vector clustering'
+  authors:
+  - Hyejin Kang
+  - Hongryul Ahn
+  - Kyuri Jo
+  - Minsik Oh
+  - Sun Kim
+  publisher: Bioinformatics
+  date: '2021-07-12'
+  link: https://doi.org/grmbtz
+  tags:
+  - time-series analysis
+  - miRNA-mRNA target prediction
+  _cache: 6a4e36fe5c8cdad162b5add28658e33c442d21665daf07371710c0d94c96c15c
