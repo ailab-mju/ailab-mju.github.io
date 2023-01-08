@@ -25,56 +25,51 @@ tttttttttttt
   include list.html
   data="members"
   component="portrait"
-  filters="role: intern"
+  filters="role: undergrad"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: intern"
+  filters="role: undergrad"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: intern"
+  filters="role: undergrad"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: intern"
+  filters="role: undergrad"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: intern"
+  filters="role: undergrad"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: intern"
+  filters="role: undergrad"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: intern"
+  filters="role: undergrad"
 %}
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: intern"
+  filters="role: undergrad"
 %}
-{%
-  include list.html
-  data="members"
-  component="portrait"
-  filters="role: intern"
-%}
+
 {:.center}
 
 {% include section.html background="images/banner.jpg" dark=true%}
