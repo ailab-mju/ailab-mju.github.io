@@ -59,3 +59,114 @@
   - time-series analysis
   - miRNA-mRNA target prediction
   _cache: 6a4e36fe5c8cdad162b5add28658e33c442d21665daf07371710c0d94c96c15c
+- id: doi:10.3389/fgene.2021.652623
+  title: Construction of Condition-Specific Gene Regulatory Network Using Kernel Canonical
+    Correlation Analysis
+  authors:
+  - Dabin Jeong
+  - Sangsoo Lim
+  - Sangseon Lee
+  - Minsik Oh
+  - Changyun Cho
+  - Hyeju Seong
+  - Woosuk Jung
+  - Sun Kim
+  publisher: Frontiers in Genetics
+  date: '2021-05-10'
+  link: https://doi.org/gphzk7
+  tags:
+  - kernel canonical correlation analysis
+  - gene regulatroy network
+  _cache: 898bc106d34e3d4e361e1175523e6cbd6890b5b7e0509df97fdd686cb825fdbf
+- id: doi:10.1093/bib/bbaa032
+  title: Machine learning-based analysis of multi-omics data on the cloud for investigating
+    gene regulations
+  authors:
+  - Minsik Oh
+  - Sungjoon Park
+  - Sun Kim
+  - Heejoon Chae
+  publisher: Briefings in Bioinformatics
+  date: ''
+  link: https://doi.org/ggq6nd
+  tags:
+  - machine learning
+  - multi-omics integration
+  _cache: c978ac16063ec8b2647d992990300be2dfa8771e63bb66a4d96fbad3eb19d49e
+- id: doi:10.3389/fgene.2020.564792
+  title: 'DRIM: A Web-Based System for Investigating Drug Response at the Molecular
+    Level by Condition-Specific Multi-Omics Data Integration'
+  authors:
+  - Minsik Oh
+  - Sungjoon Park
+  - Sangseon Lee
+  - Dohoon Lee
+  - Sangsoo Lim
+  - Dabin Jeong
+  - Kyuri Jo
+  - Inuk Jung
+  - Sun Kim
+  publisher: Frontiers in Genetics
+  date: ''
+  link: https://doi.org/grmbvp
+  tags:
+  - deep learning
+  - auto-encoder
+  - tensor-decomposition
+  - multi-omics integration
+  - drug response prediction
+  _cache: c6382535e260fe57734a2b923b16ce6ea83c4cd703855b337237d06b251fad8d
+- id: doi:10.1093/bioinformatics/bty275
+  title: 'DeepFam: deep learning based alignment-free method for protein family modeling
+    and prediction'
+  authors:
+  - Seokjun Seo
+  - Minsik Oh
+  - Youngjune Park
+  - Sun Kim
+  publisher: Bioinformatics
+  date: '2018-07-01'
+  link: https://doi.org/gpmh64
+  tags:
+  - convolutional neural network
+  - deep learning
+  - protein family prediction
+  _cache: 4ec647e39e893451ef95a838469b76d19bae73bd68634c9384bceea60fb9bd68
+- id: doi:10.1016/j.ymeth.2017.06.004
+  title: 'miRTarVis+: Web-based interactive visual analytics tool for microRNA target
+    predictions'
+  authors:
+  - Sehi L'Yi
+  - Daekyoung Jung
+  - Minsik Oh
+  - Bohyoung Kim
+  - Robert J. Freishtat
+  - Mamta Giri
+  - Eric Hoffman
+  - Jinwook Seo
+  publisher: Methods
+  date: '2017-07-15'
+  link: https://doi.org/gbr9rc
+  tags:
+  - web-based tool
+  - visualization
+  - miRNA-mRNA target prediction
+  _cache: 89ce7bd2f5f57dc331a16ba02f1edc2ecb1ef7d61cc71d1aaa6c5eff1fb9e4ae
+- id: doi:10.1371/journal.pone.0174999
+  title: Literature-based condition-specific miRNA-mRNA target prediction
+  authors:
+  - Minsik Oh
+  - Sungmin Rhee
+  - Ji Hwan Moon
+  - Heejoon Chae
+  - Sunwon Lee
+  - Jaewoo Kang
+  - Sun Kim
+  publisher: PLOS ONE
+  date: '2017-03-31'
+  link: https://doi.org/f9x4hn
+  tags:
+  - web-based tool
+  - miRNA-mRNA target prediction
+  - literature mining
+  _cache: 1827e4ddc996c82eca84567161a7d782abc2aab9d051d294e34b987510b7bec9
