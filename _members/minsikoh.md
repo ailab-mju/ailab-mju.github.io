@@ -1,5 +1,5 @@
 ---
-name: Minsik Oh
+name: 오민식 (Minsik Oh)
 image: images/member.jpg
 description: Assistant Professor
 role: pi
