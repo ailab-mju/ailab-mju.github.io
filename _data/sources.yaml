@@ -22,13 +22,13 @@
     - gene regulatroy network
     
 - id: doi:10.1093/bib/bbaa032
-  date: 2021-01-01
+  date: "2021-01-01"
   tags:
     - machine learning
     - multi-omics integration
     
 - id: doi:10.3389/fgene.2020.564792
-  date: 2020-11-12
+  date: "2020-11-12"
   tags: 
     - deep learning
     - auto-encoder
