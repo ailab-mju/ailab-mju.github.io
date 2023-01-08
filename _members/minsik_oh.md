@@ -1,6 +1,6 @@
 ---
 name: 오민식 (Minsik Oh)
-image: images/member.jpg
+image: images/oms.jpeg
 description: Assistant Professor
 role: pi
 
