@@ -1,7 +1,7 @@
 ---
-name: 정성훈 (Sung Hoon Jung)
-image: images/member.jpg
-description: Natrual Language Processing
+name: 정성훈 (SeongHoon Jeong)
+image: images/jsh.jpg
+description: NLP
 role: undergrad
 group: intern
 links:
