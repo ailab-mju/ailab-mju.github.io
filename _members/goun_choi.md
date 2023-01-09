@@ -1,5 +1,5 @@
 ---
-name: 최고운 (SeongHoon Jeong)
+name: 최고운 (GoUn Choi)
 image: images/cgu.jpg
 description: EMR Data Analysis
 role: undergrad
