@@ -4,7 +4,11 @@ title: Home
 
 # Machine Learning for Data Analysis
 
-랩 소개 소개 소개 소개 
+인공지능 및 데이터분석 연구실 (AI Lab.)에 오신것을 환영합니다.
+우리 연구실은 머신러닝, 인공지능 기법들을 다양한 분야의 데이터에 적용하여 문제를 해결하기 위한 연구를 진행하고자 합니다.
+
+
+
 
 {:.center}
 
