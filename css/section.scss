@@ -26,7 +26,7 @@ body {
   section {
     box-sizing: content-box;
     padding: 60px 40px; // fallback
-    padding: 60px Max(40px, calc((100% - #{$page}) / 2));
+    padding: 60px Max(40px, calc((100% - #{$page})*1.5 / 2));
     text-align: center;
 
     &[data-full="true"] {
