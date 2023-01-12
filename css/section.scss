@@ -27,7 +27,7 @@ body {
     box-sizing: content-box;
     padding: 60px 40px; // fallback
     padding: 60px Max(40px, calc((100% - #{$page}) / 4));
-    text-align: center;
+    text-align: left;
 
     &[data-full="true"] {
       padding: 0;
