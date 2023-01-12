@@ -1,5 +1,8 @@
 ---
 title: Home
+nav:
+  order: 1
+  tooltip: Home
 ---
 
 # Artificial Intelligence and Data Analytics Lab
