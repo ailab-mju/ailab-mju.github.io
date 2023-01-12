@@ -17,7 +17,6 @@ nav:
   component="portrait"
   filters="role: pi"
 %}
-tttttttttttt
 
 {% include section.html %}
 # Research Interns
