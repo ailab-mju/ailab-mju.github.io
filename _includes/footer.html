@@ -14,20 +14,18 @@
 <footer {% if background %}class="background"{% endif %} {% if background %}style="--background: url('{{ background | relative_url }}')"{% endif %} data-dark="{{ dark }}">
 
   
-  <div class="footer_row">
-    명지대학교 인문캠퍼스 본관 S1820
-    02)300-0679
-    msoh at mju.ac.kr
-  </div>
+  <!--div class="footer_row">
+   
+  </div-->
 
 
-  <div class="footer_row">
+  <!--div class="footer_row">
     {%- for entry in site.links -%}
       {%- assign key = entry[0] -%}
       {%- assign value = entry[1] -%}
       {%- include link.html type=key icon="" tooltip="" link=value -%}
     {%- endfor -%}
-  </div>
+  </div-->
 
   <div class="footer_row">
     <span>
