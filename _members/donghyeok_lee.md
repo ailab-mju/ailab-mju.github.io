@@ -1,15 +1,11 @@
 ---
 name: 이동혁 (Donghyeok Lee)
 image: images/ldh.jpg
-description: Lidar Image Analysis 
+description: dhe625@mju.ac.kr
 role: undergrad
 group: intern
 links:
-  home-page: felixcited.com
-  email: felix@cited.com
-  twitter: felixcited
+  email: dhe625@mju.ac.kr
 ---
 
-Felix is a good dog.
-He studied at the University of Good Dogs.
-He likes pets, walkies, and treats.
+Research Interests:
