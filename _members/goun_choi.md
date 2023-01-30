@@ -1,15 +1,12 @@
 ---
 name: 최고운 (GoUn Choi)
 image: images/cgu.jpg
-description: EMR Data Analysis
+description: gwcat0506@mju.ac.kr
 role: undergrad
 group: intern
 links:
-  home-page: felixcited.com
-  email: felix@cited.com
-  twitter: felixcited
+  email: gwcat0506@mju.ac.kr
+
 ---
 
-Felix is a good dog.
-He studied at the University of Good Dogs.
-He likes pets, walkies, and treats.
+Research Interests:
