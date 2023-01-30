@@ -1,15 +1,12 @@
 ---
 name: 문승현 (SeungHyeon Moon)
 image: images/msh.jpg
-description: Graph Neural Network
+description: max38744@mju.ac.kr
 role: undergrad
 group: intern
 links:
-  home-page: felixcited.com
-  email: felix@cited.com
-  twitter: felixcited
+  email: max38744@mju.ac.kr
+
 ---
 
-Felix is a good dog.
-He studied at the University of Good Dogs.
-He likes pets, walkies, and treats.
+Research Interests:
