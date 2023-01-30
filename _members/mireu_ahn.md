@@ -1,15 +1,12 @@
 ---
 name: 안미르 (Mi Reu Ahn )
 image: images/amr.jpg
-description: Lidar Image Analysis
+description: dksalfm1010@naver.com
 role: undergrad
 group: intern
 links:
-  home-page: felixcited.com
-  email: felix@cited.com
-  twitter: felixcited
+  email: dksalfm1010@naver.com
+
 ---
 
-Felix is a good dog.
-He studied at the University of Good Dogs.
-He likes pets, walkies, and treats.
+Research Interests:
