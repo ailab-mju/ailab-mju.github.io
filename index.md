@@ -34,8 +34,8 @@ Domain knowledge와 AI, ML 기술을 융합한 문제 정의, 데이터 분석, 
 
 {:.center}
 
-{% include section.html full=true %}
+{% include section2.html full=true %}
 
-{% include section.html %}
+{% include section2.html %}
 
 
