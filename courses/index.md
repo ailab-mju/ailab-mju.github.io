@@ -7,6 +7,11 @@ nav:
 
 # Courses
 
+## Spring 2023
+
+Deep Learning
+
+Mobile Computing
 
 ## Fall 2022
 
