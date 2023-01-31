@@ -49,7 +49,7 @@ body {
   section2 {
     box-sizing: content-box;
     padding: 60px 40px; // fallback
-    padding: 60px Max(200px, calc((100% - #{$page}) / 4));
+    padding: 60px Max(320px, calc((100% - #{$page}) / 4));
     text-align: left;
 
     &[data-full="true"] {
