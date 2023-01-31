@@ -16,7 +16,7 @@ nav:
 
 # Recruiting
 Domain knowledge와 AI, ML 기술을 융합한 문제 정의, 데이터 분석, 문제 해결에 관심이 있는 박사 / 석사 / 학부 연구생  을 모집 중 입니다. 
-간단한 자기소개와 함께 msoh at mju.ac.kr로 메일 주세요.
+간단한 자기소개 혹은 CV와 함께 msoh@mju.ac.kr로 메일 주세요.
 
 
 # Keywords
