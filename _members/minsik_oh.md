@@ -8,7 +8,3 @@ links:
   home-page: https://minsik-bioinfo.github.io/online-cv/
   email: msoh@mju.ac.kr
 ---
-
-Anne is a good dog.
-She studied at the University of Good Dogs.
-She likes pets, walkies, and treats.
