@@ -12,7 +12,12 @@ nav:
 우리 연구실은 머신러닝, 인공지능 기법들을 다양한 분야의 데이터에 적용하여 문제를 해결하기 위한 연구를 진행합니다.
 
 
-
+Keywords
+- Deep Learning
+- Bioinformatics
+- Artificial intelligence
+- Big data analysis
+- Biological network analysis
 
 
 {:.center}
