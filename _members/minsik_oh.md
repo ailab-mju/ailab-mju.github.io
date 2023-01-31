@@ -5,6 +5,7 @@ description: Assistant Professor
 role: pi
 
 links:
-  home-page: https://minsik-bioinfo.github.io/online-cv/
+  home-page: minsik-bioinfo.github.io/online-cv/
   email: msoh@mju.ac.kr
+  
 ---
