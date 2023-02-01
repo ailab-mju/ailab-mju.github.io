@@ -30,7 +30,7 @@ AI, ML 기술과 Data의 Domain knowledge를 융합하여 데이터 분석 및 �
 - Artificial Intelligence
 - Big Data Analysis
 
-# Projects
+# R&D Projects
 - Graph Neural Network based Multi-Omics Integrative Method for Drug Response Prediction.
 - IoMT artificial intelligence and NFT interface standard development for metaverse.
 - Deep Reinforcement Learning-based Combination Optimization for Identifying Patient-Specific Multi-Omics Regulatory Network
