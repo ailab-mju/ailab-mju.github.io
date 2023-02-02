@@ -1,5 +1,5 @@
 ---
-name: 김형진 (Hyeongjin Kim)
+name: 김형진 (Hyeong Jin Kim)
 image: images/khj.jpg
 description: hyeongjin1877@gmail.com
 role: undergrad
