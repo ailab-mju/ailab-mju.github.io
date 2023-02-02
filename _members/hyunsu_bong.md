@@ -1,11 +1,11 @@
 ---
 name: 봉현수 (Hyunsu Bong)
 image: images/bhs.jpeg
-description: sanseng@mju.ac.kr
+description: sanseng01@naver.com
 role: undergrad
 group: intern
 links:
-  email: sanseng@mju.ac.kr
+  email: sanseng01@naver.com
 
 ---
 
