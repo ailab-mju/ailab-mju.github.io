@@ -1,6 +1,6 @@
 ---
-name: 신지영 ()
-image: images/je.jpg
+name: 신지영 (Jiyeong Shin)
+image: images/sjy.jpg
 description: tlswl313@mju.ac.kr
 role: undergrad
 group: intern
