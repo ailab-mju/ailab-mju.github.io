@@ -6,7 +6,13 @@ nav:
 ---
 
 # Courses
+## Fall 2023
 
+Big Data Programming
+
+Statistical Data Analysis
+
+Artificial Intelligence
 ## Spring 2023
 
 Deep Learning
