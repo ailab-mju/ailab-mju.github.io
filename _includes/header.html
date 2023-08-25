@@ -13,12 +13,12 @@
 
 
 <header {% if background %}class="background"{% endif %} {% if background %}style="--background: url('{{ background | relative_url }}')"{% endif %} data-dark="{{ dark }}">
-  <!--a
+  <a
     href="{{ '/' | relative_url }}"
     class="logo_row"
     data-tooltip="Home"
-  -->
-    <!--img src="{{ site.logo | relative_url }}" class="logo" alt="Logo image" /-->
+  >
+    <img src="{{ site.logo | relative_url }}" class="logo" alt="Logo image" >
     {% if site.logo-text != false %}
       <span class="logo_text">
         <span class="logo_title">{{ site.title }}</span>
