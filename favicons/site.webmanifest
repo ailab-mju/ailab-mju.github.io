@@ -3,7 +3,7 @@
     "short_name": "",
     "icons": [
         {
-            "src": "favicons/android.png",
+            "src": "images/deep-learning.png",
             "sizes": "512x512",
             "type": "image/png"
         }
