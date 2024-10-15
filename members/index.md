@@ -17,7 +17,15 @@ nav:
   component="portrait"
   filters="role: pi"
 %}
+{% include section.html %}
 
+# Graduate Students
+{%
+  include list.html
+  data="members"
+  component="portrait"
+  filters="role: grad"
+%}
 {% include section.html %}
 # Research Interns
 {%
