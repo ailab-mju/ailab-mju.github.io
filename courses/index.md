@@ -1,4 +1,3 @@
-<img width="752" alt="image" src="https://github.com/user-attachments/assets/5f42e7d0-3864-4fd7-9980-610b6b97094d">
 
 ---
 title: Courses
