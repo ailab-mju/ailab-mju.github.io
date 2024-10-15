@@ -1,4 +1,4 @@
----
+<img width="752" alt="image" src="https://github.com/user-attachments/assets/5f42e7d0-3864-4fd7-9980-610b6b97094d">---
 title: Courses
 nav:
   order: 5
@@ -6,6 +6,19 @@ nav:
 ---
 
 # Courses
+## Fall 2024
+Big Data Programming
+
+Statistical Data Analysis
+
+Machine Learning (Machine Learning in Bioinformatics)
+## Spring 2024
+
+Deep Learning
+
+Mobile Computing
+
+Topics in Unstructured Data Processing (Graph Neural Networks)
 ## Fall 2023
 
 Big Data Programming
