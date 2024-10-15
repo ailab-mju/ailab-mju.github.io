@@ -1,6 +1,6 @@
 ---
 name: 탁채원 (Tak Chaewon)
-image: images/tcw.jpg
+image: images/tcw.JPG
 description: codnjs0129@mju.ac.kr
 role: undergrad
 group: intern
