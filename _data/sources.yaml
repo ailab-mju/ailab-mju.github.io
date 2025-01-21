@@ -1,3 +1,23 @@
+- id: doi:10.1038/s41551-024-01277-5
+  date: 2024-11-01
+  tags:
+    - CRISPR-Cas9
+    - large deletion detection algorithm
+- id: doi:10.3390/app132011399
+  date: 2023-10-17
+  tags:
+    - RNA-seq analysis
+    - network propagation
+    - web-based tool
+    - gene regulatroy network
+    
+- id: doi:10.1093/bioinformatics/btad582
+  date: 2023-09-22
+  tags:
+    - gene-level biomarker discovery
+    - multi-omics data
+    - graph neural network
+    
 - id: doi:10.1038/s41467-022-30925-0
   date: 2022-6-7
   tags:
