@@ -1,11 +1,11 @@
 ---
 name: 신유빈 (Shin Yoobin)
-image: shin_yoobin.jpg
-description: yoobin_shin.png
+image: images/yoobin_shin.png
+description: sinyoubin@mju.ac.kr
 role: undergrad
 group: intern
 links:   
-  email: yoobin_shin.png
+  email: sinyoubin@mju.ac.kr
 ---
 
 ### Research Interests:

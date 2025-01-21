@@ -1,11 +1,11 @@
 ---
 name: 김동신 (Kim DongSin)
-image: kim_dongsin.jpg
-description: dongsin_kim.png
+image: images/dongsin_kim.png
+description: 60190312@mju.ac.kr
 role: undergrad
 group: intern
 links:   
-  email: dongsin_kim.png
+  email: 60190312@mju.ac.kr
 ---
 
 ### Research Interests:

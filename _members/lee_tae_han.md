@@ -1,11 +1,11 @@
 ---
 name: 이태한 (Lee Tae Han)
-image: lee_tae_han.jpg
-description: taehan_lee.png
+image: images/taehan_lee.png
+description: xoehf6356@mju.ac.kr
 role: undergrad
 group: intern
 links:   
-  email: taehan_lee.png
+  email: xoehf6356@mju.ac.kr
 ---
 
 ### Research Interests:

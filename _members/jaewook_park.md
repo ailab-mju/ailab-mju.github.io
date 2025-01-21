@@ -1,11 +1,11 @@
 ---
 name: 박재욱 (JaeWook Park)
-image: jaewook_park.jpg
-description: jaewook_park.png
+image: images/jaewook_park.png
+description: otsu9110@mju.ac.kr
 role: undergrad
 group: intern
 links:   
-  email: jaewook_park.png
+  email: otsu9110@mju.ac.kr
 ---
 
 ### Research Interests:
