@@ -1,6 +1,60 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY FROM SOURCES.YAML (AND ELSEWHERE)
 # See https://github.com/greenelab/lab-website-template/wiki/Citations
 
+- id: doi:10.1038/s41551-024-01277-5
+  title: Large DNA deletions occur during DNA repair at 20-fold lower frequency for
+    base editors and prime editors than for Cas9 nucleases
+  authors:
+  - Gue-Ho Hwang
+  - Seok-Hoon Lee
+  - Minsik Oh
+  - Segi Kim
+  - Omer Habib
+  - Hyeon-Ki Jang
+  - Heon Seok Kim
+  - Youngkuk Kim
+  - Chan Hyuk Kim
+  - Sun Kim
+  - Sangsu Bae
+  publisher: Nature Biomedical Engineering
+  date: ''
+  link: https://doi.org/nx2d
+  tags:
+  - CRISPR-Cas9
+  - large deletion detection algorithm
+  _cache: f7a34043a84ca615087f7e352742017dcbf445b09c29f75684a87a74733d0d82
+- id: doi:10.3390/app132011399
+  title: 'TFNetPropX: A Web-Based Comprehensive Analysis Tool for Exploring Condition-Specific
+    RNA-Seq Data Using Transcription Factor Network Propagation'
+  authors:
+  - Ji Hwan Moon
+  - Minsik Oh
+  publisher: Applied Sciences
+  date: ''
+  link: https://doi.org/g82mpd
+  tags:
+  - RNA-seq analysis
+  - network propagation
+  - web-based tool
+  - gene regulatroy network
+  _cache: 40a177ce1c3b45590b60ac7bd42c2b2f5f33df3ecdc572d69a72bb02b424ff3e
+- id: doi:10.1093/bioinformatics/btad582
+  title: 'GOAT: Gene-level biomarker discovery from multi-Omics data using graph ATtention
+    neural network for eosinophilic asthma subtype'
+  authors:
+  - Dabin Jeong
+  - Bonil Koo
+  - Minsik Oh
+  - Tae-Bum Kim
+  - Sun Kim
+  publisher: Bioinformatics
+  date: ''
+  link: https://doi.org/g82mpf
+  tags:
+  - gene-level biomarker discovery
+  - multi-omics data
+  - graph neural network
+  _cache: 938117aa9140ae0d0317ff446e8135bca416f2bf0d6300f20469331824b4b4ff
 - id: doi:10.1038/s41467-022-30925-0
   title: "Adipocyte HIF2\u03B1 functions as a thermostat via PKA C\u03B1 regulation\
     \ in beige adipocytes"
