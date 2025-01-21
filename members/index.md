@@ -19,12 +19,12 @@ nav:
 %}
 {% include section.html %}
 
-# Graduate Students
+# MS Students
 {%
   include list.html
   data="members"
   component="portrait"
-  filters="role: grad"
+  filters="role: ms"
 %}
 {% include section.html %}
 # Research Interns
