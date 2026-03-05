@@ -2,8 +2,8 @@
 name: 송승후 (Song SeungHoo)
 image: images/ssh.png
 description: gjgj589@naver.com
-role: undergrad
-group: intern
+role: ms
+group: grad
 links:
   email: gjgj589@naver.com
 ---
