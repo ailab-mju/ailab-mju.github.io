@@ -25,3 +25,15 @@ raw-photos/*
 # 교수 연구업적 시스템 export. content/research.yaml 로 이미 옮겼다.
 # 학교 내부 시스템에서 받은 원본이라 공개 저장소에 두지 않는다.
 pro.html
+
+# impeccable(디자인 스킬) — 도구지 사이트 콘텐츠가 아니다.
+# 설치기가 에디터별로 같은 스킬을 세 벌(약 10M) 깐다. 저장소에 넣으면
+# 사이트 전체(11M)만큼이 도구로 또 늘어난다. 재설치가 한 줄이라 무시한다.
+# 추적하는 것은 PRODUCT.md 와 .impeccable/live/config.json 뿐이다.
+.claude/skills/
+.agents/skills/impeccable/
+.github/skills/
+.github/agents/
+.github/hooks/
+.codex/
+.impeccable/config.local.json
