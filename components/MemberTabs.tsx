@@ -43,7 +43,11 @@ function PersonCard({ member }: { member: MemberCard }) {
     <>
       <Face member={member} />
       <div className="person-n">{member.name}</div>
-      {member.name_ko && <div className="person-e">{member.name_ko}</div>}
+      {member.name_ko && (
+        <div className="person-e" lang="ko">
+          {member.name_ko}
+        </div>
+      )}
       <div className="person-r">{member.title ?? ROLE_LABEL[member.role]}</div>
       {memberPeriod(member) && <div className="person-x">{memberPeriod(member)}</div>}
       {member.topic && <div className="person-t">{member.topic}</div>}
@@ -93,13 +97,18 @@ export default function MemberTabs({
 
   return (
     <>
-      <div className="chips" role="tablist" style={{ marginBottom: 20 }}>
+      {/*
+        role="tab" 을 쓰지 않는다. 그 역할을 선언하면 스크린리더가 "방향키로 이동" 이라고
+        안내하는데, 여기엔 roving tabindex 도 방향키 처리도 없어서 안내가 거짓말이 된다.
+        /publications 의 필터와 같은 group + aria-pressed 로 맞춘다 — 이쪽은 Tab 만으로
+        동작하고, 사이트 안에서 같은 것이 같게 동작하게 된다.
+      */}
+      <div className="chips chips-t" role="group" aria-label="Filter members by role">
         {groups.map((g) => (
           <button
             key={g.key}
             type="button"
-            role="tab"
-            aria-selected={active === g.key}
+            aria-pressed={active === g.key}
             className={active === g.key ? 'on' : undefined}
             onClick={() => setActive(g.key)}
           >
@@ -108,7 +117,7 @@ export default function MemberTabs({
         ))}
       </div>
 
-      <div className="people" role="tabpanel">
+      <div className="people" aria-live="polite">
         {!current || current.members.length === 0 ? (
           <div className="empty">
             No {current?.label.toLowerCase() ?? 'members'} listed yet.

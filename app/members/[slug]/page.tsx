@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Face from '@/components/Face';
-import { MemberLinks } from '@/components/MemberTabs';
+import AwardName from '@/components/AwardName';
+import PersonHeader from '@/components/PersonHeader';
 import PubRow from '@/components/PubRow';
 import {
   lab,
@@ -10,7 +10,6 @@ import {
   memberBySlug,
   publicationsOf,
   awardsOf,
-  awardLabel,
   AWARD_GROUPS,
   ROLE_LABEL,
   memberPeriod,
@@ -43,40 +42,29 @@ export default function MemberPage({ params }: { params: { slug: string } }) {
       </p>
 
       <section className="sec">
-        <div className="pi">
-          <Face member={member} />
-          <div>
-            <div className="person-r" style={{ marginTop: 0 }}>
-              {member.role === 'alumni'
-                ? [member.degree ?? ROLE_LABEL.alumni, period].filter(Boolean).join(' · ')
-                : [member.title ?? ROLE_LABEL[member.role], period].filter(Boolean).join(' · ')}
-            </div>
-            <h2 style={{ fontSize: 23, marginTop: 5 }}>
-              {member.name}{' '}
-              {member.name_ko && (
-                <span style={{ fontWeight: 400, color: 'var(--mute)', fontSize: 17 }}>
-                  {member.name_ko}
-                </span>
-              )}
-            </h2>
-            <p style={{ margin: '9px 0 0', fontSize: 14.5, color: 'var(--mute)' }}>
-              {member.role === 'pi' ? `${lab.department}, ${lab.university}` : lab.name_short}
-              {member.topic && (
-                <>
-                  <br />
-                  {member.topic}
-                </>
-              )}
-              {member.next && (
-                <>
-                  <br />
-                  Now at {member.next}
-                </>
-              )}
-            </p>
-            <MemberLinks member={member} align="left" />
-          </div>
-        </div>
+        <PersonHeader
+          member={member}
+          as="h1"
+          role={
+            member.role === 'alumni'
+              ? [member.degree ?? ROLE_LABEL.alumni, period].filter(Boolean).join(' · ')
+              : [member.title ?? ROLE_LABEL[member.role], period].filter(Boolean).join(' · ')
+          }
+        >
+          {member.role === 'pi' ? `${lab.department}, ${lab.university}` : lab.name_short}
+          {member.topic && (
+            <>
+              <br />
+              {member.topic}
+            </>
+          )}
+          {member.next && (
+            <>
+              <br />
+              Now at {member.next}
+            </>
+          )}
+        </PersonHeader>
       </section>
 
       {honors.length > 0 && (
@@ -89,16 +77,22 @@ export default function MemberPage({ params }: { params: { slug: string } }) {
             if (items.length === 0) return null;
             return (
               <div key={g.key}>
-                <div className="yr-h">{g.label}</div>
-                {items.map((a) => (
-                  <div className="row" key={`${a.date}-${a.title}`}>
-                    <div className="row-d">{a.date}</div>
-                    <div>
-                      <div className="row-t">{awardLabel(a)}</div>
-                      {a.org && <div className="row-b">{a.org}</div>}
-                    </div>
-                  </div>
-                ))}
+                <h3 className="yr-h">{g.label}</h3>
+                <ol className="rows">
+                  {items.map((a) => (
+                    <li className="row" key={`${a.date}-${a.title}`}>
+                      <div className="row-d">
+                        <time dateTime={a.date}>{a.date}</time>
+                      </div>
+                      <div>
+                        <div className="row-t">
+                          <AwardName award={a} />
+                        </div>
+                        {a.org && <div className="row-b">{a.org}</div>}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </div>
             );
           })}

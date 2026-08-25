@@ -9,9 +9,14 @@
     "lint": "next lint",
     "optimize-images": "node scripts/optimize-images.mjs",
     "optimize-member-photos": "node scripts/optimize-member-photos.mjs",
-    "publish-preview": "bash scripts/publish-preview.sh"
+    "publish-preview": "bash scripts/publish-preview.sh",
+    "make-og": "node scripts/make-og.mjs"
   },
   "dependencies": {
+    "css-select": "^6.0.0",
+    "css-tree": "^3.2.1",
+    "domutils": "^3.2.2",
+    "htmlparser2": "^10.1.0",
     "js-yaml": "^4.1.0",
     "next": "^14.2.35",
     "react": "^18.3.1",

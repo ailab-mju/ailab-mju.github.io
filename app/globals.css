@@ -6,13 +6,45 @@
  * 디자인 토큰 — mju-ailab-site.html 목업이 기준
  * ========================================================== */
 :root {
+  /* 구조색 */
   --ink: #151320;
+  --ink-2: #3f3b4e;   /* 리드 문단 — 본문보다 한 단 낮은 강조 */
+  --ink-h: #282338;   /* 어두운 버튼 hover */
   --paper: #f5f4f7;
   --card: #ffffff;
-  --line: #e0dee6;
+  --sunken: #eceaf1;  /* 사진이 없는 자리(아바타·앨범 커버) */
+  --tint: #f1eef5;    /* 라벨 배경 */
   --mute: #6d6980;
+  --mute-2: #5f5a73;  /* --sunken 위 보조 텍스트. --mute 는 여기서 4.5:1 을 못 넘는다 */
   --deep: #3b1d52;
-  --teal: #1f7f7a;
+  --teal: #1a6d6a;    /* --paper 위 5.57:1. #1f7f7a 는 4.38 로 AA 미달이었다 */
+
+  /* 경계선. 컨테이너와 컨트롤을 나눈다 —
+     컨트롤 경계는 WCAG 1.4.11 이 3:1 을 요구한다(--line 은 1.33 이라 미달). */
+  --line: #e0dee6;    /* 카드·구분선 등 컨테이너 */
+  --line-i: #8f88a1;  /* 입력창·버튼 등 컨트롤. --card 위 3.38:1 */
+  --line-h: #6d6980;  /* 컨트롤 hover */
+
+  /* 의미색 — 액센트(--teal)와 분리한다 */
+  --warn: #9d3838;
+  --warn-bg: #fbe9e9;
+  --ok: #1a6b66;
+  --ok-bg: #e6f2f1;
+  --info: #3f4a6b;
+  --info-bg: #eef0f6;
+  --award: #7a5312;
+  --award-bg: #fdf4e3;
+  --note: #6b5a1a;
+  --note-bg: #fff8e6;
+  --note-line: #ecdca8;
+
+  /* 라이트박스(어두운 표면) */
+  --lb-bg: rgba(21, 19, 32, 0.94);
+  --lb-ink: #efeef4;
+  --lb-mute: #9a95ad;
+  --lb-line: #6b6389;  /* 어두운 배경 위 3.27:1 */
+  --lb-tile: #2b2640;
+  --lb-on: #8b86a3;
 
   /* 한글 제목은 Archivo에 글리프가 없다. Pretendard로 폴백. */
   --disp: "Archivo", "Pretendard Variable", sans-serif;
@@ -108,6 +140,9 @@
     font-family: var(--disp);
     font-weight: 800;
     font-size: 16px;
+    /* 로고 SVG 가 currentColor 로 그려진다. */
+    color: var(--ink);
+    padding: 8px 0;
   }
   .brand svg {
     width: 22px;
@@ -124,7 +159,8 @@
     font-size: 14px;
     text-decoration: none;
     color: var(--mute);
-    padding: 7px 12px;
+    /* 세로 11px + 줄높이 24px = 46px. 44px 권장을 넘긴다. */
+    padding: 11px 12px;
     border-radius: 5px;
     transition: 0.15s;
   }
@@ -142,13 +178,13 @@
     padding: 56px 0 44px;
     border-bottom: 1px solid var(--line);
   }
-  .hd .kicker {
+  /* 소속. 제목 위의 라벨이 아니라 제목이 딸린 곳이라 아래에 둔다. */
+  .hd .inst {
     font-family: var(--mono);
-    font-size: 11.5px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.06em;
     color: var(--mute);
-    margin: 0 0 16px;
+    margin: 12px 0 0;
   }
   .hd h1 {
     font-size: clamp(28px, 4vw, 42px);
@@ -158,7 +194,7 @@
   }
   .hd .lede {
     margin: 18px 0 0;
-    color: #3f3b4e;
+    color: var(--ink-2);
     max-width: 60ch;
     font-size: 16.5px;
     white-space: pre-line;
@@ -177,65 +213,21 @@
     font-weight: 600;
     padding: 10px 18px;
     border-radius: 6px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-i);
     background: var(--card);
     transition: 0.15s;
   }
   .btn:hover {
-    border-color: #c6c1d3;
+    border-color: var(--line-h);
   }
   .btn-p {
     background: var(--ink);
     border-color: var(--ink);
-    color: #fff;
+    color: var(--card);
   }
   .btn-p:hover {
-    background: #282338;
-    border-color: #282338;
-  }
-
-  /* ---------- hero slot ----------
-     통째로 지워도 페이지가 완결되도록 설계된 슬롯이다. */
-  .slot {
-    margin: 34px 0 0;
-    border: 1px dashed #c9c4d6;
-    border-radius: 10px;
-    background: var(--card);
-    min-height: 230px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 30px;
-    overflow: hidden;
-  }
-  .slot p {
-    margin: 0;
-    color: #9a95a9;
-    font-size: 13.5px;
-    line-height: 1.8;
-  }
-  .slot .t {
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #b0aabf;
-    display: block;
-    margin-bottom: 8px;
-  }
-  .slot img {
-    width: 100%;
-    height: 100%;
-    max-height: 380px;
-    object-fit: cover;
-    border-radius: 9px;
-  }
-  .slot.filled {
-    border-style: solid;
-    border-color: var(--line);
-    padding: 0;
-    min-height: 0;
+    background: var(--ink-h);
+    border-color: var(--ink-h);
   }
 
   /* ---------- sections ---------- */
@@ -262,6 +254,9 @@
     color: var(--teal);
     text-decoration: none;
     font-weight: 600;
+    /* 인라인이면 높이가 줄높이(15~16px)에 그친다. WCAG 2.2 의 24px 을 넘긴다. */
+    display: inline-block;
+    padding: 5px 0;
   }
   .link:hover {
     text-decoration: underline;
@@ -363,8 +358,8 @@
     color: var(--deep);
   }
   .pub-aw span {
-    background: #fdf4e3;
-    color: #7a5312;
+    background: var(--award-bg);
+    color: var(--award);
     border-radius: 3px;
     padding: 2px 8px;
   }
@@ -392,20 +387,20 @@
     text-transform: uppercase;
     padding: 2px 7px;
     border-radius: 3px;
-    background: #f1eef5;
+    background: var(--tint);
     color: var(--deep);
   }
   .flag.todo {
-    background: #fbe9e9;
-    color: #9d3838;
+    background: var(--warn-bg);
+    color: var(--warn);
   }
   .flag.scie {
-    background: #e6f2f1;
-    color: #1a6b66;
+    background: var(--ok-bg);
+    color: var(--ok);
   }
   .flag.if {
-    background: #eef0f6;
-    color: #3f4a6b;
+    background: var(--info-bg);
+    color: var(--info);
   }
   .yr-h {
     font-family: var(--mono);
@@ -429,39 +424,42 @@
   .q {
     flex: 1;
     min-width: 200px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-i);
     background: var(--card);
     border-radius: 6px;
-    padding: 9px 13px;
+    padding: 11px 13px;
     font-family: var(--body);
-    font-size: 14.5px;
+    /* 16px 미만이면 iOS Safari 가 포커스 시 페이지를 확대하고 되돌리지 않는다. */
+    font-size: 16px;
     color: var(--ink);
   }
   .q::placeholder {
-    color: #a5a0b2;
+    /* 이 문구가 검색창의 유일한 가시 라벨이다. #a5a0b2 는 2.54:1 이었다. */
+    color: var(--mute);
   }
   .chips {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
+    margin-bottom: 10px;
   }
   .chips button {
     font-size: 13.5px;
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-i);
     background: var(--card);
     border-radius: 6px;
-    padding: 8px 14px;
+    padding: 11px 14px;
     color: var(--mute);
     transition: 0.15s;
   }
   .chips button:hover {
-    border-color: #c6c1d3;
+    border-color: var(--line-h);
     color: var(--ink);
   }
   .chips button.on {
     background: var(--ink);
     border-color: var(--ink);
-    color: #fff;
+    color: var(--card);
     font-weight: 600;
   }
   .count {
@@ -488,14 +486,14 @@
     height: 76px;
     border-radius: 50%;
     margin: 0 auto 13px;
-    background: #eceaf1;
+    background: var(--sunken);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--disp);
     font-size: 24px;
     font-weight: 700;
-    color: #9a95a9;
+    color: var(--mute-2);
     overflow: hidden;
     flex: none;
   }
@@ -519,7 +517,7 @@
     transition: 0.15s;
   }
   .person-c:hover {
-    border-color: #c6c1d3;
+    border-color: var(--line-h);
   }
   .person-h:hover .person-n {
     color: var(--teal);
@@ -572,6 +570,8 @@
     font-size: 12px;
     color: var(--teal);
     text-decoration: none;
+    display: inline-block;
+    padding: 6px 4px;
   }
   .person-l a:hover {
     text-decoration: underline;
@@ -654,17 +654,17 @@
     width: 100%;
   }
   .album:hover {
-    border-color: #c6c1d3;
+    border-color: var(--line-h);
   }
   .album-i {
     aspect-ratio: 4 / 3;
-    background: #eceaf1;
+    background: var(--sunken);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--mono);
     font-size: 11px;
-    color: #b0aabf;
+    color: var(--mute-2);
     letter-spacing: 0.1em;
     overflow: hidden;
   }
@@ -696,7 +696,7 @@
   .lb {
     position: fixed;
     inset: 0;
-    background: rgba(21, 19, 32, 0.94);
+    background: var(--lb-bg);
     z-index: 200;
     display: flex;
     flex-direction: column;
@@ -706,7 +706,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #efeef4;
+    color: var(--lb-ink);
     gap: 16px;
   }
   .lb-t h3 {
@@ -715,17 +715,17 @@
   }
   .lb-t p {
     font-size: 13px;
-    color: #9a95ad;
+    color: var(--lb-mute);
     margin: 2px 0 0;
   }
   .lb-x {
     background: none;
-    border: 1px solid #3d3757;
-    color: #efeef4;
+    border: 1px solid var(--lb-line);
+    color: var(--lb-ink);
     border-radius: 6px;
-    width: 34px;
-    height: 34px;
-    font-size: 17px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
     flex: none;
   }
   .lb-s {
@@ -745,12 +745,12 @@
   }
   .lb-nav {
     background: none;
-    border: 1px solid #3d3757;
-    color: #efeef4;
+    border: 1px solid var(--lb-line);
+    color: var(--lb-ink);
     border-radius: 6px;
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
     flex: none;
   }
   .lb-r {
@@ -763,7 +763,7 @@
     height: 52px;
     border-radius: 5px;
     border: 2px solid transparent;
-    background: #2b2640;
+    background: var(--lb-tile);
     flex: none;
     padding: 0;
     overflow: hidden;
@@ -774,7 +774,7 @@
     object-fit: cover;
   }
   .lb-r button.on {
-    border-color: #8b86a3;
+    border-color: var(--lb-on);
   }
 
   /* ---------- rows ---------- */
@@ -838,7 +838,7 @@
   }
   .area-s {
     font-size: 15.5px;
-    color: #3f3b4e;
+    color: var(--ink-2);
     max-width: 68ch;
     margin: 0 0 14px;
   }
@@ -862,10 +862,10 @@
     list-style: none;
     font-size: 13.5px;
     color: var(--mute);
-    border: 1px solid var(--line);
+    border: 1px solid var(--line-i);
     background: var(--card);
     border-radius: 6px;
-    padding: 7px 13px;
+    padding: 11px 13px;
     transition: 0.15s;
   }
   .disc > summary::-webkit-details-marker {
@@ -884,7 +884,7 @@
     transform: rotate(90deg);
   }
   .disc > summary:hover {
-    border-color: #c6c1d3;
+    border-color: var(--line-h);
     color: var(--ink);
   }
   .disc[open] > summary {
@@ -894,7 +894,7 @@
     font-family: var(--mono);
     font-size: 12px;
     color: var(--deep);
-    background: #f1eef5;
+    background: var(--tint);
     border-radius: 3px;
     padding: 1px 6px;
   }
@@ -939,12 +939,12 @@
 
   /* ---------- misc ---------- */
   .note {
-    background: #fff8e6;
-    border: 1px solid #ecdca8;
+    background: var(--note-bg);
+    border: 1px solid var(--note-line);
     border-radius: 7px;
     padding: 12px 15px;
     font-size: 13.5px;
-    color: #6b5a1a;
+    color: var(--note);
     margin-bottom: 22px;
     line-height: 1.65;
   }
@@ -973,22 +973,123 @@
   .foot a {
     color: var(--teal);
     text-decoration: none;
+    /* 인라인 링크는 줄높이만큼(16px)만 잡혀 터치 타깃이 되지 않는다. */
+    display: inline-block;
+    padding: 5px 0;
   }
   .stale {
     font-family: var(--mono);
     font-size: 11.5px;
     letter-spacing: 0.04em;
-    color: #9d3838;
+    color: var(--warn);
     margin-top: 10px;
   }
+
+  /* ---------- PI 블록 ----------
+     /members 와 /members/<slug> 가 같은 컴포넌트(components/PiCard.tsx)를 쓴다.
+     전에는 같은 인라인 style 네 줄이 두 파일에 복제돼 있었다. */
+  .pi-n {
+    font-size: 23px;
+    margin-top: 5px;
+  }
+  .pi-n .ko {
+    font-weight: 400;
+    color: var(--mute);
+    font-size: 17px;
+  }
+  .pi-b {
+    margin: 9px 0 0;
+    font-size: 14.5px;
+    color: var(--mute);
+  }
+  .pi .person-r {
+    margin-top: 0;
+  }
+
+  /* 목록으로 쓰는 .row 컨테이너. 항목 수와 경계를 마크업에 남긴다. */
+  .rows {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .rows .row:first-of-type {
+    border-top: 1px solid var(--line);
+  }
+  .term {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--mute);
+    margin: 30px 0 0;
+  }
+  .term:first-of-type {
+    margin-top: 0;
+  }
+  /* 날짜 칸이 없는 행. 학기가 제목으로 올라가면 행에는 과목만 남는다. */
+  .row-1 {
+    grid-template-columns: 1fr;
+  }
+  .row-t .ko {
+    font-weight: 400;
+    color: var(--mute);
+    font-size: 14px;
+  }
+  .join-h {
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0;
+  }
+  .join-p {
+    margin-top: 12px;
+    white-space: pre-line;
+  }
+  .join-r {
+    margin-top: 14px;
+    font-size: 13.5px;
+  }
+  .chips-t {
+    margin-bottom: 20px;
+  }
+  /* 행의 첫 줄이면 위 여백이 필요 없다. */
+  .row > div > .row-b:first-child {
+    margin-top: 0;
+  }
+  .pre {
+    white-space: pre-line;
+  }
+  .empty-h {
+    display: block;
+    margin-top: 10px;
+    font-size: 13px;
+  }
+
+  /* 연도 필터 줄. 마지막이라 목록과의 간격을 더 준다. */
+  .chips-y {
+    margin-bottom: 18px;
+  }
+
+  /* 새 탭으로 열리는 링크임을 알린다. */
+  .ext::after {
+    content: '↗';
+    font-size: 0.82em;
+    margin-left: 3px;
+    color: var(--mute);
+    vertical-align: baseline;
+  }
+
 }
 
 @media (max-width: 860px) {
+  /* 모바일에서 내비를 고정하지 않는다. 2줄로 접히면 뷰포트의 17%를 영구히 먹는다. */
+  .nav {
+    position: static;
+  }
   .nav-in {
     height: auto;
-    padding: 11px 0;
+    padding: 6px 0;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 4px;
   }
   .nav-links {
     margin-left: 0;
@@ -1012,9 +1113,14 @@
   }
   .alum-x {
     text-align: left;
+    /* 진로가 길면 nowrap 이 가로 넘침을 만든다. */
+    white-space: normal;
   }
 }
 
+/* 이 사이트의 transition 은 전부 hover 색·테두리 변화뿐이라 꺼도 잃는 정보가 없다.
+   상태를 드러내는 애니메이션이 생기면 이 전역 규칙을 그때 좁혀야 한다 —
+   전역 kill 은 상태 변화까지 함께 죽인다. */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

@@ -274,8 +274,43 @@ export const newsFeed: NewsItem[] = [
     date: a.date,
     title:
       a.kind === 'grant'
-        ? `${a.member} selected for the ${awardLabel(a)}`
-        : `${a.member} receives the ${awardLabel(a)}`,
+        ? `${a.member} selected for the ${a.title}`
+        : `${a.member} receives the ${a.title}`,
+    ko: a.ko ?? null,
     body: a.org ?? null,
   })),
 ].sort(byDateDesc);
+
+/**
+ * 유지보수자에게 필요한 지시는 빌드 로그로 보낸다.
+ *
+ * 화면의 안내문은 방문자가 읽는 글이라 "저자를 대조하는 중" 까지만 말한다.
+ * 어느 YAML 의 어느 필드를 고쳐야 하는지는 방문자에게 아무 의미가 없고,
+ * 진학을 고민하며 들어온 학생에게는 사이트가 공사 중이라는 인상만 준다.
+ * 그렇다고 지시를 지우면 고치는 법을 아무도 모르게 되므로, 여기로 옮긴다.
+ */
+const buildNotes: string[] = [
+  needsAttention.publications > 0 &&
+    `확인 필요 ${needsAttention.publications}건 — content/publications.yaml 해당 항목의 todo 줄을 지운다.`,
+  untaggedPublications.length > 0 &&
+    `주제 미분류 ${untaggedPublications.length}건 — 해당 항목에 topics 를 넣는다 (키는 content/research.yaml 의 areas[].key).`,
+  venuesNeedingMetrics.length > 0 &&
+    `SCIE·IF 미확인 ${venuesNeedingMetrics.length}곳 (${venuesNeedingMetrics
+      .map((v) => v.name)
+      .join(', ')}) — content/venues.yaml 의 scie·impact_factor·quartile 을 채운다.`,
+  publicationsWithBadAuthorNames.length > 0 &&
+    `저자 표기 불일치 ${publicationsWithBadAuthorNames.length}건 — first·corresponding 의 이름이 authors 안에 없다: ${publicationsWithBadAuthorNames
+      .map((x) => x.names.join(', '))
+      .join(' / ')}`,
+  unmatchedAwardMembers.length > 0 &&
+    `수상자 미매칭 ${unmatchedAwardMembers.length}명 (${unmatchedAwardMembers.join(
+      ', ',
+    )}) — content/awards.yaml 의 member 를 content/members.yaml 의 name 과 맞춘다.`,
+  duplicateSlugs.length > 0 && `slug 중복: ${duplicateSlugs.join(', ')}`,
+].filter((x): x is string => Boolean(x));
+
+if (buildNotes.length > 0) {
+  console.warn(`\n[content] 손볼 것 ${buildNotes.length}건`);
+  for (const note of buildNotes) console.warn(`  · ${note}`);
+  console.warn('');
+}

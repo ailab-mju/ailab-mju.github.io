@@ -86,8 +86,8 @@ export default function PublicationFilters({
         />
       </div>
 
-      <div className="chips" role="group" aria-label="Filter by publication type" style={{ marginBottom: 10 }}>
-          {TYPES.map(([key, label]) => (
+      <div className="chips" role="group" aria-label="Filter by publication type">
+        {TYPES.map(([key, label]) => (
             <button
               key={key}
               type="button"
@@ -100,7 +100,7 @@ export default function PublicationFilters({
           ))}
       </div>
 
-      <div className="chips" role="group" aria-label="Filter by year" style={{ marginBottom: 18 }}>
+      <div className="chips chips-y" role="group" aria-label="Filter by year">
         <button
           type="button"
           className={year === 'all' ? 'on' : undefined}

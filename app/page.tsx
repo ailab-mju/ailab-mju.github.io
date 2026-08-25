@@ -1,16 +1,26 @@
 import Link from 'next/link';
-import HeroSlot from '@/components/HeroSlot';
 import JoinBox from '@/components/JoinBox';
 import PubRow from '@/components/PubRow';
 import { lab, areasWithPapers, publications, news } from '@/lib/content';
+
+/** 마지막 단어를 반으로 자르지 않는다 — "batch effe…" 는 요약이 아니라 사고처럼 보인다. */
+function clip(text: string, max: number): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const at = cut.lastIndexOf(' ');
+  return `${(at > max * 0.6 ? cut.slice(0, at) : cut).replace(/[,;:.\s]+$/, '')}…`;
+}
 
 export default function Home() {
   return (
     <div className="w">
       <header className="hd">
-        <p className="kicker">{lab.department}</p>
         <h1>{lab.name_en}</h1>
-        <p className="lede">{lab.intro_ko.trim()}</p>
+        {/* 소속은 제목 위의 라벨이 아니라 제목이 딸린 곳이다. 아래에 둔다. */}
+        <p className="inst">{lab.department}</p>
+        <p className="lede" lang="ko">
+          {lab.intro_ko.trim()}
+        </p>
         <div className="cta">
           <Link className="btn btn-p" href="/join">
             Join the lab
@@ -19,8 +29,6 @@ export default function Home() {
             Research
           </Link>
         </div>
-        {/* 이 한 줄을 지우면 슬롯이 사라진다. 나머지는 그대로 동작한다. */}
-        <HeroSlot />
       </header>
 
       <section className="sec">
@@ -35,7 +43,7 @@ export default function Home() {
           {areasWithPapers.slice(0, 3).map((a) => (
             <div className="card" key={a.key}>
               <h3>{a.title}</h3>
-              <p>{a.summary.length > 110 ? `${a.summary.slice(0, 110)}…` : a.summary}</p>
+              <p>{clip(a.summary, 110)}</p>
               <div className="tags">
                 <span className="tag">
                   {a.count === 0

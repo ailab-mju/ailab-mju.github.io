@@ -8,12 +8,11 @@ export default function Join() {
   return (
     <div className="w">
       <header className="hd">
-        <p className="kicker">Join</p>
-        <h2>Join the lab</h2>
+        <h1>Join the lab</h1>
       </header>
 
       <section className="sec">
-        <JoinBox />
+        <JoinBox heading={false} />
       </section>
 
       <section className="sec">
@@ -34,7 +33,7 @@ export default function Join() {
           <div className="row">
             <div className="row-d">Office</div>
             <div>
-              <div className="row-b" style={{ marginTop: 0 }}>
+              <div className="row-b" lang="ko">
                 {lab.office}
                 {lab.phone ? ` · ${lab.phone}` : ''}
               </div>
@@ -44,7 +43,7 @@ export default function Join() {
         <div className="row">
           <div className="row-d">Address</div>
           <div>
-            <div className="row-b" style={{ whiteSpace: 'pre-line', marginTop: 0 }}>
+            <div className="row-b pre">
               {lab.address.trim()}
             </div>
           </div>

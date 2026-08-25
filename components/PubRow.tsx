@@ -1,4 +1,5 @@
-import { awardLabel, type AuthorRole, type Publication } from '@/lib/types';
+import { hasKorean, type AuthorRole, type Publication } from '@/lib/types';
+import AwardName from './AwardName';
 import VenueMeta from './VenueMeta';
 
 /** 1저자 † · 교신저자 * . 범례는 /publications 상단에 한 번만 둔다. */
@@ -30,12 +31,23 @@ function Authors({ authors, roles }: { authors: string[]; roles: AuthorRole[] })
 }
 
 export default function PubRow({ pub }: { pub: Publication }) {
+  // 국내 학회 논문 제목은 원문 그대로 둔다. 원문이 한국어면 그 사실을 마크업에도 남긴다 —
+  // 표시하지 않으면 스크린리더가 한국어를 영어 발음 규칙으로 읽는다.
+  const lang = hasKorean(pub.title) ? 'ko' : undefined;
   const title = pub.doi ? (
-    <a className="pub-t" href={pub.doi} target="_blank" rel="noopener noreferrer">
+    <a
+      className="pub-t ext"
+      href={pub.doi}
+      target="_blank"
+      rel="noopener noreferrer"
+      lang={lang}
+    >
       {pub.title}
     </a>
   ) : (
-    <span className="pub-t">{pub.title}</span>
+    <span className="pub-t" lang={lang}>
+      {pub.title}
+    </span>
   );
 
   return (
@@ -46,7 +58,7 @@ export default function PubRow({ pub }: { pub: Publication }) {
         <div className="pub-aw">
           {pub.awards.map((a) => (
             <span key={`${a.date}-${a.title}`}>
-              {awardLabel(a)}
+              <AwardName award={a} />
               {a.member ? ` · ${a.member}` : ''}
             </span>
           ))}
@@ -55,7 +67,7 @@ export default function PubRow({ pub }: { pub: Publication }) {
       <div className="pub-m">
         <VenueMeta pub={pub} />
         {pub.code && (
-          <a className="link" href={pub.code} target="_blank" rel="noopener noreferrer">
+          <a className="link ext" href={pub.code} target="_blank" rel="noopener noreferrer">
             Code
           </a>
         )}

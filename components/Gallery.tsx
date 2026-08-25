@@ -10,6 +10,7 @@ export default function Gallery({ albums }: { albums: Album[] }) {
   const [openId, setOpenId] = useState<string | null>(null);
   const [index, setIndex] = useState(0);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
 
   const album = albums.find((a) => a.id === openId) ?? null;
@@ -28,14 +29,33 @@ export default function Gallery({ albums }: { albums: Album[] }) {
     [total],
   );
 
-  // 배경 스크롤 잠금
+  // 배경 스크롤 잠금 + 배경 비활성화.
+  //
+  // aria-modal="true" 만으로는 뒤 페이지가 잠기지 않는다. inert 를 걸지 않으면
+  // Tab 여섯 번에 포커스가 스킵 링크·내비로 빠져나가는데, 스크롤은 잠겨 있어서
+  // 사용자는 보이지도 않는 요소에 포커스를 두게 된다.
   useEffect(() => {
     if (!album) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     closeRef.current?.focus();
+
+    // 다이얼로그에서 body 까지 거슬러 올라가며 각 층의 형제를 전부 잠근다.
+    // body 자식만 잠그면 같은 <main> 안에 있는 앨범 버튼들이 그대로 남는다.
+    const locked: Element[] = [];
+    let node: HTMLElement | null = dialogRef.current;
+    for (; node && node !== document.body; node = node.parentElement) {
+      for (const sibling of node.parentElement?.children ?? []) {
+        if (sibling !== node && !sibling.hasAttribute('inert')) {
+          sibling.setAttribute('inert', '');
+          locked.push(sibling);
+        }
+      }
+    }
+
     return () => {
       document.body.style.overflow = prev;
+      for (const el of locked) el.removeAttribute('inert');
     };
   }, [album]);
 
@@ -58,9 +78,8 @@ export default function Gallery({ albums }: { albums: Album[] }) {
           No albums yet.
           <br />
           <br />
-          <span style={{ fontSize: 13 }}>
-            Drop photos into <code>raw-photos/&#123;album-id&#125;/</code> and the upload
-            workflow will resize them, strip EXIF, and add the album here.
+          <span className="empty-h">
+            Photos appear here once someone adds them to the shared album folder.
           </span>
         </div>
       </div>
@@ -84,7 +103,13 @@ export default function Gallery({ albums }: { albums: Album[] }) {
             <div className="album-i">
               {a.cover ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={thumb(a.id, a.cover)} alt="" loading="lazy" />
+                <img
+                  src={thumb(a.id, a.cover)}
+                  alt=""
+                  width={400}
+                  height={300}
+                  loading="lazy"
+                />
               ) : (
                 `${a.photos.length} photos`
               )}
@@ -100,6 +125,7 @@ export default function Gallery({ albums }: { albums: Album[] }) {
 
       {album && (
         <div
+          ref={dialogRef}
           className="lb"
           role="dialog"
           aria-modal="true"
@@ -146,10 +172,11 @@ export default function Gallery({ albums }: { albums: Album[] }) {
                 type="button"
                 className={i === index ? 'on' : undefined}
                 aria-label={`Photo ${i + 1}`}
+                aria-current={i === index ? 'true' : undefined}
                 onClick={() => setIndex(i)}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={thumb(album.id, file)} alt="" loading="lazy" />
+                <img src={thumb(album.id, file)} alt="" width={72} height={52} loading="lazy" />
               </button>
             ))}
           </div>

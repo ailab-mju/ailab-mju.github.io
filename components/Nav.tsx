@@ -22,14 +22,15 @@ export default function Nav({ brand }: { brand: string }) {
     <nav className="nav">
       <div className="w nav-in">
         <Link className="brand" href="/">
+          {/* 색을 박지 않는다. 토큰을 바꾸면 로고도 따라와야 한다. */}
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <polygon
               points="12,2 21,7 21,17 12,22 3,17 3,7"
               fill="none"
-              stroke="#151320"
+              stroke="currentColor"
               strokeWidth="1.6"
             />
-            <circle cx="12" cy="12" r="3.2" fill="#1f7f7a" />
+            <circle cx="12" cy="12" r="3.2" fill="var(--teal)" />
           </svg>
           {brand}
         </Link>

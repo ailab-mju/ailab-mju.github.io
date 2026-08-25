@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Face from '@/components/Face';
-import MemberTabs, { MemberLinks } from '@/components/MemberTabs';
+import AwardName from '@/components/AwardName';
+import MemberTabs from '@/components/MemberTabs';
+import PersonHeader from '@/components/PersonHeader';
 import {
   lab,
   pi,
@@ -10,7 +11,6 @@ import {
   awards,
   memberHref,
   memberPeriod,
-  awardLabel,
   unmatchedAwardMembers,
   AWARD_GROUPS,
   type Role,
@@ -38,8 +38,7 @@ export default function Members() {
   return (
     <div className="w">
       <header className="hd">
-        <p className="kicker">Members</p>
-        <h2>Members</h2>
+        <h1>Members</h1>
         <p className="lede">
           {counts.members} current members and {counts.alumni} alumni.
         </p>
@@ -47,33 +46,19 @@ export default function Members() {
 
       <section className="sec">
         {pi && (
-          <div className="pi">
-            <Face member={pi} />
-            <div>
-              <div className="person-r" style={{ marginTop: 0 }}>
-                Principal Investigator
-                {memberPeriod(pi) ? ` · ${memberPeriod(pi)}` : ''}
-              </div>
-              <h3 style={{ fontSize: 23, marginTop: 5 }}>
-                {piHref ? <Link href={piHref}>{pi.name}</Link> : pi.name}{' '}
-                {pi.name_ko && (
-                  <span style={{ fontWeight: 400, color: 'var(--mute)', fontSize: 17 }}>
-                    {pi.name_ko}
-                  </span>
-                )}
-              </h3>
-              <p style={{ margin: '9px 0 0', fontSize: 14.5, color: 'var(--mute)' }}>
-                {pi.title}, {lab.department}
-                <br />
-                {pi.topic}
-                {' · '}
-                <Link className="link" href="/publications">
-                  Publications
-                </Link>
-              </p>
-              <MemberLinks member={pi} align="left" />
-            </div>
-          </div>
+          <PersonHeader
+            member={pi}
+            as="h2"
+            role={`Principal Investigator${memberPeriod(pi) ? ` · ${memberPeriod(pi)}` : ''}`}
+          >
+            {pi.title}, {lab.department}
+            <br />
+            {pi.topic}
+            {' · '}
+            <Link className="link" href={piHref ?? '/publications'}>
+              {piHref ? 'Profile' : 'Publications'}
+            </Link>
+          </PersonHeader>
         )}
 
         <MemberTabs groups={groups} />
@@ -85,12 +70,8 @@ export default function Members() {
             <h2>Awards &amp; honors</h2>
           </div>
           {unmatchedAwardMembers.length > 0 && (
-            <div className="note">
-              <b>수상자 미매칭 {unmatchedAwardMembers.length}명</b> —{' '}
-              {unmatchedAwardMembers.join(', ')}.
-              <br />
-              <code>content/awards.yaml</code>의 <code>member</code>가{' '}
-              <code>content/members.yaml</code>의 이름과 다릅니다.
+            <div className="note" lang="ko">
+              {unmatchedAwardMembers.join(', ')} 님의 표기를 구성원 명단과 대조하는 중입니다.
             </div>
           )}
           {AWARD_GROUPS.map((g) => {
@@ -98,18 +79,22 @@ export default function Members() {
             if (items.length === 0) return null;
             return (
               <div key={g.key}>
-                <div className="yr-h">{g.label}</div>
-                {items.map((a) => (
-                  <div className="row" key={`${a.date}-${a.member}-${a.title}`}>
-                    <div className="row-d">{a.date}</div>
-                    <div>
-                      <div className="row-t">
-                        <b>{a.member}</b> — {awardLabel(a)}
+                <h3 className="yr-h">{g.label}</h3>
+                <ol className="rows">
+                  {items.map((a) => (
+                    <li className="row" key={`${a.date}-${a.member}-${a.title}`}>
+                      <div className="row-d">
+                        <time dateTime={a.date}>{a.date}</time>
                       </div>
-                      {a.org && <div className="row-b">{a.org}</div>}
-                    </div>
-                  </div>
-                ))}
+                      <div>
+                        <div className="row-t">
+                          <b>{a.member}</b> — <AwardName award={a} />
+                        </div>
+                        {a.org && <div className="row-b">{a.org}</div>}
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </div>
             );
           })}

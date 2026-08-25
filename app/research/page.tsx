@@ -14,8 +14,7 @@ export default function Research() {
   return (
     <div className="w">
       <header className="hd">
-        <p className="kicker">Research</p>
-        <h2>Research areas</h2>
+        <h1>Research areas</h1>
         <p className="lede">
           We develop machine learning methods that reflect the structure of biological data.
           The {counts.areas} areas below are what {counts.publications} publications since{' '}
@@ -57,10 +56,9 @@ export default function Research() {
 
       {untaggedPublications.length > 0 && (
         <section className="sec">
-          <div className="note">
-            <b>주제 미분류 {untaggedPublications.length}건</b> —{' '}
-            <code>content/publications.yaml</code>의 해당 항목에 <code>topics</code>를 넣으면
-            이 안내가 사라지고 위 목록에 합쳐집니다.
+          <div className="note" lang="ko">
+            아래 {untaggedPublications.length}건은 아직 위 주제 중 어디에 넣을지 정리하는
+            중입니다.
           </div>
           <PaperList papers={untaggedPublications} label="Unassigned publications" />
         </section>
@@ -74,21 +72,23 @@ export default function Research() {
               All publications &rarr;
             </Link>
           </div>
-          {projects.map((p) => (
-            <div className="row" key={p.title}>
-              <div className="row-d">{p.period || '—'}</div>
-              <div>
-                <div className="row-t">{p.title}</div>
-                {(p.funder || p.role) && (
-                  <div className="row-b">
-                    {p.funder}
-                    {p.funder && p.role && ' · '}
-                    {p.role}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
+          <ul className="rows">
+            {projects.map((p) => (
+              <li className="row" key={p.title}>
+                <div className="row-d">{p.period || '—'}</div>
+                <div>
+                  <div className="row-t">{p.title}</div>
+                  {(p.funder || p.role) && (
+                    <div className="row-b">
+                      {p.funder}
+                      {p.funder && p.role && ' · '}
+                      {p.role}
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
     </div>

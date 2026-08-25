@@ -144,6 +144,15 @@ export type Award = {
   paper?: string | null;
 };
 
+/**
+ * 한글 음절이 들어 있는지. 국내 학회 논문 제목·상 이름처럼 영문 문서 안에 섞여 나가는
+ * 문자열에 lang="ko" 를 붙일지 판단하는 데 쓴다. 표시하지 않으면 스크린리더가
+ * 한국어를 영어 발음 규칙으로 읽는다(WCAG 3.1.2).
+ */
+export function hasKorean(text: string): boolean {
+  return /[\uAC00-\uD7A3]/.test(text);
+}
+
 /** 상 이름 표기. 영문 (원어). */
 export function awardLabel(a: Award): string {
   return a.ko ? `${a.title} (${a.ko})` : a.title;
@@ -154,7 +163,18 @@ export const AWARD_GROUPS: { key: AwardKind; label: string }[] = [
   { key: 'grant', label: 'Fellowships & grants' },
 ];
 
-export type NewsItem = { date: string | Date; title: string; body?: string | null };
+/**
+ * `ko` 는 상 이름의 원어 표기다. 제목에 괄호로 붙여 넣지 않고 따로 들고 있는 이유는,
+ * 영문 문장 한가운데의 한국어에만 lang="ko" 를 걸어야 하기 때문이다.
+ * 한 문자열로 합쳐 버리면 문장 전체를 한국어라고 하거나 아예 표시를 못 하게 된다.
+ */
+export type NewsItem = {
+  date: string | Date;
+  title: string;
+  ko?: string | null;
+  body?: string | null;
+};
+
 export type Course = {
   term: string;
   name: string;

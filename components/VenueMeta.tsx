@@ -1,4 +1,4 @@
-import { CATEGORIES, type Publication } from '@/lib/types';
+import { CATEGORIES, hasKorean, type Publication } from '@/lib/types';
 
 const LABEL = new Map(CATEGORIES.map((c) => [c.key, c.label]));
 
@@ -8,11 +8,25 @@ const LABEL = new Map(CATEGORIES.map((c) => [c.key, c.label]));
  */
 export default function VenueMeta({ pub }: { pub: Publication }) {
   const v = pub.venueInfo;
-  const venueLabel = v?.name_en ? `${v.name_en} (${pub.venue})` : pub.venue;
+  // 영문명이 있으면 "English (원어)". 괄호 안쪽에만 lang 을 건다 —
+  // 전체에 걸면 영문까지 한국어로 읽히고, 안 걸면 원어가 영어로 읽힌다.
+  const native = hasKorean(pub.venue) ? (
+    <span lang="ko">{pub.venue}</span>
+  ) : (
+    pub.venue
+  );
 
   return (
     <>
-      <span className="pub-v">{venueLabel}</span>
+      <span className="pub-v">
+        {v?.name_en ? (
+          <>
+            {v.name_en} ({native})
+          </>
+        ) : (
+          native
+        )}
+      </span>
       <span aria-hidden="true">·</span>
       <span>{pub.year}</span>
 
@@ -24,7 +38,11 @@ export default function VenueMeta({ pub }: { pub: Publication }) {
         <span className="flag if">IF {v.impact_factor.toFixed(1)}</span>
       )}
 
-      {pub.todo && <span className="flag todo">확인 필요</span>}
+      {pub.todo && (
+        <span className="flag todo" lang="ko">
+          확인 필요
+        </span>
+      )}
     </>
   );
 }

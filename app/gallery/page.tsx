@@ -8,8 +8,7 @@ export default function GalleryPage() {
   return (
     <div className="w">
       <header className="hd">
-        <p className="kicker">Gallery</p>
-        <h2>Gallery</h2>
+        <h1>Gallery</h1>
         <p className="lede">Conferences, retreats, and other lab activities.</p>
       </header>
 
