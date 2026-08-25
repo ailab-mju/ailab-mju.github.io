@@ -96,6 +96,22 @@ Next.js(App Router) + `output: 'export'` 정적 사이트. 콘텐츠는 전부 `
   행사 사진은 `npm run optimize-images`, 인물 사진은 `npm run optimize-member-photos`.
   둘 다 `raw-photos/` 의 원본을 처리하고 지운다.
 
+### git
+- **`main` 이 곧 배포다.** `main` 에 push 되면 `Deploy` 워크플로가 빌드해 Pages 에 올린다.
+  손보는 일은 브랜치에서 하고 PR 로 합친다.
+- 푸터의 `Last updated` 는 최종 커밋 날짜(`git log -1 --format=%cs`)다.
+  워크플로 재실행이나 재배포로는 갱신되지 않는다 — 그게 목적이다.
+- **`raw-photos/` 의 사진은 `.gitignore` 대상이다.** 추적되는 건 `raw-photos/README.md`
+  하나뿐이고, 그건 GitHub 에 이 디렉터리가 존재하게 만들려고 둔 것이다.
+  이 파일을 지우면 학생이 사진을 드래그해 넣을 곳이 사라진다.
+  GitHub 웹 업로드는 `.gitignore` 를 거치지 않으므로 학생 업로드 경로는 그대로 동작한다.
+- **워크플로가 만든 커밋은 다른 워크플로를 트리거하지 않는다** (`GITHUB_TOKEN` 재귀 방지).
+  그래서 `Deploy` 는 `Process gallery uploads` 의 완료를 `workflow_run` 으로 받아 이어 돈다.
+  이 연결이 끊기면 사진은 처리되지만 사이트에는 영영 안 나온다.
+- 워크플로 안의 `actions/checkout` 에 `ref` 를 지정하지 말 것.
+  `workflow_run` 의 `head_sha` 는 갤러리 워크플로를 *촉발한* 커밋이라 사진 커밋이 빠진다.
+- `pro.html`(교수 연구업적 시스템 export)은 커밋하지 않는다. 내용은 `research.yaml` 에 있다.
+
 ### 배포 전 확인
 ```bash
 npm run build       # out/ 생성 확인

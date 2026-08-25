@@ -1,6 +1,7 @@
 # 갤러리 업로드 트리거. 크론이 아니라 파일 추가에 반응하므로 자동 비활성화 대상이 아니다.
 #
 # 학생 사용법: GitHub 웹에서 raw-photos/{앨범ID}/ 에 사진을 드래그 앤 드롭하고 커밋.
+# 자세한 안내는 raw-photos/README.md 에 있다.
 # 이 워크플로가 리사이즈 → WebP → 썸네일 → EXIF 제거 → gallery.yaml 갱신 → 원본 삭제까지 한다.
 name: Process gallery uploads
 
@@ -8,14 +9,23 @@ on:
   push:
     paths:
       - 'raw-photos/**'
+      # 안내문만 고쳤을 때는 돌 이유가 없다.
+      - '!raw-photos/README.md'
   workflow_dispatch:
 
 permissions:
   contents: write
 
+# 두 사람이 연달아 올리면 두 실행이 같은 브랜치에 push 하려다 부딪힌다.
+# 취소하지 않고 줄을 세운다 — 취소하면 그 사람 사진만 조용히 사라진다.
+concurrency:
+  group: gallery-upload
+  cancel-in-progress: false
+
 jobs:
   process:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,10 +40,19 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # raw-photos/ 는 .gitignore 대상이지만 -f 를 붙이지 않는다.
+          # 웹으로 올라온 원본은 이미 추적 중이라 삭제는 그냥 스테이징되고(.gitignore 는
+          # 추적되지 않는 파일에만 관여한다), -f 를 붙이면 변환에 실패해 남은 원본까지
+          # 저장소에 박아 넣게 된다.
           git add -A public/images/gallery content/gallery.yaml raw-photos
+
           if git diff --cached --quiet; then
-            echo "Nothing to commit."
-          else
-            git commit -m "gallery: process uploaded photos"
-            git push
+            echo "처리할 사진이 없습니다."
+            exit 0
           fi
+
+          git commit -m "gallery: 업로드된 사진 처리"
+
+          # 줄을 세워도 다른 커밋과 겹칠 수 있다. 한 번은 따라잡고 다시 시도한다.
+          git push || { git pull --rebase && git push; }

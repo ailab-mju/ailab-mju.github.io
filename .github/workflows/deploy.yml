@@ -5,6 +5,14 @@ name: Deploy
 on:
   push:
     branches: [main]
+
+  # 갤러리 워크플로가 사진을 커밋해도 그 push 로는 이 워크플로가 돌지 않는다 —
+  # GITHUB_TOKEN 으로 만든 push 는 재귀 실행을 막기 위해 이벤트를 발생시키지 않는다.
+  # 이 줄이 없으면 학생이 사진을 올려도 사이트는 다음 사람 손 push 까지 그대로다.
+  workflow_run:
+    workflows: [Process gallery uploads]
+    types: [completed]
+
   workflow_dispatch:
 
 permissions:
@@ -18,8 +26,12 @@ concurrency:
 
 jobs:
   build:
+    # 갤러리 워크플로가 실패했다면 이어붙이지 않는다.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
+      # ref 를 지정하지 않는다. workflow_run 의 head_sha 는 갤러리 워크플로를 *촉발한*
+      # 커밋이라 정작 사진 커밋이 빠진다. 기본값(기본 브랜치 최신)이 맞다.
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
