@@ -48,6 +48,21 @@ jobs:
       - name: Derive build date from last commit
         run: echo "BUILD_DATE=$(git log -1 --format=%cs)" >> "$GITHUB_ENV"
 
+      # 조직 사이트 저장소(<org>.github.io)는 루트로, 그 밖의 저장소는
+      # <org>.github.io/<repo>/ 라는 하위 경로로 서빙된다.
+      # 저장소 이름에서 파생하면 임시 저장소에서도 링크·이미지가 깨지지 않고,
+      # 정식 저장소로 옮길 때 고칠 설정이 없다. 값을 손으로 적지 말 것.
+      - name: Derive base path from repository name
+        run: |
+          repo="${GITHUB_REPOSITORY#*/}"
+          # 커스텀 도메인(CNAME)이 붙어 있으면 저장소 이름과 무관하게 루트로 서빙된다.
+          if [[ "$repo" == *.github.io ]] || [ -f CNAME ]; then
+            echo "루트로 서빙 — basePath 없음"
+          else
+            echo "하위 경로로 서빙 — basePath=/$repo"
+            echo "PREVIEW_BASE_PATH=/$repo" >> "$GITHUB_ENV"
+          fi
+
       - run: npm run build
 
       # 커스텀 도메인이 설정되어 있으면 CNAME이 저장소 루트에 생긴다.

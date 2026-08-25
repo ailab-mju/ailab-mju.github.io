@@ -86,7 +86,13 @@ Next.js(App Router) + `output: 'export'` 정적 사이트. 콘텐츠는 전부 `
 **언어 전환 토글은 만들지 않는다.** 콘텐츠 두 벌 관리는 유지보수 실패의 원인이 된다.
 
 ### 기술
-- **`basePath` 를 설정하지 말 것.** 조직 사이트(`*.github.io`)라 루트로 서빙된다.
+- **`basePath` 를 손으로 적지 말 것.** `next.config.mjs` 는 `PREVIEW_BASE_PATH` 만 읽고,
+  그 값은 배포 워크플로가 저장소 이름에서 파생한다 — `*.github.io` 저장소나 `CNAME` 이
+  있으면 루트, 그 밖의 저장소는 `/<repo>`. 그래서 임시 저장소에 올려도 안 깨지고,
+  정식 저장소로 옮길 때 고칠 설정이 없다.
+- `public/` 아래 파일을 생짜 `<img src>` 나 `<a href>` 로 가리킬 때는 반드시
+  `asset()` / `next/link` 를 쓴다. `basePath` 는 생짜 경로에 붙지 않는다 —
+  루트 서빙에서는 멀쩡하다가 하위 경로에서만 조용히 깨진다.
 - static export이므로 `next/image` 최적화, 서버 컴포넌트의 런타임 fetch,
   라우트 핸들러를 쓸 수 없다.
 - `lib/content.ts` 는 `fs` 를 읽으므로 **클라이언트 컴포넌트에서 임포트하면 빌드가 깨진다.**
