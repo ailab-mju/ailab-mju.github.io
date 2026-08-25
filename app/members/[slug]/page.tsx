@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -76,7 +77,7 @@ export default function MemberPage({ params }: { params: { slug: string } }) {
             const items = honors.filter((a) => a.kind === g.key);
             if (items.length === 0) return null;
             return (
-              <div key={g.key}>
+              <Fragment key={g.key}>
                 <h3 className="yr-h">{g.label}</h3>
                 <ol className="rows">
                   {items.map((a) => (
@@ -93,7 +94,7 @@ export default function MemberPage({ params }: { params: { slug: string } }) {
                     </li>
                   ))}
                 </ol>
-              </div>
+              </Fragment>
             );
           })}
         </section>

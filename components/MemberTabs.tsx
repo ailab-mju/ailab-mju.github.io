@@ -117,7 +117,16 @@ export default function MemberTabs({
         ))}
       </div>
 
-      <div className="people" aria-live="polite">
+      {/*
+        알림은 개수만 한다. 전에는 이 그리드 자체에 aria-live 를 걸어 두어서,
+        탭을 누를 때마다 카드 전체(실측 472자 — 이름·역할·기간·주제)를 낭독했다.
+        /publications 도 목록이 아니라 결과 수만 알린다.
+      */}
+      <p className="count" aria-live="polite">
+        {current ? `${current.members.length} ${current.label.toLowerCase()}` : 'No members'}
+      </p>
+
+      <div className="people">
         {!current || current.members.length === 0 ? (
           <div className="empty">
             No {current?.label.toLowerCase() ?? 'members'} listed yet.

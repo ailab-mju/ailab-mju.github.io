@@ -10,8 +10,11 @@ function Marks({ role }: { role: AuthorRole }) {
     .filter(Boolean)
     .join(', ');
   return (
+    // 기호는 눈으로만 읽힌다. title 은 마우스에만 뜨므로 터치·키보드·스크린리더에는
+    // 아무 정보가 없었다. 기호를 aria-hidden 으로 감추고 말을 따로 붙인다.
     <sup className="au-m" title={label}>
-      {marks}
+      <span aria-hidden="true">{marks}</span>
+      <span className="sr"> ({label})</span>
     </sup>
   );
 }

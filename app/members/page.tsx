@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import AwardName from '@/components/AwardName';
@@ -78,7 +79,7 @@ export default function Members() {
             const items = awards.filter((a) => a.kind === g.key);
             if (items.length === 0) return null;
             return (
-              <div key={g.key}>
+              <Fragment key={g.key}>
                 <h3 className="yr-h">{g.label}</h3>
                 <ol className="rows">
                   {items.map((a) => (
@@ -95,7 +96,7 @@ export default function Members() {
                     </li>
                   ))}
                 </ol>
-              </div>
+              </Fragment>
             );
           })}
         </section>

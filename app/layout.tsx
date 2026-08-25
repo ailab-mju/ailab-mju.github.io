@@ -1,8 +1,33 @@
 import type { Metadata } from 'next';
+import { Archivo, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { asset, lab } from '@/lib/content';
+
+/**
+ * 제목·라벨 글꼴은 빌드 타임에 내려받아 out/ 안에 넣는다(next/font).
+ *
+ * 전에는 방문자 브라우저가 fonts.googleapis.com 에 CSS 를 받고 다시
+ * fonts.gstatic.com 에서 폰트를 받았다. 요청 두 번이 렌더를 막았고, 교내망이나
+ * 방화벽이 막으면 사이트 글꼴이 통째로 폴백됐다. 이제 자기 도메인에서 나가고
+ * next/font 가 preload 까지 붙인다.
+ *
+ * 본문 한글(Pretendard)은 Google Fonts 에 없어 CDN 에 남겼다. 그쪽이 막히면
+ * 시스템 한글 글꼴로 떨어지는데, 제목 글꼴이 사라지는 것보다 피해가 작다.
+ * 의존이 런타임(모든 방문자)에서 빌드 타임(배포할 때만)으로 옮겨졌다.
+ */
+const archivo = Archivo({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-disp',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(lab.site_url),
@@ -34,16 +59,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${archivo.variable} ${jetbrainsMono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {/* 본문 폰트를 주는 호스트다. 제목용 Google Fonts 보다 먼저 붙어야 한다. */}
+        {/* 본문 한글을 주는 호스트. 남은 외부 의존은 이것 하나다. */}
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
-          rel="stylesheet"
-        />
         {/*
           dynamic-subset 판을 쓴다. 통짜 pretendardvariable.min.css 는 woff2 하나가
           2,010KB 라 홈 전송량(2,495KB)의 80%를 차지했다 — 사이트는 대부분 영문인데
