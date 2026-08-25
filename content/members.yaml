@@ -1,0 +1,316 @@
+# 졸업 처리는 role / until / next 세 필드 수정으로 끝난다. 항목을 옮기거나 지우지 말 것.
+#   slug:  개인 페이지 주소 (/members/<slug>/). 이름 표기가 바뀌어도 링크가 살아 있도록
+#          이름에서 자동 생성하지 않고 명시한다. 한 번 정하면 바꾸지 않는다.
+#   role:  pi | phd | ms | intern | alumni
+#   until: 떠난 시점 (alumni 전용)
+#   next:  졸업 후 소속 (alumni 전용)
+# email은 화면에 평문으로 찍히지 않고 mailto 링크로만 렌더링된다.
+
+- name: Minsik Oh
+  slug: minsik-oh
+  name_ko: 오민식
+  role: pi
+  since: 2022-03            # 명지대 부임
+  # 명지대 프로필 표기: 부교수(대학주임교수)
+  title: Associate Professor
+  topic: Machine learning for single-cell and spatial omics
+  photo: minsik_oh.webp
+  email: msoh@mju.ac.kr
+  orcid:                      # TODO: ORCID iD 입력 시 개인 논문 자동 매칭이 이름 대신 iD로 동작한다
+  links:
+    homepage: https://minsik-bioinfo.github.io/online-cv/
+    scholar: https://scholar.google.com/citations?user=nTDBvrkAAAAJ
+
+# ---------- MS students ----------
+
+# 논문 저자 표기(Gunho Choi)와 맞춘다 — 개인 논문 매칭이 이름으로 이뤄진다.
+- name: Gunho Choi
+  slug: gunho-choi
+  name_ko: 최건호
+  role: ms
+  since: 2025-03
+  topic: Single-cell representation learning
+  photo: gunho_choi.webp
+  email: longinus723@gmail.com
+  links: {}
+
+- name: Jaeyun Park
+  slug: jaeyun-park
+  name_ko: 박재윤
+  role: alumni
+  degree: MS
+  since: 2024-03
+  until: 2026-08
+  next: Deepnoid
+  topic: Drug response prediction
+  photo: jaeyun_park.webp
+  email: banana9903@mju.ac.kr
+  links: {}
+
+- name: Jiyeong Shin
+  slug: jiyeong-shin
+  name_ko: 신지영
+  role: ms
+  since: 2025-03
+  topic: scRNA-seq representation learning
+  photo: jiyeong_shin.webp
+  email: tlswl313@mju.ac.kr
+  links: {}
+
+- name: DongSin Kim
+  slug: dongsin-kim
+  name_ko: 김동신
+  role: ms
+  since: 2026-03
+  topic: Spatial gene imputation
+  photo: dongsin_kim.webp
+  email: 60190312@mju.ac.kr
+  links: {}
+
+- name: Myeongbin Oh
+  slug: myeongbin-oh
+  name_ko: 오명빈
+  role: ms
+  since: 2025-03
+  topic: Spatial domain identification
+  photo: myeongbin_oh.webp
+  email: bin000815@mju.ac.kr
+  links: {}
+
+- name: JangHyun Noh
+  slug: janghyun-noh
+  name_ko: 노장현
+  role: alumni
+  degree: MS
+  since: 2024-09
+  until: 2026-08
+  next:                     # 아직 소속 없음
+  topic: Multi-omics integration
+  photo: janghyun_noh.webp
+  email: watercar99@naver.com
+  links: {}
+
+- name: SeungHoo Song
+  slug: seunghoo-song
+  name_ko: 송승후
+  role: ms
+  since: 2026-03
+  topic: Cell type annotation
+  photo: seunghoo_song.webp
+  email: gjgj589@naver.com
+  links: {}
+
+- name: Yoobin Shin
+  slug: yoobin-shin
+  name_ko: 신유빈
+  role: ms
+  since: 2026-03
+  topic: Generative models
+  photo: yoobin_shin.webp
+  email: sinyoubin@mju.ac.kr
+  links: {}
+
+# ---------- Research interns ----------
+
+- name: JunHyeong Lim
+  slug: junhyeong-lim
+  name_ko: 임준형             # 사진 파일명이 "준형" 이었다. 성씨 표기 확인 필요
+  role: intern
+  since: 2026-05
+  photo: junhyeong_lim.webp
+  email:
+  links: {}
+
+- name: Yunah Seo
+  slug: yunah-seo
+  name_ko: 서윤아             # 사진 파일명이 "윤아" 였다. 성씨 표기 확인 필요
+  role: intern
+  since: 2026-03
+  photo: yunah_seo.webp
+  email:
+  links: {}
+
+- name: Myeongkwan Kim
+  slug: myeongkwan-kim
+  name_ko: 김명관
+  role: intern
+  since: 2026-01
+  photo: myeongkwan_kim.webp
+  email:
+  links: {}
+
+- name: Donghoo Kim
+  slug: donghoo-kim
+  name_ko: 김동후
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2026-01
+  until:                    # TODO: 마친 시점
+  next:                     # TODO: 현재 소속
+  photo:
+  email:
+  links: {}
+
+# 아래는 인턴 과정을 마친 사람들이다. role 만 alumni 로 바꾸고 항목은 옮기지 않았다 —
+# 옮기면 diff 가 커지고, 지우면 논문 저자명이 조용히 굵기를 잃는다.
+
+- name: Hanjun Bae
+  slug: hanjun-bae
+  name_ko: 배한준
+  role: alumni
+  degree: Undergraduate Research Intern
+  until:                    # TODO: 마친 시점
+  next:                     # TODO: 현재 소속
+  photo: hanjun_bae.webp
+  email: hbae0830@mju.ac.kr
+  links: {}
+
+- name: JaeWook Park
+  slug: jaewook-park
+  name_ko: 박재욱
+  role: alumni
+  degree: Undergraduate Research Intern
+  until:                    # TODO: 마친 시점
+  next:                     # TODO: 현재 소속
+  photo: jaewook_park.webp
+  email: otsu9110@mju.ac.kr
+  links: {}
+
+- name: Tae Han Lee
+  slug: tae-han-lee
+  name_ko: 이태한
+  role: alumni
+  degree: Undergraduate Research Intern
+  until:                    # TODO: 마친 시점
+  next:                     # TODO: 현재 소속
+  photo: taehan_lee.webp
+  email: xoehf6356@mju.ac.kr
+  links: {}
+
+- name: Min Kim
+  slug: min-kim
+  name_ko: 김민
+  role: alumni
+  degree: Undergraduate Research Intern
+  until:                    # TODO: 마친 시점
+  next:                     # TODO: 현재 소속
+  photo: min_kim.webp
+  email: kim89@mju.ac.kr
+  links: {}
+
+- name: Seri Oh
+  slug: seri-oh
+  name_ko: 오세리
+  role: alumni
+  degree: Undergraduate Research Intern
+  until:                    # TODO: 마친 시점
+  next:                     # TODO: 현재 소속
+  photo: seri_oh.webp
+  email: lydia032789@mju.ac.kr
+  links: {}
+
+- name: Wooseob Ahn
+  slug: wooseob-ahn
+  name_ko: 안우섭
+  role: alumni
+  degree: Undergraduate Research Intern
+  until:                    # TODO: 마친 시점
+  next:                     # TODO: 현재 소속
+  photo: wooseob_ahn.webp
+  email: dksdntjq@mju.ac.kr
+  links: {}
+
+# ---------- Alumni ----------
+# 아래는 기존 사이트 news 글에서 확인된 과거 학부연구생이다.
+# TODO 세 가지가 남아 있다 — 영문 표기 확인, until(떠난 시점), next(현재 소속).
+# 확인되는 대로 채우면 Alumni 탭이 "name · degree · year · affiliation" 형식으로 완성된다.
+
+- name: Hyeonsu Bong
+  slug: hyeonsu-bong
+  name_ko: 봉현수
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-09
+  until:
+  next:
+
+- name: Seonghun Jeong
+  slug: seonghun-jeong
+  name_ko: 정성훈
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-09
+  until:
+  next:
+
+- name: Mir Ahn
+  slug: mir-ahn
+  name_ko: 안미르
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-09
+  until:
+  next:
+
+- name: Gowoon Choi
+  slug: gowoon-choi
+  name_ko: 최고운
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-09
+  until:
+  next:
+
+- name: Eunji Park
+  slug: eunji-park
+  name_ko: 박은지
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-09
+  until:
+  next:
+
+- name: Seongjung Kwon
+  slug: seongjung-kwon
+  name_ko: 권성중
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-09
+  until:
+  next:
+
+- name: Jeongseok Oh
+  slug: jeongseok-oh
+  name_ko: 오정석
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-12
+  until:
+  next:
+
+- name: Donghyeok Lee
+  slug: donghyeok-lee
+  name_ko: 이동혁
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-12
+  until:
+  next:
+
+- name: Seunghyeon Moon
+  slug: seunghyeon-moon
+  name_ko: 문승현
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2022-12
+  until:
+  next:
+
+- name: Hyeongjin Kim
+  slug: hyeongjin-kim
+  name_ko: 김형진
+  role: alumni
+  degree: Undergraduate Research Intern
+  since: 2023-02
+  until:
+  next:

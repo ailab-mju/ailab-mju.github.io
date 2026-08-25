@@ -1,0 +1,31 @@
+{
+  "name": "mju-ailab-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "optimize-member-photos": "node scripts/optimize-member-photos.mjs",
+    "publish-preview": "bash scripts/publish-preview.sh"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "next": "^14.2.35",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "sharp": "^0.33.4",
+    "tailwindcss": "^3.4.6",
+    "typescript": "^5.5.3"
+  }
+}

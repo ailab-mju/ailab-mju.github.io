@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artificial Intelligence and Data Analytics Lab · Myongji University</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root{
+  --ink:#151320;
+  --paper:#f5f4f7;
+  --card:#ffffff;
+  --line:#e0dee6;
+  --mute:#6d6980;
+  --deep:#3b1d52;
+  --teal:#1f7f7a;
+  --disp:"Archivo","Pretendard Variable",sans-serif;
+  --body:"Pretendard Variable","Archivo",sans-serif;
+  --mono:"JetBrains Mono",monospace;
+  --w:1080px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.w{max-width:var(--w);margin:0 auto;padding:0 26px}
+h1,h2,h3{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;line-height:1.18;margin:0}
+p{margin:0 0 16px}
+
+/* ---------- nav ---------- */
+.nav{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.nav-in{display:flex;align-items:center;gap:24px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--disp);font-weight:800;font-size:16px}
+.brand svg{width:22px;height:22px;flex:none}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{
+  font-size:14px;text-decoration:none;color:var(--mute);padding:7px 12px;border-radius:5px;transition:.15s;
+}
+.nav-links a:hover{color:var(--ink);background:var(--paper)}
+.nav-links a.on{color:var(--ink);font-weight:600}
+
+/* ---------- page header ---------- */
+.hd{padding:56px 0 44px;border-bottom:1px solid var(--line)}
+.hd .kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 16px}
+.hd h1{font-size:clamp(28px,4vw,42px)}
+.hd h2{font-size:clamp(26px,3.6vw,36px)}
+.hd .lede{margin:18px 0 0;color:#3f3b4e;max-width:60ch;font-size:16.5px}
+.hd .cta{display:flex;gap:9px;margin-top:26px;flex-wrap:wrap}
+.btn{
+  display:inline-block;text-decoration:none;font-size:14px;font-weight:600;
+  padding:10px 18px;border-radius:6px;border:1px solid var(--line);background:var(--card);transition:.15s;
+}
+.btn:hover{border-color:#c6c1d3}
+.btn-p{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn-p:hover{background:#282338;border-color:#282338}
+
+/* ---------- hero slot (나중에 채울 자리) ---------- */
+.slot{
+  margin:34px 0 0;border:1px dashed #c9c4d6;border-radius:10px;background:var(--card);
+  min-height:230px;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;
+}
+.slot p{margin:0;color:#9a95a9;font-size:13.5px;line-height:1.8}
+.slot .t{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#b0aabf;display:block;margin-bottom:8px}
+
+/* ---------- sections ---------- */
+.sec{padding:52px 0;border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:none}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+.sec-h h2{font-size:24px}
+.link{font-size:14px;color:var(--teal);text-decoration:none;font-weight:600}
+.link:hover{text-decoration:underline}
+
+/* ---------- cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:22px}
+.card h3{font-size:17px;margin-bottom:9px}
+.card p{font-size:14px;color:var(--mute);margin:0;line-height:1.68}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;border:1px solid var(--line);border-radius:4px;padding:3px 8px;color:var(--mute)}
+
+/* ---------- publications ---------- */
+.pub{padding:18px 0;border-bottom:1px solid var(--line)}
+.pub:first-of-type{border-top:1px solid var(--line)}
+.pub-t{font-family:var(--disp);font-size:16.5px;font-weight:600;line-height:1.45;text-decoration:none;display:block}
+.pub-t:hover{color:var(--teal)}
+.pub-a{font-size:13.5px;color:var(--mute);margin:6px 0 0;line-height:1.6}
+.pub-a b{color:var(--ink);font-weight:600}
+.pub-m{display:flex;gap:9px;align-items:center;margin-top:7px;flex-wrap:wrap;font-size:13px;color:var(--mute)}
+.pub-v{color:var(--deep);font-weight:600}
+.flag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:3px;background:#f1eef5;color:var(--deep)}
+.flag.todo{background:#fbe9e9;color:#9d3838}
+.yr-h{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--mute);margin:30px 0 0}
+.yr-h:first-of-type{margin-top:0}
+
+/* ---------- tools ---------- */
+.tools{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
+.q{flex:1;min-width:200px;border:1px solid var(--line);background:var(--card);border-radius:6px;padding:9px 13px;font-family:var(--body);font-size:14.5px;color:var(--ink)}
+.q::placeholder{color:#a5a0b2}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{font-size:13.5px;border:1px solid var(--line);background:var(--card);border-radius:6px;padding:8px 14px;color:var(--mute);transition:.15s}
+.chips button:hover{border-color:#c6c1d3;color:var(--ink)}
+.chips button.on{background:var(--ink);border-color:var(--ink);color:#fff;font-weight:600}
+.count{font-size:13.5px;color:var(--mute);margin:0 0 18px}
+
+/* ---------- members ---------- */
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.person{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:18px;text-align:center}
+.face{width:76px;height:76px;border-radius:50%;margin:0 auto 13px;background:#eceaf1;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:24px;font-weight:700;color:#9a95a9}
+.person-n{font-family:var(--disp);font-size:15.5px;font-weight:700}
+.person-e{font-size:13px;color:var(--mute)}
+.person-r{font-size:13px;color:var(--teal);margin-top:7px;font-weight:600}
+.person-t{font-size:12.5px;color:var(--mute);margin-top:5px;line-height:1.5}
+.person-l{display:flex;gap:8px;justify-content:center;margin-top:11px;flex-wrap:wrap}
+.person-l a{font-size:12px;color:var(--teal);text-decoration:none}
+.person-l a:hover{text-decoration:underline}
+.pi{display:grid;grid-template-columns:120px 1fr;gap:26px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px;margin-bottom:32px;align-items:center}
+.pi .face{margin:0;width:120px;height:120px;font-size:36px}
+
+/* ---------- gallery ---------- */
+.albums{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.album{background:var(--card);border:1px solid var(--line);border-radius:9px;overflow:hidden;padding:0;text-align:left;color:inherit;transition:.15s}
+.album:hover{border-color:#c6c1d3}
+.album-i{aspect-ratio:4/3;background:#eceaf1;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:#b0aabf;letter-spacing:.1em}
+.album-m{padding:14px 15px 16px}
+.album-d{font-size:12.5px;color:var(--mute)}
+.album-t{font-family:var(--disp);font-size:15.5px;font-weight:700;margin-top:4px}
+.album-c{font-size:13px;color:var(--mute);margin-top:3px}
+.lb{position:fixed;inset:0;background:rgba(21,19,32,.94);z-index:200;display:none;flex-direction:column;padding:20px}
+.lb.on{display:flex}
+.lb-t{display:flex;justify-content:space-between;align-items:center;color:#efeef4;gap:16px}
+.lb-t h3{font-size:17px;margin:0}
+.lb-t p{font-size:13px;color:#9a95ad;margin:2px 0 0}
+.lb-x{background:none;border:1px solid #3d3757;color:#efeef4;border-radius:6px;width:34px;height:34px;font-size:17px;flex:none}
+.lb-s{flex:1;display:flex;align-items:center;justify-content:center;min-height:0;padding:18px 0}
+.lb-s>div{width:min(100%,740px);aspect-ratio:3/2;border-radius:8px;background:#2b2640;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;color:#6f6a88}
+.lb-r{display:flex;gap:7px;overflow-x:auto}
+.lb-r button{width:72px;height:52px;border-radius:5px;border:2px solid transparent;background:#2b2640;flex:none;padding:0;font-family:var(--mono);font-size:10px;color:#6f6a88}
+.lb-r button.on{border-color:#8b86a3}
+
+/* ---------- rows ---------- */
+.row{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line)}
+.row:first-of-type{border-top:1px solid var(--line)}
+.row-d{font-size:14px;color:var(--mute)}
+.row-t{font-family:var(--disp);font-size:16.5px;font-weight:600}
+.row-b{font-size:14px;color:var(--mute);margin-top:4px}
+
+/* ---------- join ---------- */
+.join{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:34px;display:grid;grid-template-columns:1.25fr 1fr;gap:36px}
+.join h2{font-size:23px}
+.join p{font-size:15px;color:var(--mute)}
+.join ol{margin:10px 0 0;padding-left:19px;color:var(--mute);font-size:14.5px;line-height:1.95}
+
+/* ---------- misc ---------- */
+.note{background:#fff8e6;border:1px solid #ecdca8;border-radius:7px;padding:12px 15px;font-size:13.5px;color:#6b5a1a;margin-bottom:22px;line-height:1.65}
+.empty{border:1px dashed var(--line);border-radius:8px;padding:32px;text-align:center;color:var(--mute);font-size:14px;grid-column:1/-1}
+.page{display:none}
+.page.on{display:block}
+.foot{background:var(--card);border-top:1px solid var(--line);padding:30px 0 42px;font-size:13.5px;color:var(--mute);margin-top:0}
+.foot-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.foot a{color:var(--teal);text-decoration:none}
+
+@media (max-width:860px){
+  .nav-in{height:auto;padding:11px 0;flex-wrap:wrap;gap:10px}
+  .nav-links{margin-left:0;width:100%}
+  .join{grid-template-columns:1fr;padding:26px}
+  .pi{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .row{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="w nav-in">
+  <a class="brand" href="#/">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" fill="none" stroke="#151320" stroke-width="1.6"/>
+      <circle cx="12" cy="12" r="3.2" fill="#1f7f7a"/>
+    </svg>MJU AI Lab
+  </a>
+  <div class="nav-links" id="nav"></div>
+</div></nav>
+
+<main id="app"></main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Gallery">
+  <div class="lb-t"><div><h3 id="lbT"></h3><p id="lbD"></p></div><button class="lb-x" id="lbX" aria-label="Close">&times;</button></div>
+  <div class="lb-s"><div id="lbS"></div></div>
+  <div class="lb-r" id="lbR"></div>
+</div>
+
+<footer class="foot"><div class="w foot-in">
+  <div>© 2026 Artificial Intelligence and Data Analytics Lab<br>Department of Artificial Intelligence, Myongji University, Yongin, Korea</div>
+  <div>Last updated 2026-08-24 · <a href="mailto:msoh@mju.ac.kr">msoh@mju.ac.kr</a></div>
+</div></footer>
+
+<script>
+/* ============================== DATA ============================== */
+const AREAS=[
+ {t:"Single-cell representation learning",
+  d:"We develop methods that learn meaningful representations of cells from scRNA-seq data, addressing clustering, cell type annotation, and batch effect correction together.",
+  tags:["contrastive learning","cross-attention","clustering","cell type annotation"]},
+ {t:"Spatial transcriptomics",
+  d:"We work with transcriptomic data measured alongside positional information in tissue: predicting expression from histology images, imputing unmeasured spots, and identifying spatial domains.",
+  tags:["gene imputation","histology","spatial domain","multimodal"]},
+ {t:"Perturbation and phenotype modeling",
+  d:"We predict cellular responses to drug treatment and classify patient phenotypes from omics data, using generative models and graph neural networks.",
+  tags:["diffusion models","graph neural network","drug response","patient phenotype"]}
+];
+
+const PUBS=[
+ {y:2026,t:"[placeholder] scDECA: dual-encoder cross-attention representation learning for scRNA-seq",
+  a:["Jiyeong Shin","…","Minsik Oh"],v:"BioData Mining",type:"journal",todo:true},
+ {y:2026,t:"[placeholder] Context-aware spatial gene expression prediction from histology images",
+  a:["…","Minsik Oh"],v:"Briefings in Bioinformatics",type:"journal",todo:true},
+ {y:2025,t:"[placeholder] CELLIA: LLM-based cell type annotation",
+  a:["…","Minsik Oh"],v:"preprint",type:"preprint",todo:true},
+ {y:2024,t:"Large DNA deletions occur during DNA repair at 20-fold lower frequency for base editors and prime editors than for Cas9 nucleases",
+  a:["Gue-Ho Hwang","Seok-Hoon Lee","Minsik Oh","Segi Kim","Omer Habib","Hyeon-Ki Jang","Heon Seok Kim","Youngkuk Kim","Chan Hyuk Kim","Sun Kim","Sangsu Bae"],
+  v:"Nature Biomedical Engineering",type:"journal",doi:"https://doi.org/nx2d"},
+ {y:2023,t:"TFNetPropX: A Web-Based Comprehensive Analysis Tool for Exploring Condition-Specific RNA-Seq Data Using Transcription Factor Network Propagation",
+  a:["Ji Hwan Moon","Minsik Oh"],v:"Applied Sciences",type:"journal",doi:"https://doi.org/g82mpd"},
+ {y:2023,t:"GOAT: Gene-level biomarker discovery from multi-Omics data using graph ATtention neural network for eosinophilic asthma subtype",
+  a:["Dabin Jeong","Bonil Koo","Minsik Oh","Tae-Bum Kim","Sun Kim"],v:"Bioinformatics",type:"journal",doi:"https://doi.org/g82mpf"},
+ {y:2022,t:"Adipocyte HIF2α functions as a thermostat via PKA Cα regulation in beige adipocytes",
+  a:["Ji Seul Han","Yong Geun Jeon","Minsik Oh","Gung Lee","…","Sun Kim","Jae Bum Kim"],
+  v:"Nature Communications",type:"journal",doi:"https://doi.org/grmbtw"},
+ {y:2021,t:"IDEA: Integrating Divisive and Ensemble-Agglomerate hierarchical clustering framework for arbitrary shape data",
+  a:["Hongryul Ahn","Inuk Jung","Heejoon Chae","Minsik Oh","Inyoung Kim","Sun Kim"],
+  v:"IEEE International Conference on Big Data",type:"conference",doi:"https://doi.org/grmbtx"},
+ {y:2021,t:"mirTime: identifying condition-specific targets of microRNA in time-series transcript data using Gaussian process model and spherical vector clustering",
+  a:["Hyejin Kang","Hongryul Ahn","Kyuri Jo","Minsik Oh","Sun Kim"],v:"Bioinformatics",type:"journal",doi:"https://doi.org/grmbtz"},
+ {y:2021,t:"Construction of Condition-Specific Gene Regulatory Network Using Kernel Canonical Correlation Analysis",
+  a:["Dabin Jeong","Sangsoo Lim","Sangseon Lee","Minsik Oh","…","Sun Kim"],v:"Frontiers in Genetics",type:"journal",doi:"https://doi.org/gphzk7"},
+ {y:2021,t:"Machine learning-based analysis of multi-omics data on the cloud for investigating gene regulations",
+  a:["Minsik Oh","Sungjoon Park","Sun Kim","Heejoon Chae"],v:"Briefings in Bioinformatics",type:"journal",doi:"https://doi.org/ggq6nd"},
+ {y:2020,t:"DRIM: A Web-Based System for Investigating Drug Response at the Molecular Level by Condition-Specific Multi-Omics Data Integration",
+  a:["Minsik Oh","Sungjoon Park","Sangseon Lee","Dohoon Lee","…","Inuk Jung","Sun Kim"],v:"Frontiers in Genetics",type:"journal",doi:"https://doi.org/grmbvp"},
+ {y:2018,t:"DeepFam: deep learning based alignment-free method for protein family modeling and prediction",
+  a:["Seokjun Seo","Minsik Oh","Youngjune Park","Sun Kim"],v:"Bioinformatics",type:"journal",doi:"https://doi.org/gpmh64"},
+ {y:2017,t:"miRTarVis+: Web-based interactive visual analytics tool for microRNA target predictions",
+  a:["Sehi L'Yi","Daekyoung Jung","Minsik Oh","Bohyoung Kim","…","Jinwook Seo"],v:"Methods",type:"journal",doi:"https://doi.org/gbr9rc"},
+ {y:2017,t:"Literature-based condition-specific miRNA-mRNA target prediction",
+  a:["Minsik Oh","Sungmin Rhee","Ji Hwan Moon","Heejoon Chae","Sunwon Lee","Jaewoo Kang","Sun Kim"],
+  v:"PLOS ONE",type:"journal",doi:"https://doi.org/f9x4hn"}
+];
+
+const PEOPLE=[
+ {n:"Minsik Oh",k:"오민식",r:"Associate Professor",g:"pi",t:"Machine learning for single-cell and spatial omics",l:["Scholar","ORCID","GitHub"]},
+ {n:"Gun Ho Choi",k:"최건호",r:"MS Student",g:"ms",t:"Single-cell representation learning",l:["CV","GitHub"]},
+ {n:"Jaeyun Park",k:"박재윤",r:"MS Student",g:"ms",t:"Drug response prediction",l:["GitHub"]},
+ {n:"Jiyeong Shin",k:"신지영",r:"MS Student",g:"ms",t:"scRNA-seq representation learning",l:["CV","Scholar"]},
+ {n:"DongSin Kim",k:"김동신",r:"MS Student",g:"ms",t:"Spatial gene imputation",l:["CV"]},
+ {n:"Myeongbin Oh",k:"오명빈",r:"MS Student",g:"ms",t:"Spatial domain identification",l:["GitHub"]},
+ {n:"JangHyun Noh",k:"노장현",r:"MS Student",g:"ms",t:"Multi-omics integration",l:[]},
+ {n:"SeungHoo Song",k:"송승후",r:"MS Student",g:"ms",t:"Cell type annotation",l:[]},
+ {n:"Yoobin Shin",k:"신유빈",r:"MS Student",g:"ms",t:"Generative models",l:[]},
+ {n:"Hanjun Bae",k:"배한준",r:"Research Intern",g:"intern",t:"",l:[]},
+ {n:"JaeWook Park",k:"박재욱",r:"Research Intern",g:"intern",t:"",l:[]},
+ {n:"Tae Han Lee",k:"이태한",r:"Research Intern",g:"intern",t:"",l:[]},
+ {n:"Min Kim",k:"김민",r:"Research Intern",g:"intern",t:"",l:[]},
+ {n:"Seri Oh",k:"오세리",r:"Research Intern",g:"intern",t:"",l:[]},
+ {n:"Wooseob Ahn",k:"안우섭",r:"Research Intern",g:"intern",t:"",l:[]}
+];
+
+const NEWS=[
+ {d:"2026-08-14",t:"Four abstracts accepted to GIW 2026",b:"Covering spatial gene imputation, cell type marker curation, and clustering."},
+ {d:"2026-06-02",t:"Minsik Oh promoted to Associate Professor",b:"Effective March 2026."},
+ {d:"2026-04-20",t:"scDECA under revision at BioData Mining",b:""},
+ {d:"2026-03-02",t:"Two new graduate students join the lab",b:""}
+];
+const COURSES=[
+ {s:"2026 Fall",n:"Financial Data Intelligence",kn:"금융데이터인텔리전스",x:"Time-series forecasting for financial data, PBL/capstone",lvl:"Undergraduate"},
+ {s:"2026 Fall",n:"Bioinformatics",kn:"바이오인포매틱스",x:"Omics data analysis and machine learning applications",lvl:"Undergraduate"},
+ {s:"2026 Spring",n:"Deep Learning",kn:"딥러닝",x:"From neural network fundamentals to transformers",lvl:"Undergraduate"},
+ {s:"2026 Spring",n:"Single-cell Data Analysis Seminar",kn:"단일세포 데이터 분석 세미나",x:"Paper reading and implementation",lvl:"Graduate"}
+];
+const ALBUMS=[
+ {id:"giw2026",t:"GIW 2026",d:"December 2026",c:"Poster presentations",n:8},
+ {id:"mt2026",t:"Lab retreat",d:"June 2026",c:"Two days in Gangwon-do",n:12},
+ {id:"grad2026",t:"Commencement",d:"February 2026",c:"Two MS graduates",n:6},
+ {id:"ismb2025",t:"ISMB/ECCB 2025",d:"July 2025",c:"Liverpool",n:9}
+];
+
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const auth=l=>l.map(x=>/Minsik Oh|오민식/.test(x)?`<b>${esc(x)}</b>`:esc(x)).join(", ");
+
+function pubRow(p){
+  return `<div class="pub">
+    <a class="pub-t" href="${p.doi||"#"}" ${p.doi?'target="_blank" rel="noopener"':''}>${esc(p.t)}</a>
+    <div class="pub-a">${auth(p.a)}</div>
+    <div class="pub-m"><span class="pub-v">${esc(p.v)}</span><span>·</span><span>${p.y}</span>
+      <span class="flag${p.todo?" todo":""}">${p.todo?"확인 필요":p.type}</span></div>
+  </div>`;
+}
+
+/* ============================== PAGES ============================== */
+function home(){
+  return `<div class="w">
+    <header class="hd">
+      <p class="kicker">Department of Artificial Intelligence, Myongji University</p>
+      <h1>Artificial Intelligence and Data Analytics Lab</h1>
+      <p class="lede">단일세포 전사체와 공간 전사체 데이터를 위한 기계학습 방법론을 연구합니다. 세포 표현학습, 세포 유형 주석, 공간 발현 예측, 약물 반응 모델링을 다룹니다.</p>
+      <div class="cta">
+        <a class="btn btn-p" href="#/join">Join the lab</a>
+        <a class="btn" href="#/research">Research</a>
+      </div>
+      <div class="slot">
+        <p><span class="t">Reserved</span>
+        나중에 채울 자리입니다.<br>연구실 단체 사진, 대표 연구 그림, 또는 비워둬도 됩니다.</p>
+      </div>
+    </header>
+
+    <section class="sec">
+      <div class="sec-h"><h2>Research</h2><a class="link" href="#/research">All areas &rarr;</a></div>
+      <div class="cards">
+        ${AREAS.map(a=>`<div class="card"><h3>${esc(a.t)}</h3><p>${esc(a.d.slice(0,110))}…</p></div>`).join("")}
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="sec-h"><h2>Recent publications</h2><a class="link" href="#/publications">All publications &rarr;</a></div>
+      ${PUBS.slice(0,4).map(pubRow).join("")}
+    </section>
+
+    <section class="sec">
+      <div class="sec-h"><h2>News</h2><a class="link" href="#/news">All news &rarr;</a></div>
+      ${NEWS.slice(0,3).map(n=>`<div class="row"><div class="row-d">${n.d}</div>
+        <div><div class="row-t">${esc(n.t)}</div>${n.b?`<div class="row-b">${esc(n.b)}</div>`:""}</div></div>`).join("")}
+    </section>
+
+    <section class="sec">${joinBox()}</section>
+  </div>`;
+}
+
+function research(){
+  return `<div class="w">
+    <header class="hd"><p class="kicker">Research</p><h2>Research areas</h2>
+      <p class="lede">We develop machine learning methods that reflect the structure of biological data.</p></header>
+    <section class="sec">
+      <div class="cards">
+        ${AREAS.map(a=>`<div class="card">
+          <h3>${esc(a.t)}</h3>
+          <p>${esc(a.d)}</p>
+          <div class="tags">${a.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>
+        </div>`).join("")}
+      </div>
+    </section>
+  </div>`;
+}
+
+function pubs(){
+  const yrs=[...new Set(PUBS.map(p=>p.y))].sort((a,b)=>b-a);
+  return `<div class="w">
+    <header class="hd"><p class="kicker">Publications</p><h2>Publications</h2></header>
+    <section class="sec">
+      <div class="note"><b>Mockup note</b> — the three 2025&ndash;2026 entries are placeholders. Replace with real titles, authors, and DOIs.</div>
+      <div class="tools">
+        <input class="q" id="q" placeholder="Search title, author, or venue" aria-label="Search publications">
+        <div class="chips" id="fT">
+          <button class="on" data-t="all">All</button><button data-t="journal">Journal</button>
+          <button data-t="conference">Conference</button><button data-t="preprint">Preprint</button>
+        </div>
+      </div>
+      <div class="chips" id="fY" style="margin-bottom:18px">
+        <button class="on" data-y="all">All years</button>${yrs.map(y=>`<button data-y="${y}">${y}</button>`).join("")}
+      </div>
+      <p class="count" id="pn"></p>
+      <div id="pl"></div>
+    </section>
+  </div>`;
+}
+function renderPubs(){
+  const q=(document.getElementById("q").value||"").toLowerCase().trim();
+  const t=document.querySelector("#fT .on").dataset.t;
+  const y=document.querySelector("#fY .on").dataset.y;
+  const hit=PUBS.filter(p=>(t==="all"||p.type===t)&&(y==="all"||String(p.y)===y)&&
+    (!q||(p.t+" "+p.a.join(" ")+" "+p.v).toLowerCase().includes(q)));
+  document.getElementById("pn").textContent=`${hit.length} publication${hit.length===1?"":"s"}`;
+  const by={}; hit.forEach(p=>(by[p.y] ||= []).push(p));
+  const out=Object.keys(by).sort((a,b)=>b-a).map(y=>
+    `<div class="yr-h">${y}</div>${by[y].map(pubRow).join("")}`).join("");
+  document.getElementById("pl").innerHTML=out||`<div class="empty">No publications match these filters. Try a different search term or year.</div>`;
+}
+
+function members(){
+  const pi=PEOPLE.find(p=>p.g==="pi");
+  return `<div class="w">
+    <header class="hd"><p class="kicker">Members</p><h2>Members</h2></header>
+    <section class="sec">
+      <div class="pi">
+        <div class="face">MO</div>
+        <div>
+          <div class="person-r" style="margin-top:0">Principal Investigator</div>
+          <h3 style="font-size:23px;margin-top:5px">${esc(pi.n)} <span style="font-weight:400;color:var(--mute);font-size:17px">${esc(pi.k)}</span></h3>
+          <p style="margin:9px 0 0;font-size:14.5px;color:var(--mute)">Associate Professor, Department of Artificial Intelligence<br>${esc(pi.t)}</p>
+          <div class="person-l" style="justify-content:flex-start">${pi.l.map(k=>`<a href="#">${k}</a>`).join("")}<a href="mailto:msoh@mju.ac.kr">Email</a></div>
+        </div>
+      </div>
+      <div class="chips" id="tab" style="margin-bottom:20px">
+        <button class="on" data-g="ms">MS Students</button>
+        <button data-g="intern">Research Interns</button>
+        <button data-g="alumni">Alumni</button>
+      </div>
+      <div class="people" id="ml"></div>
+    </section>
+  </div>`;
+}
+function renderMembers(){
+  const g=document.querySelector("#tab .on").dataset.g;
+  const box=document.getElementById("ml");
+  if(g==="alumni"){
+    box.innerHTML=`<div class="empty">No alumni listed yet.<br><br>
+      <span style="font-size:13px">The live site will show <b>name, degree, year of graduation, and current affiliation</b> for each.</span></div>`;
+    return;
+  }
+  box.innerHTML=PEOPLE.filter(p=>p.g===g).map(p=>`<div class="person">
+    <div class="face">${esc(p.n.split(" ").map(w=>w[0]).join("").slice(0,2))}</div>
+    <div class="person-n">${esc(p.n)}</div>
+    <div class="person-e">${esc(p.k)}</div>
+    <div class="person-r">${esc(p.r)}</div>
+    ${p.t?`<div class="person-t">${esc(p.t)}</div>`:""}
+    ${p.l.length?`<div class="person-l">${p.l.map(k=>`<a href="#">${k}</a>`).join("")}</div>`:""}
+  </div>`).join("");
+}
+
+function gallery(){
+  return `<div class="w">
+    <header class="hd"><p class="kicker">Gallery</p><h2>Gallery</h2>
+      <p class="lede">Conferences, retreats, and other lab activities.</p></header>
+    <section class="sec">
+      <div class="note"><b>Mockup note</b> — photos are placeholders. The live site loads images from <code>public/images/gallery/{album-id}/</code>.</div>
+      <div class="albums">
+        ${ALBUMS.map(a=>`<button class="album" data-a="${a.id}">
+          <div class="album-i">${a.n} photos</div>
+          <div class="album-m"><div class="album-d">${a.d}</div>
+          <div class="album-t">${esc(a.t)}</div><div class="album-c">${esc(a.c)}</div></div>
+        </button>`).join("")}
+      </div>
+    </section>
+  </div>`;
+}
+
+function news(){
+  return `<div class="w"><header class="hd"><p class="kicker">News</p><h2>News</h2></header>
+    <section class="sec">${NEWS.map(n=>`<div class="row"><div class="row-d">${n.d}</div>
+      <div><div class="row-t">${esc(n.t)}</div>${n.b?`<div class="row-b">${esc(n.b)}</div>`:""}</div></div>`).join("")}</section></div>`;
+}
+function teaching(){
+  return `<div class="w"><header class="hd"><p class="kicker">Teaching</p><h2>Teaching</h2></header>
+    <section class="sec">${COURSES.map(c=>`<div class="row"><div class="row-d">${c.s}</div>
+      <div><div class="row-t">${esc(c.n)} <span style="font-weight:400;color:var(--mute);font-size:14px">${esc(c.kn)}</span></div>
+      <div class="row-b">${esc(c.x)} · ${c.lvl}</div></div></div>`).join("")}</section></div>`;
+}
+function joinBox(){
+  return `<div class="join">
+    <div>
+      <h2>Join the lab</h2>
+      <p style="margin-top:12px">단일세포·공간 전사체 데이터에 기계학습을 적용하는 연구에 관심 있는 석사과정, 박사과정, 학부연구생을 모집합니다. 생물학 배경은 필수가 아닙니다.</p>
+      <a class="btn btn-p" href="mailto:msoh@mju.ac.kr">Email msoh@mju.ac.kr</a>
+    </div>
+    <div>
+      <p style="font-weight:700;color:var(--ink);margin:0">메일에 담아주실 것</p>
+      <ol><li>간단한 자기소개 또는 CV</li><li>관심 있는 연구 주제 한두 문장</li><li>프로그래밍 경험</li><li>가능한 시작 시기</li></ol>
+      <p style="margin-top:14px;font-size:13.5px">보통 3일 안에 답장드립니다.</p>
+    </div>
+  </div>`;
+}
+function join(){
+  return `<div class="w"><header class="hd"><p class="kicker">Join</p><h2>Join the lab</h2></header>
+    <section class="sec">${joinBox()}</section></div>`;
+}
+
+/* ============================== ROUTER ============================== */
+const R=[["/","Home",home],["/research","Research",research],["/publications","Publications",pubs],
+ ["/members","Members",members],["/gallery","Gallery",gallery],["/news","News",news],
+ ["/teaching","Teaching",teaching],["/join","Join",join]];
+document.getElementById("nav").innerHTML=R.map(([p,l])=>`<a href="#${p}" data-p="${p}">${l}</a>`).join("");
+
+function route(){
+  const path=location.hash.replace(/^#/,"")||"/";
+  const r=R.find(x=>x[0]===path)||R[0];
+  document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.dataset.p===r[0]));
+  document.getElementById("app").innerHTML=`<div class="page on">${r[2]()}</div>`;
+  window.scrollTo(0,0);
+  if(path==="/publications"){
+    document.getElementById("q").addEventListener("input",renderPubs);
+    ["fT","fY"].forEach(id=>document.getElementById(id).addEventListener("click",e=>{
+      if(e.target.tagName!=="BUTTON")return;
+      document.querySelectorAll(`#${id} button`).forEach(x=>x.classList.remove("on"));
+      e.target.classList.add("on"); renderPubs();
+    }));
+    renderPubs();
+  }
+  if(path==="/members"){
+    document.getElementById("tab").addEventListener("click",e=>{
+      if(e.target.tagName!=="BUTTON")return;
+      document.querySelectorAll("#tab button").forEach(x=>x.classList.remove("on"));
+      e.target.classList.add("on"); renderMembers();
+    });
+    renderMembers();
+  }
+  if(path==="/gallery"){
+    document.querySelectorAll(".album").forEach(b=>b.addEventListener("click",()=>openLb(b.dataset.a)));
+  }
+}
+
+let A=null,I=0;
+function openLb(id){
+  A=ALBUMS.find(x=>x.id===id); I=0;
+  document.getElementById("lbT").textContent=A.t;
+  document.getElementById("lbD").textContent=`${A.d} · ${A.c}`;
+  document.getElementById("lbR").innerHTML=Array.from({length:A.n},(_,i)=>
+    `<button data-i="${i}" class="${i?'':'on'}">${i+1}</button>`).join("");
+  document.querySelectorAll("#lbR button").forEach(b=>b.addEventListener("click",()=>setLb(+b.dataset.i)));
+  setLb(0);
+  document.getElementById("lb").classList.add("on");
+  document.body.style.overflow="hidden";
+}
+function setLb(i){
+  I=i; document.getElementById("lbS").textContent=`Photo ${i+1} of ${A.n}`;
+  document.querySelectorAll("#lbR button").forEach(b=>b.classList.toggle("on",+b.dataset.i===i));
+}
+function closeLb(){document.getElementById("lb").classList.remove("on");document.body.style.overflow="";}
+document.getElementById("lbX").addEventListener("click",closeLb);
+document.getElementById("lb").addEventListener("click",e=>{if(e.target.id==="lb")closeLb();});
+document.addEventListener("keydown",e=>{
+  if(!document.getElementById("lb").classList.contains("on"))return;
+  if(e.key==="Escape")closeLb();
+  if(e.key==="ArrowRight")setLb((I+1)%A.n);
+  if(e.key==="ArrowLeft")setLb((I-1+A.n)%A.n);
+});
+window.addEventListener("hashchange",route);
+route();
+</script>
+</body>
+</html>

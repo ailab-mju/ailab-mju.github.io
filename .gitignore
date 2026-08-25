@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+
+# 원본 사진은 커밋하지 않는다.
+# 행사 사진은 scripts/optimize-images.mjs, 인물 사진은 scripts/optimize-member-photos.mjs 가 처리한다.
+raw-photos/
+
+# 로컬 미리보기 스크린샷
+.preview/
+
+# Claude Code 로컬 권한 설정 (사람마다 다르다)
+.claude/settings.local.json
+
+# 교수 연구업적 시스템 export. content/research.yaml 로 이미 옮겼다.
+# 학교 내부 시스템에서 받은 원본이라 공개 저장소에 두지 않는다.
+pro.html

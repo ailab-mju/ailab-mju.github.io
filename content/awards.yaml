@@ -1,0 +1,77 @@
+# 수상·선정 이력. 최신 항목이 위로.
+#
+#   date:   YYYY-MM. 개최월을 모르면 YYYY 만 적는다 — 없는 정밀도를 지어내지 않는다.
+#   member: content/members.yaml 의 name 과 정확히 일치해야 한다.
+#           어긋나면 빌드가 "수상자 미매칭"으로 세어 푸터에 띄운다.
+#   kind:   award(수상) | grant(지원사업 선정). 화면에서 두 묶음으로 나뉘고,
+#           /news 문구도 receives / selected for 로 갈린다 — ko 에 "선정"을 붙이지 말 것.
+#   title:  상·사업 이름 (영문)
+#   ko:     원어 이름. 화면에 "Outstanding Paper Award (우수논문상)" 으로 함께 나간다
+#   org:    수여 학회·기관
+#   paper:  논문상이면 publications.yaml 의 title 과 정확히 같게 적는다.
+#           적어두면 /publications 의 그 논문 줄에 상 이름이 함께 나간다.
+#           포스터상·졸업상처럼 논문에 붙지 않는 상은 비운다.
+#
+# /news 의 수상 소식은 이 파일에서 파생된다. news.yaml 에 따로 적지 말 것 —
+# 두 벌이 되면 한쪽만 고쳐져 어긋난다.
+
+- date: 2026-08
+  member: JangHyun Noh
+  kind: award
+  title: Outstanding Research Award for MS Graduates
+  ko: 석사 졸업 우수연구상
+  org: Myongji University
+
+- date: 2026-06
+  member: DongSin Kim
+  kind: award
+  title: Outstanding Paper Award
+  ko: 우수논문상
+  org: KCC 2026
+  paper: 전역·지역 매칭 기반 공간 전사체와 조직 이미지 정렬 자동화 프레임워크
+
+- date: 2025-12
+  member: Yoobin Shin
+  kind: award
+  title: Outstanding Presentation Award
+  ko: 우수발표논문상
+  org: KSC 2025
+  paper: scRNA-seq 데이터 축소 기법을 이용한 환자 표현형 예측의 연산 경량화 분석
+
+- date: 2025-07
+  member: JangHyun Noh
+  kind: award
+  title: Outstanding Presentation Award
+  ko: 우수발표논문상
+  org: KCC 2025
+  paper: >-
+    AMIL: Automated cell grouping framework for phenotype prediction with
+    multiple instance learning
+
+- date: 2025-10
+  member: Jaeyun Park
+  kind: award
+  title: Best Poster Award
+  ko: 최우수 포스터상
+  org: BIOINFO 2025
+
+- date: 2025-10
+  member: JangHyun Noh
+  kind: award
+  title: Outstanding Poster Award
+  ko: 우수 포스터상
+  org: BIOINFO 2025
+
+- date: 2025-03
+  member: Jiyeong Shin
+  kind: grant
+  title: Women's Engineering Research Team Program
+  ko: 여대학원생 공학연구팀제 지원사업
+  org: WISET                 # 한국여성과학기술인육성재단
+
+- date: 2024-09
+  member: Jaeyun Park
+  kind: grant
+  title: Master's Student Research Grant
+  ko: 석사과정생 연구장려금 지원사업
+  org: National Research Foundation of Korea (NRF)

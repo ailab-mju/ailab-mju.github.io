@@ -1,0 +1,85 @@
+# 이 파일은 scripts/optimize-images.mjs 가 갱신한다.
+# title / date / caption 은 사람이 고쳐도 되고, 다음 실행 때 유지된다.
+# photos 와 cover 는 실제 파일 목록에서 파생되므로 손대지 말 것.
+
+- id: commencement2026
+  title: 2026 Summer Commencement
+  date: 2026-08
+  caption: Jaeyun Park and JangHyun Noh received their MS degrees.
+  cover: img_3005.webp
+  photos:
+    - img_3005.webp
+    - img_3010.webp
+    - img_7217.webp
+    - img_7232__1_.webp
+- id: bioinfo2024
+  title: BIOINFO 2024
+  date: 2024-10
+  caption: 2024 Annual Conference of the Korean Society for Bioinformatics.
+  cover: img_3816.webp
+  photos:
+    - img_3816.webp
+    - img_3817.webp
+    - img_3818.webp
+- id: bioinfo2025
+  title: BIOINFO 2025
+  date: 2025-10
+  caption: Poster presentations at the Korean Society for Bioinformatics annual conference. Jaeyun Park and JangHyun Noh received poster awards.
+  cover: 2025_bioinfo_group_1.webp
+  photos:
+    - 2025_bioinfo_group_1.webp
+    - 2025_bioinfo_group_2.webp
+    - 2025_bioinfo_group_3.webp
+    - 2025_bioinfo_gunho_choi.webp
+    - 2025_bioinfo_jaeyun_park.webp
+    - 2025_bioinfo_janghyun_noh.webp
+    - 2025_bioinfo_jiyeong_shin.webp
+    - 2025_bioinfo_myeongbin_oh.webp
+    - poster_gunho_choi.webp
+    - poster_jaeyun_park.webp
+    - poster_janghyun_noh.webp
+    - poster_jiyeong_shin.webp
+    - poster_myeongbin_oh.webp
+- id: kcc2026
+  title: KCC 2026
+  date: 2026-06
+  caption: Lab members at the Korea Computer Congress.
+  cover: 1000044462.webp
+  photos:
+    - 1000044462.webp
+    - 2026_kcc_dongsin_kim_1.webp
+    - 2026_kcc_dongsin_kim_2.webp
+    - 2026_kcc_myeongbin_oh.webp
+    - 2026_kcc_seunghoo_song.webp
+    - 2026_kcc_yoobin_shin.webp
+- id: ksc2025
+  title: KSC 2025
+  date: 2025-12
+  caption: Lab members at the Korea Software Congress.
+  cover: 1000032607.webp
+  photos:
+    - 1000032607.webp
+    - 1000032609.webp
+    - 1772686505808.webp
+    - 1772686517041.webp
+    - 20251216_133530_1_.webp
+    - img_5369.webp
+    - img_9665_1_.webp
+- id: kcc2025
+  title: KCC 2025
+  date: 2025-07
+  caption: Lab members at the Korea Computer Congress, ICC Jeju.
+  cover: img_5389.webp
+  photos:
+    - 2025_kcc_group_1.webp
+    - 2025_kcc_group_2.webp
+    - 2025_kcc_group_3.webp
+    - 2025_kcc_group_4.webp
+    - 2025_kcc_group_5.webp
+    - 2025_kcc_jaeyun_park.webp
+    - 2025_kcc_jiyeong_shin.webp
+    - 2025_kcc_myeongbin_oh.webp
+    - img_5389.webp
+    - img_5400.webp
+    - img_5410.webp
+    - kcc2025__2_.webp

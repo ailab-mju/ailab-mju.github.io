@@ -1,0 +1,65 @@
+import { awardLabel, type AuthorRole, type Publication } from '@/lib/types';
+import VenueMeta from './VenueMeta';
+
+/** 1저자 † · 교신저자 * . 범례는 /publications 상단에 한 번만 둔다. */
+function Marks({ role }: { role: AuthorRole }) {
+  const marks = [role.first ? '†' : '', role.corresponding ? '*' : ''].join('');
+  if (!marks) return null;
+  const label = [role.first ? 'first author' : '', role.corresponding ? 'corresponding author' : '']
+    .filter(Boolean)
+    .join(', ');
+  return (
+    <sup className="au-m" title={label}>
+      {marks}
+    </sup>
+  );
+}
+
+function Authors({ authors, roles }: { authors: string[]; roles: AuthorRole[] }) {
+  return (
+    <div className="pub-a">
+      {authors.map((a, i) => (
+        <span key={`${a}-${i}`}>
+          {roles[i]?.member ? <b>{a}</b> : a}
+          {roles[i] && <Marks role={roles[i]} />}
+          {i < authors.length - 1 ? ', ' : ''}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export default function PubRow({ pub }: { pub: Publication }) {
+  const title = pub.doi ? (
+    <a className="pub-t" href={pub.doi} target="_blank" rel="noopener noreferrer">
+      {pub.title}
+    </a>
+  ) : (
+    <span className="pub-t">{pub.title}</span>
+  );
+
+  return (
+    <div className="pub">
+      {title}
+      <Authors authors={pub.authors} roles={pub.authorRoles} />
+      {pub.awards.length > 0 && (
+        <div className="pub-aw">
+          {pub.awards.map((a) => (
+            <span key={`${a.date}-${a.title}`}>
+              {awardLabel(a)}
+              {a.member ? ` · ${a.member}` : ''}
+            </span>
+          ))}
+        </div>
+      )}
+      <div className="pub-m">
+        <VenueMeta pub={pub} />
+        {pub.code && (
+          <a className="link" href={pub.code} target="_blank" rel="noopener noreferrer">
+            Code
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}

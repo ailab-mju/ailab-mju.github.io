@@ -1,0 +1,172 @@
+# 저널·학회 정보. publications.yaml 의 venue 문자열이 여기 name 과 정확히 일치해야 한다.
+#
+# IF 는 논문이 아니라 저널의 속성이고 매년 바뀐다. 여기서 한 번 고치면
+# 그 저널의 모든 논문에 반영된다 — 논문마다 IF 를 적지 말 것.
+#
+#   scope: international | domestic
+#   kind:  journal | conference
+#   scie:  true | false | (비움 = 미확인 → 사이트에 "SCIE 미확인"으로 집계된다)
+#   impact_factor: JIF 값. 화면에는 연도 없이 "IF 7.3" 으로만 나간다.
+#   jcr_year:      값의 출처 연도. 화면에 나가지 않지만 갱신 시점을 알기 위해 남긴다.
+#   quartile:      best ranking 카테고리 기준. JIF percentile 75% 이상이면 Q1.
+#                  화면에는 내보내지 않는다 — IF 옆에 분위까지 붙으면 줄이 지저분해진다.
+#   source:        그 값을 어디서 봤는지. 반드시 남긴다.
+#
+# 아래 값은 전부 JCR 2025 (2026년 6월 Clarivate 공개) 기준으로 한 번에 맞췄다.
+# 서로 다른 연도의 IF 를 섞지 말 것 — 같은 목록 안에서 비교가 어긋난다.
+#
+# 출판사 공식 페이지(OUP, Frontiers)에서 직접 확인한 값과
+# wos-journal.info 의 값이 네 저널 모두 일치해 후자를 나머지 저널의 출처로 썼다.
+# Springer Nature·Elsevier·MDPI 는 자동 조회를 차단해 공식 페이지를 읽을 수 없었다.
+# 갱신할 때는 JCR(Clarivate) 직접 접속이 가장 정확하다 — 학교 도서관 → JCR → 저널명 검색.
+
+# ---------- 해외 저널 ----------
+
+- name: Nature Biomedical Engineering
+  scope: international
+  kind: journal
+  publisher: Springer Nature
+  scie: true
+  impact_factor: 26.3
+  jcr_year: 2025
+  quartile: Q1             # ENGINEERING, BIOMEDICAL · percentile 98.5%
+  source: https://wos-journal.info/journalid/108
+
+- name: Nature Communications
+  scope: international
+  kind: journal
+  publisher: Springer Nature
+  scie: true
+  impact_factor: 18.1
+  jcr_year: 2025
+  quartile: Q1             # MULTIDISCIPLINARY SCIENCES · percentile 94.3%
+  source: https://wos-journal.info/journalid/11621
+
+- name: Journal of Experimental & Clinical Cancer Research
+  scope: international
+  kind: journal
+  publisher: BioMed Central (Springer Nature)
+  scie: true
+  impact_factor: 14.3
+  jcr_year: 2025
+  quartile: Q1             # ONCOLOGY · percentile 93.1%
+  source: https://wos-journal.info/journalid/15043
+
+- name: BioData Mining
+  scope: international
+  kind: journal
+  publisher: BioMed Central (Springer Nature)
+  scie: true
+  impact_factor: 7.9
+  jcr_year: 2025
+  quartile: Q1             # MATHEMATICAL & COMPUTATIONAL BIOLOGY · percentile 94.0%
+  source: https://wos-journal.info/journalid/14286
+
+- name: Briefings in Bioinformatics
+  scope: international
+  kind: journal
+  publisher: Oxford University Press
+  scie: true
+  impact_factor: 7.3
+  jcr_year: 2025
+  quartile: Q1             # BIOCHEMICAL RESEARCH METHODS · percentile 95.3%
+  source: https://academic.oup.com/bib
+
+- name: Frontiers in Immunology
+  scope: international
+  kind: journal
+  publisher: Frontiers Media
+  scie: true
+  impact_factor: 7.0
+  jcr_year: 2025
+  quartile: Q1             # IMMUNOLOGY · percentile 84.2%
+  source: https://www.frontiersin.org/journals/immunology
+
+- name: Bioinformatics
+  scope: international
+  kind: journal
+  publisher: Oxford University Press
+  scie: true
+  impact_factor: 5.5
+  jcr_year: 2025
+  quartile: Q1             # 세 카테고리 중 best ranking · percentile 89.6%
+  source: https://academic.oup.com/bioinformatics
+
+- name: BMC Genomics
+  scope: international
+  kind: journal
+  publisher: BioMed Central (Springer Nature)
+  scie: true
+  impact_factor: 3.9
+  jcr_year: 2025
+  quartile: Q2             # BIOTECHNOLOGY & APPLIED MICROBIOLOGY · percentile 70.3%
+  source: https://wos-journal.info/journalid/13707
+
+- name: Methods
+  scope: international
+  kind: journal
+  publisher: Elsevier
+  scie: true
+  impact_factor: 3.6
+  jcr_year: 2025
+  quartile: Q2             # BIOCHEMICAL RESEARCH METHODS · percentile 64.7%
+  source: https://wos-journal.info/journalid/13604
+
+- name: Frontiers in Genetics
+  scope: international
+  kind: journal
+  publisher: Frontiers Media
+  scie: true
+  impact_factor: 3.0
+  jcr_year: 2025
+  quartile: Q2             # GENETICS & HEREDITY · percentile 58.3%
+  source: https://www.frontiersin.org/journals/genetics
+
+- name: Applied Sciences
+  scope: international
+  kind: journal
+  publisher: MDPI
+  scie: true
+  impact_factor: 2.9
+  jcr_year: 2025
+  quartile: Q2             # CHEMISTRY, MULTIDISCIPLINARY · percentile 69.1%
+  source: https://wos-journal.info/journalid/16719
+
+- name: PLOS ONE
+  scope: international
+  kind: journal
+  publisher: Public Library of Science
+  scie: true
+  impact_factor: 2.8
+  jcr_year: 2025
+  quartile: Q2             # MULTIDISCIPLINARY SCIENCES · percentile 65.7%
+  # PLOS 는 방침상 자사 페이지에 IF 를 싣지 않는다. 값은 WoS 기록에서 가져왔다.
+  source: https://wos-journal.info/journalid/14784
+
+# ---------- 국내 저널 ----------
+
+- name: Journal of Korean Medical Science
+  scope: domestic
+  kind: journal
+  publisher: Korean Academy of Medical Sciences
+  scie: true               # 저널 홈페이지: "Indexed in MEDLINE, SCI & KoreaMed"
+  impact_factor: 3.2
+  jcr_year: 2025
+  quartile: Q1             # MEDICINE, GENERAL & INTERNAL · percentile 79.8%
+  source: https://wos-journal.info/journalid/11564
+
+# ---------- 컨퍼런스 ----------
+# 컨퍼런스에는 IF 가 없다. 필드를 만들지 말 것.
+
+- name: IEEE International Conference on Big Data
+  scope: international
+  kind: conference
+  publisher: IEEE
+
+- name: 한국정보과학회 학술발표논문집
+  name_en: Proceedings of the KIISE Conference
+  scope: domestic
+  kind: conference
+  publisher: Korean Institute of Information Scientists and Engineers
+  # 한 논문집에 KCC(6~7월)와 KSC(12월)가 함께 실린다. 권호로 구분한다 —
+  # Vol.YYYY No.6~7 이면 KCC, Vol.YYYY No.12 면 KSC.

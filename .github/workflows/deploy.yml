@@ -1,0 +1,65 @@
+# 사이트 빌드·배포. 크론이 없다 — push 될 때만 돈다.
+# 60일 무활동 자동 비활성화 규칙은 스케줄 워크플로에만 적용되므로 이 워크플로는 꺼지지 않는다.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # 푸터의 "Last updated"를 최종 커밋 날짜로 고정한다.
+      # 빌드 시각을 쓰면 재배포만 해도 날짜가 갱신되어 낡음이 가려진다.
+      - name: Derive build date from last commit
+        run: echo "BUILD_DATE=$(git log -1 --format=%cs)" >> "$GITHUB_ENV"
+
+      - run: npm run build
+
+      # 커스텀 도메인이 설정되어 있으면 CNAME이 저장소 루트에 생긴다.
+      # out/ 이 사이트를 통째로 대체하므로 반드시 함께 복사한다.
+      - name: Preserve CNAME
+        run: |
+          if [ -f CNAME ]; then
+            cp CNAME out/CNAME
+            echo "CNAME preserved: $(cat CNAME)"
+          else
+            echo "No CNAME file — serving on the github.io domain."
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

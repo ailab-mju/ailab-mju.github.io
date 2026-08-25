@@ -1,0 +1,40 @@
+name_en: Artificial Intelligence and Data Analytics Lab
+name_short: MJU AI Lab
+department: Department of Artificial Intelligence, Myongji University
+university: Myongji University
+tagline: Machine learning methods for single-cell and spatial transcriptomics.
+
+# 사이트 절대 URL. 커스텀 도메인을 붙이면 여기와 저장소 Settings > Pages 를 함께 바꾼다.
+site_url: https://ailab-mju.github.io
+
+# 한국어를 두는 첫 번째 자리 — 홈 소개 문단
+intro_ko: |
+  단일세포 전사체와 공간 전사체 데이터를 위한 기계학습 방법론을 연구합니다.
+  세포 표현학습, 세포 유형 주석, 공간 발현 예측, 약물 반응 모델링을 다룹니다.
+
+# 한국어를 두는 두 번째 자리 — 모집 안내
+recruiting_ko: |
+  단일세포·공간 전사체 데이터에 기계학습을 적용하는 연구에 관심 있는
+  석사과정, 박사과정, 학부연구생을 모집합니다. 생물학 배경은 필수가 아닙니다.
+recruiting_checklist_ko:
+  - 간단한 자기소개 또는 CV
+  - 관심 있는 연구 주제 한두 문장
+  - 프로그래밍 경험
+  - 가능한 시작 시기
+recruiting_reply_ko: 보통 3일 안에 답장드립니다.
+
+email: msoh@mju.ac.kr
+# 아래 office/phone 은 명지대 교수 프로필에서 확인한 값이다.
+# https://www.mju.ac.kr/profl/ict/2034/13007/artclView.do
+office: 종합관 1820호 (Building 1, Room 1820)
+phone: 02-300-0679
+address: |
+  Department of Artificial Intelligence, Myongji University
+  116 Myongji-ro, Cheoin-gu, Yongin-si, Gyeonggi-do 17058, Korea
+
+# 명지대 공식 조직 표기: 인공지능·소프트웨어융합대학 > 융합소프트웨어학부 > 인공지능전공
+# 위 department 문구를 이쪽으로 맞출지는 확인이 필요하다.
+links:
+  # 기존 사이트 _config.yaml 에 있던 ETJoidYAAAAJ 는 greenelab 템플릿의 기본값(Casey Greene)이었다.
+  scholar: https://scholar.google.com/citations?user=nTDBvrkAAAAJ
+  github: https://github.com/ailab-mju

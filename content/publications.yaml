@@ -1,0 +1,425 @@
+# 목록 기준: Google Scholar 프로필 (nTDBvrkAAAAJ). 게재된 것만 싣는다 —
+# bioRxiv 프리프린트 "Detailed mechanisms for unintended large DNA deletions"(2024)는
+# Nature Biomedical Engineering 논문의 프리프린트라 중복이므로 제외했다.
+#
+# 저자·게재일·DOI 는 Crossref 로 확인했다.
+# 연도는 date 에서 파생한다. year 필드를 따로 두지 말 것.
+# 저자명 "Minsik Oh"는 렌더링 시 자동으로 굵게 처리된다. 하드코딩 금지.
+#
+# venue 는 content/venues.yaml 의 name 과 정확히 일치해야 한다.
+# 국내/해외 · 저널/컨퍼런스 구분과 SCIE·IF 표기는 전부 거기서 파생된다 —
+# 여기에 적지 말 것.
+#
+# topics 는 content/research.yaml 의 areas[].key 와 이어진다.
+#
+# 국내 학회 논문 제목은 원문(한국어) 그대로 쓴다. 번역하면 인용이 어긋난다.
+# 한국정보과학회 학술발표논문집 항목은 RISS 로 확인했다 (저자: 오민식, 명지대).
+# 개최월까지만 알 수 있어 날짜는 그 달 1일로 적었다.
+# 이 논문들의 corresponding 은 지도교수이자 마지막 저자라는 근거로 적었다 —
+# 논문집 표기와 대조해 확정할 것.
+#
+# first / corresponding — 1저자(†)·교신저자(*) 표기.
+#   first 는 공동1저자일 때만 적는다. 비우면 authors 의 첫 사람이 1저자다.
+#   corresponding 은 논문에 표기된 교신저자 전원. 순서는 상관없다.
+#   두 필드의 이름은 authors 안의 표기와 글자까지 같아야 한다 —
+#   어긋나면 마크가 조용히 사라지므로 빌드가 "저자 표기 불일치"로 센다.
+#   확인 출처: Europe PMC 전문 XML(author-notes) · OpenAlex is_corresponding ·
+#   저널 홈페이지. 컨퍼런스 논문은 교신저자 지정이 없는 경우가 많다.
+
+- title: >-
+    Integrative evidence-knowledge marker selection enhances LLM-based cell type
+    annotation in single-cell RNA-seq analysis
+  authors: [Jiyeong Shin, Soyoung Jeong, Hyun Je Kim, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: BioData Mining
+  date: 2026-08-11
+  doi: https://doi.org/10.1186/s13040-026-00593-7
+
+- title: >-
+    scFANCL: Dual contrastive learning with false-negative correction at cell
+    level for single-cell RNA-seq clustering
+  authors: [Gunho Choi, Minsik Oh]
+  # corresponding: 출판사 페이지 자동 조회가 막혀 미확인. 확인 후 주석 삭제
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: BMC Genomics
+  date: 2026-07-17
+  doi: https://doi.org/10.1186/s12864-026-13179-8
+
+- title: >-
+    Annotation-free phenotype prediction using knowledge-augmented clustering
+    from single-cell RNA sequencing data
+  authors: [Janghyun Noh, Yoobin Shin, Min Kim, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: Briefings in Bioinformatics
+  date: 2026-07-03
+  doi: https://doi.org/10.1093/bib/bbag395
+
+- title: >-
+    CMAgent: 단일세포 RNA-seq 주석을 위한 LLM 기반 세포 유형–마커 관계 큐레이션 에이전트
+  authors: [Donghoo Kim, Myeongkwan Kim, Jiyeong Shin, Minsik Oh]
+  first: [Donghoo Kim, Myeongkwan Kim]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2026-06-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    HetDrugKG: 이종 지식 그래프 기반 단일세포 약물 유도 유전자 발현 변화 예측
+  authors: [Seunghoo Song, Gunho Choi, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [networks, single-cell]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2026-06-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    국소 유전자 맥락과 Spot과 유전자 간 교차 어텐션을 이용한 공간 전사체 표현 학습
+  authors: [Myeongbin Oh, Jaeyun Park, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [spatial]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2026-06-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    전역·지역 매칭 기반 공간 전사체와 조직 이미지 정렬 자동화 프레임워크
+  authors: [Dongsin Kim, Jaeyun Park, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [spatial]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2026-06-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    scRNA-seq 기반 표현형 예측을 위한 사전 학습 임베딩을 활용한 환자 단위 메타셀 구성
+  authors: [Yoobin Shin, Janghyun Noh, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2026-06-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    Ferroptosis-based therapeutic strategy targeting iron metabolism and SLC7A11
+    overcomes oxaliplatin resistance in patient-derived pancreatic cancer
+    organoids
+  authors:
+    - Jin Ho Choi
+    - Kyung Min Lee
+    - Minsik Oh
+    - Janghyun Noh
+    - Yooyeon Kim
+    - Eunhye Hwang
+    - In Rae Cho
+    - Woo Hyun Paik
+    - Ji Kon Ryu
+    - Ja-lok Ku
+    - Sang Hyub Lee
+  corresponding: [Sang Hyub Lee]
+  topics: [multi-omics]
+  venue: Journal of Experimental & Clinical Cancer Research
+  date: 2026-05-30
+  doi: https://doi.org/10.1186/s13046-026-03745-z
+
+- title: >-
+    Machine learning based plasma proteomic analysis identifies disease
+    differentiating biomarkers in atopic dermatitis
+  authors:
+    - Jasper Roldan Go
+    - Christine Suh-Yun Joh
+    - Soyoung Jeong
+    - Yoon Ji Bang
+    - Jong Wook Jung
+    - Jaeyun Park
+    - Ji Hwan Moon
+    - Minsik Oh
+    - Hyun Je Kim
+  first: [Jasper Roldan Go, Christine Suh-Yun Joh, Soyoung Jeong]
+  corresponding: [Hyun Je Kim, Minsik Oh, Ji Hwan Moon]
+  topics: [multi-omics]
+  venue: Journal of Korean Medical Science
+  date: 2026-01-01          # Crossref 에 연도만 등록되어 있다. 실제 게재월 확인 필요
+  doi: https://doi.org/10.3346/jkms.2026.41.e276
+
+- title: >-
+    LLM 기반 세포 유형 특이적 마커 유전자 추출을 위한 자동화 접근법
+  authors: [Seri Oh, Jiyeong Shin, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2025-12-01          # KSC(한국소프트웨어종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    클라이언트 기반 GeoMx DSP 공간 전사체 데이터 분석 플랫폼
+  authors: [Hanjun Bae, Myeongbin Oh, Gunho Choi, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [spatial]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2025-12-01          # KSC(한국소프트웨어종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    Spatial Transcript와 H&E Whole Slide Image의 정렬 자동화 프레임워크
+  authors: [Dongsin Kim, Jaeyun Park, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [spatial]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2025-12-01          # KSC(한국소프트웨어종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    scRNA-seq 데이터 축소 기법을 이용한 환자 표현형 예측의 연산 경량화 분석
+  authors: [Yoobin Shin, Janghyun Noh, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2025-12-01          # KSC(한국소프트웨어종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    Integrative multi-omic profiling in blood reveals distinct immune and
+    metabolic signatures between ACPA-negative and ACPA-positive rheumatoid
+    arthritis
+  authors:
+    - Benjamin Hur
+    - Vinod K. Gupta
+    - Minsik Oh
+    - Hu Zeng
+    - Cynthia S. Crowson
+    - Kenneth J. Warrington
+    - Elena Myasoedova
+    - Vanessa L. Kronzer
+    - John M. Davis
+    - Jaeyun Sung
+  corresponding: [Jaeyun Sung]
+  topics: [multi-omics]
+  venue: Frontiers in Immunology
+  date: 2025-10-29
+  doi: https://doi.org/10.3389/fimmu.2025.1667662
+
+- title: >-
+    AMIL: Automated cell grouping framework for phenotype prediction with
+    multiple instance learning
+  authors: [Janghyun Noh, Min Kim, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2025-07-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+  pages: 1464-1466
+
+- title: >-
+    GPT-4를 활용한 마커 유전자 기반 단일세포 세포 유형 자동 주석화 모델
+  authors: [Jiyeong Shin, Yoobin Shin, Myeongbin Oh, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2025-07-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    LassoNet을 활용한 Olink 프로테오믹스 데이터 기반 질병 분류 및 바이오마커 탐지
+  authors: [Myeongbin Oh, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [multi-omics]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2025-07-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    DeepSpot-VAE: H&E 이미지 기반 Xenium 유전자 발현 복원 프레임워크
+  authors: [Jaeyun Park, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [spatial]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2025-07-01          # KCC(한국컴퓨터종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    Large DNA deletions occur during DNA repair at 20-fold lower frequency for
+    base editors and prime editors than for Cas9 nucleases
+  authors:
+    - Gue-Ho Hwang
+    - Seok-Hoon Lee
+    - Minsik Oh
+    - Segi Kim
+    - Omer Habib
+    - Hyeon-Ki Jang
+    - Heon Seok Kim
+    - Youngkuk Kim
+    - Chan Hyuk Kim
+    - Sun Kim
+    - Sangsu Bae
+  corresponding: [Sangsu Bae]
+  topics: [methods]
+  venue: Nature Biomedical Engineering
+  date: 2025-01-01          # 지면 9(1) 79-92. 온라인 선공개는 2024-11-04
+  doi: https://doi.org/10.1038/s41551-024-01277-5
+
+- title: >-
+    XGBoost와 SHAP을 이용한 RNA-seq 기반 유방암 서브타입 예측 및 주요 유전자 분석
+  authors: [Jiyeong Shin, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [multi-omics]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2024-12-01          # KSC(한국소프트웨어종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    MIMIC-III 데이터를 이용한 급성호흡곤란증후군 환자의 병원 내 사망 예측: 다양한 결측 데이터
+    처리 전략을 적용한 머신러닝 모델의 비교 연구
+  authors: [Janghyun Noh, Gowoon Choi, Minsik Oh]
+  # 논문집 로마자 표기는 "Goun Choi" 다. 사이트 전체에서 한 사람이 한 표기로 나오도록
+  # members.yaml 의 "Gowoon Choi" 로 맞췄다.
+  first: [Janghyun Noh, Gowoon Choi]
+  corresponding: [Minsik Oh]
+  topics: [methods]
+  venue: 한국정보과학회 학술발표논문집
+  date: 2023-12-01          # KSC(한국소프트웨어종합학술대회). 개최월만 알려져 있다
+
+- title: >-
+    TFNetPropX: A web-based comprehensive analysis tool for exploring
+    condition-specific RNA-seq data using transcription factor network
+    propagation
+  authors: [Ji Hwan Moon, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [networks]
+  venue: Applied Sciences
+  date: 2023-10-17
+  doi: https://doi.org/10.3390/app132011399
+
+- title: >-
+    GOAT: Gene-level biomarker discovery from multi-omics data using graph
+    ATtention neural network for eosinophilic asthma subtype
+  authors: [Dabin Jeong, Bonil Koo, Minsik Oh, Tae-Bum Kim, Sun Kim]
+  corresponding: [Tae-Bum Kim, Sun Kim]
+  topics: [multi-omics]
+  venue: Bioinformatics
+  date: 2023-09-22
+  doi: https://doi.org/10.1093/bioinformatics/btad582
+
+- title: >-
+    Adipocyte HIF2α functions as a thermostat via PKA Cα regulation in beige
+    adipocytes
+  authors:
+    - Ji Seul Han
+    - Yong Geun Jeon
+    - Minsik Oh
+    - Gung Lee
+    - Hahn Nahmgoong
+    - Sang Mun Han
+    - Jeehye Choi
+    - Ye Young Kim
+    - Kyung Cheul Shin
+    - Jiwon Kim
+    - Kyuri Jo
+    - Sung Sik Choe
+    - Eun Jung Park
+    - Sun Kim
+    - Jae Bum Kim
+  corresponding: [Jae Bum Kim]
+  topics: [networks]
+  venue: Nature Communications
+  date: 2022-06-07
+  doi: https://doi.org/10.1038/s41467-022-30925-0
+
+- title: >-
+    IDEA: Integrating divisive and ensemble-agglomerate hierarchical clustering
+    framework for arbitrary shape data
+  authors: [Hongryul Ahn, Inuk Jung, Heejoon Chae, Minsik Oh, Inyoung Kim, Sun Kim]
+  # 컨퍼런스 논문이라 교신저자 지정이 없다
+  topics: [methods]
+  venue: IEEE International Conference on Big Data
+  date: 2021-12-15
+  doi: https://doi.org/10.1109/BigData52589.2021.9671953
+
+- title: >-
+    mirTime: identifying condition-specific targets of microRNA in time-series
+    transcript data using Gaussian process model and spherical vector clustering
+  authors: [Hyejin Kang, Hongryul Ahn, Kyuri Jo, Minsik Oh, Sun Kim]
+  corresponding: [Sun Kim]
+  topics: [networks]
+  venue: Bioinformatics
+  date: 2021-07-12
+  doi: https://doi.org/10.1093/bioinformatics/btz306
+
+- title: >-
+    Construction of condition-specific gene regulatory network using kernel
+    canonical correlation analysis
+  authors:
+    - Dabin Jeong
+    - Sangsoo Lim
+    - Sangseon Lee
+    - Minsik Oh
+    - Changyun Cho
+    - Hyeju Seong
+    - Woosuk Jung
+    - Sun Kim
+  corresponding: [Sun Kim]
+  topics: [networks]
+  venue: Frontiers in Genetics
+  date: 2021-05-10
+  doi: https://doi.org/10.3389/fgene.2021.652623
+
+- title: >-
+    Machine learning-based analysis of multi-omics data on the cloud for
+    investigating gene regulations
+  authors: [Minsik Oh, Sungjoon Park, Sun Kim, Heejoon Chae]
+  corresponding: [Heejoon Chae]
+  topics: [multi-omics]
+  venue: Briefings in Bioinformatics
+  date: 2021-01-01
+  doi: https://doi.org/10.1093/bib/bbaa032
+
+- title: >-
+    DRIM: A web-based system for investigating drug response at the molecular
+    level by condition-specific multi-omics data integration
+  authors:
+    - Minsik Oh
+    - Sungjoon Park
+    - Sangseon Lee
+    - Dohoon Lee
+    - Sangsoo Lim
+    - Dabin Jeong
+    - Kyuri Jo
+    - Inuk Jung
+    - Sun Kim
+  corresponding: [Sun Kim]
+  topics: [multi-omics]
+  venue: Frontiers in Genetics
+  date: 2020-11-12
+  doi: https://doi.org/10.3389/fgene.2020.564792
+
+- title: >-
+    DeepFam: deep learning based alignment-free method for protein family
+    modeling and prediction
+  authors: [Seokjun Seo, Minsik Oh, Youngjune Park, Sun Kim]
+  corresponding: [Sun Kim]
+  topics: [methods]
+  venue: Bioinformatics
+  date: 2018-07-01
+  doi: https://doi.org/10.1093/bioinformatics/bty275
+
+- title: >-
+    miRTarVis+: Web-based interactive visual analytics tool for microRNA target
+    predictions
+  authors:
+    - Sehi L'Yi
+    - Daekyoung Jung
+    - Minsik Oh
+    - Bohyoung Kim
+    - Robert J. Freishtat
+    - Mamta Giri
+    - Eric Hoffman
+    - Jinwook Seo
+  corresponding: [Bohyoung Kim, Jinwook Seo]
+  topics: [networks]
+  venue: Methods
+  date: 2017-07-15
+  doi: https://doi.org/10.1016/j.ymeth.2017.06.004
+
+- title: Literature-based condition-specific miRNA-mRNA target prediction
+  authors:
+    - Minsik Oh
+    - Sungmin Rhee
+    - Ji Hwan Moon
+    - Heejoon Chae
+    - Sunwon Lee
+    - Jaewoo Kang
+    - Sun Kim
+  corresponding: [Sun Kim]
+  topics: [networks]
+  venue: PLOS ONE
+  date: 2017-03-31
+  doi: https://doi.org/10.1371/journal.pone.0174999

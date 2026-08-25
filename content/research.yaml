@@ -1,0 +1,122 @@
+# 연구 주제. key 는 publications.yaml 의 topics 와 이어진다 —
+# 각 주제에 속한 논문 목록·편수·연도 범위는 빌드 타임에 파생되므로 여기 적지 않는다.
+# 순서가 곧 화면 표시 순서이고, 홈에는 앞에서 3개만 나간다.
+
+areas:
+  - key: single-cell
+    title: Single-cell representation learning
+    summary: >-
+      We learn representations of cells from scRNA-seq data so that clustering,
+      cell type annotation, and batch effect correction can be addressed
+      together rather than as separate steps. Recent work pairs a dual-encoder
+      cross-attention architecture with large language models for annotation.
+    tags:
+      - cross-attention
+      - dual encoder
+      - cell type annotation
+      - large language models
+
+  - key: spatial
+    title: Spatial transcriptomics
+    summary: >-
+      We work with transcriptomes measured alongside positional information in
+      tissue: predicting expression from histology images, imputing unmeasured
+      spots, and identifying spatial domains.
+    tags:
+      - histology
+      - gene imputation
+      - spatial domain
+      - multimodal
+
+  - key: multi-omics
+    title: Multi-omics integration for drug response and phenotype
+    summary: >-
+      We integrate transcriptome, methylome, and other omics layers to explain
+      how cells respond to drug treatment and how patient phenotypes differ,
+      using autoencoders, tensor decomposition, and graph attention networks.
+    tags:
+      - drug response
+      - graph attention network
+      - autoencoder
+      - tensor decomposition
+      - biomarker discovery
+
+  - key: networks
+    title: Condition-specific regulatory networks
+    summary: >-
+      We reconstruct gene regulatory relationships that hold under a specific
+      condition rather than on average — through transcription factor network
+      propagation, kernel canonical correlation analysis, Gaussian process
+      models for time-series data, and literature mining for miRNA-mRNA targets.
+    tags:
+      - network propagation
+      - kernel CCA
+      - Gaussian process
+      - time-series
+      - miRNA-mRNA
+      - literature mining
+
+  - key: methods
+    title: Machine learning methods for biological data
+    summary: >-
+      Method development that is not tied to a single omics modality:
+      alignment-free protein family modeling with convolutional networks,
+      hierarchical clustering for arbitrary-shaped data, and algorithms for
+      quantifying genome editing outcomes.
+    tags:
+      - convolutional networks
+      - alignment-free
+      - hierarchical clustering
+      - genome editing
+
+# 출처: 명지대 교수 연구업적 시스템의 연구과제 목록 (pro.html).
+# period 는 시작월–종료월.
+# role 은 PI(주관기관 연구책임자) / Co-PI(공동기관 연구책임자) / Co-investigator(참여연구자).
+# 목록 순서가 곧 표시 순서다 — 최근 시작한 과제를 위에 둔다.
+# period 가 비면 화면에 "—" 로 나간다.
+projects:
+  - title: >-
+      Development of an evidence-grounded AI agent for automated cell type–marker
+      relation curation in single-cell transcriptome analysis
+    period: 2026.09–2027.08
+    funder: National Research Foundation of Korea (NRF)
+    role: PI
+  - title: >-
+      Development of AI-based game content rating technology for efficient
+      rating classification and post-release management
+    period: 2026.04–2029.12
+    funder: Korea Creative Content Agency (KOCCA)
+    role: Co-investigator
+  - title: >-
+      Development of a client-side, high-speed and high-precision web-based
+      analysis platform for detecting and quantifying CRISPR-Cas9-induced
+      large DNA deletions
+    period: 2025.09–2026.08
+    funder: National Research Foundation of Korea (NRF)
+    role: PI
+  - title: >-
+      Development of CAR-Treg cell therapeutics for chronic inflammatory
+      diseases through an AI-based target discovery platform
+    period: 2024.04–2028.12
+    funder: Korea Health Industry Development Institute (KHIDI)
+    role: Co-investigator
+  - title: >-
+      Graph neural network based multi-omics integrative method for drug
+      response prediction
+    period: 2022.09–2025.02
+    funder: National Research Foundation of Korea (NRF)
+    role: PI
+  - title: >-
+      IoMT artificial intelligence and NFT interface standard development for
+      the metaverse
+    period: 2022.07–2026.12
+    funder: Korea Planning & Evaluation Institute of Industrial Technology (KEIT)
+    role: Co-PI
+  # 종료 과제로 보인다 — 연구업적 시스템 목록에 없다.
+  # 기간·지원 기관은 NTIS나 산학협력단 기록에서 확인해야 한다.
+  - title: >-
+      Deep reinforcement learning-based combination optimization for identifying
+      patient-specific multi-omics regulatory networks
+    period:            # TODO: 과제 기간 확인
+    funder:            # TODO: 지원 기관 확인
+    role:

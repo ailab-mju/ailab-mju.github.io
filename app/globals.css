@@ -1,0 +1,1038 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+ * 디자인 토큰 — mju-ailab-site.html 목업이 기준
+ * ========================================================== */
+:root {
+  --ink: #151320;
+  --paper: #f5f4f7;
+  --card: #ffffff;
+  --line: #e0dee6;
+  --mute: #6d6980;
+  --deep: #3b1d52;
+  --teal: #1f7f7a;
+
+  /* 한글 제목은 Archivo에 글리프가 없다. Pretendard로 폴백. */
+  --disp: "Archivo", "Pretendard Variable", sans-serif;
+  --body: "Pretendard Variable", "Archivo", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --w: 1080px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: inherit;
+  }
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--disp);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+    margin: 0;
+  }
+  p {
+    margin: 0 0 16px;
+  }
+}
+
+@layer components {
+  .w {
+    max-width: var(--w);
+    margin: 0 auto;
+    padding: 0 26px;
+  }
+
+  /* ---------- skip link ---------- */
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .skip:focus {
+    left: 12px;
+    top: 12px;
+  }
+
+  /* ---------- nav ---------- */
+  .nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .nav-in {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 64px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: var(--disp);
+    font-weight: 800;
+    font-size: 16px;
+  }
+  .brand svg {
+    width: 22px;
+    height: 22px;
+    flex: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2px;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+  .nav-links a {
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--mute);
+    padding: 7px 12px;
+    border-radius: 5px;
+    transition: 0.15s;
+  }
+  .nav-links a:hover {
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .nav-links a.on {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ---------- page header ---------- */
+  .hd {
+    padding: 56px 0 44px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hd .kicker {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mute);
+    margin: 0 0 16px;
+  }
+  .hd h1 {
+    font-size: clamp(28px, 4vw, 42px);
+  }
+  .hd h2 {
+    font-size: clamp(26px, 3.6vw, 36px);
+  }
+  .hd .lede {
+    margin: 18px 0 0;
+    color: #3f3b4e;
+    max-width: 60ch;
+    font-size: 16.5px;
+    white-space: pre-line;
+  }
+  .hd .cta {
+    display: flex;
+    gap: 9px;
+    margin-top: 26px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    transition: 0.15s;
+  }
+  .btn:hover {
+    border-color: #c6c1d3;
+  }
+  .btn-p {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+  .btn-p:hover {
+    background: #282338;
+    border-color: #282338;
+  }
+
+  /* ---------- hero slot ----------
+     통째로 지워도 페이지가 완결되도록 설계된 슬롯이다. */
+  .slot {
+    margin: 34px 0 0;
+    border: 1px dashed #c9c4d6;
+    border-radius: 10px;
+    background: var(--card);
+    min-height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    overflow: hidden;
+  }
+  .slot p {
+    margin: 0;
+    color: #9a95a9;
+    font-size: 13.5px;
+    line-height: 1.8;
+  }
+  .slot .t {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #b0aabf;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .slot img {
+    width: 100%;
+    height: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    border-radius: 9px;
+  }
+  .slot.filled {
+    border-style: solid;
+    border-color: var(--line);
+    padding: 0;
+    min-height: 0;
+  }
+
+  /* ---------- sections ---------- */
+  .sec {
+    padding: 52px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .sec:last-child {
+    border-bottom: none;
+  }
+  .sec-h {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+  }
+  .sec-h h2 {
+    font-size: 24px;
+  }
+  .link {
+    font-size: 14px;
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  /* ---------- cards ---------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 22px;
+  }
+  .card h3 {
+    font-size: 17px;
+    margin-bottom: 9px;
+  }
+  .card p {
+    font-size: 14px;
+    color: var(--mute);
+    margin: 0;
+    line-height: 1.68;
+  }
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 3px 8px;
+    color: var(--mute);
+  }
+
+  /* ---------- publications ---------- */
+  .pub {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .pub:first-of-type {
+    border-top: 1px solid var(--line);
+  }
+  .pub-t {
+    font-family: var(--disp);
+    font-size: 16.5px;
+    font-weight: 600;
+    line-height: 1.45;
+    text-decoration: none;
+    display: block;
+  }
+  a.pub-t:hover {
+    color: var(--teal);
+  }
+  .pub-a {
+    font-size: 13.5px;
+    color: var(--mute);
+    margin: 6px 0 0;
+    line-height: 1.6;
+  }
+  .pub-a b {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  /* 1저자 † · 교신저자 * . 범례는 .legend 에 한 번만 둔다. */
+  .au-m {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--teal);
+    font-weight: 700;
+    margin-left: 1px;
+    cursor: help;
+  }
+  .legend {
+    font-size: 12.5px;
+    color: var(--mute);
+    margin: 0 0 14px;
+  }
+  .legend .au-m {
+    font-size: 12px;
+    margin-left: 0;
+    cursor: default;
+  }
+  /* 논문상. awards.yaml 의 paper 로 이어진 상만 여기 나온다. */
+  .pub-aw {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 7px;
+    font-size: 13px;
+    color: var(--deep);
+  }
+  .pub-aw span {
+    background: #fdf4e3;
+    color: #7a5312;
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+  .pub-aw span::before {
+    content: '\2605';
+    margin-right: 5px;
+  }
+  .pub-m {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    margin-top: 7px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--mute);
+  }
+  .pub-v {
+    color: var(--deep);
+    font-weight: 600;
+  }
+  .flag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: #f1eef5;
+    color: var(--deep);
+  }
+  .flag.todo {
+    background: #fbe9e9;
+    color: #9d3838;
+  }
+  .flag.scie {
+    background: #e6f2f1;
+    color: #1a6b66;
+  }
+  .flag.if {
+    background: #eef0f6;
+    color: #3f4a6b;
+  }
+  .yr-h {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--mute);
+    margin: 30px 0 0;
+  }
+  .yr-h:first-of-type {
+    margin-top: 0;
+  }
+
+  /* ---------- filter tools ---------- */
+  .tools {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .q {
+    flex: 1;
+    min-width: 200px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    border-radius: 6px;
+    padding: 9px 13px;
+    font-family: var(--body);
+    font-size: 14.5px;
+    color: var(--ink);
+  }
+  .q::placeholder {
+    color: #a5a0b2;
+  }
+  .chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .chips button {
+    font-size: 13.5px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    border-radius: 6px;
+    padding: 8px 14px;
+    color: var(--mute);
+    transition: 0.15s;
+  }
+  .chips button:hover {
+    border-color: #c6c1d3;
+    color: var(--ink);
+  }
+  .chips button.on {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+    font-weight: 600;
+  }
+  .count {
+    font-size: 13.5px;
+    color: var(--mute);
+    margin: 0 0 18px;
+  }
+
+  /* ---------- members ---------- */
+  .people {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px;
+  }
+  .person {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 18px;
+    text-align: center;
+  }
+  .face {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    margin: 0 auto 13px;
+    background: #eceaf1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--disp);
+    font-size: 24px;
+    font-weight: 700;
+    color: #9a95a9;
+    overflow: hidden;
+    flex: none;
+  }
+  .face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .person-n {
+    font-family: var(--disp);
+    font-size: 15.5px;
+    font-weight: 700;
+  }
+  /* 개인 페이지가 있는 멤버만 카드가 링크가 된다. */
+  .person-h {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+  .person-c {
+    transition: 0.15s;
+  }
+  .person-c:hover {
+    border-color: #c6c1d3;
+  }
+  .person-h:hover .person-n {
+    color: var(--teal);
+  }
+  .person-h:hover .face {
+    box-shadow: 0 0 0 3px var(--line);
+  }
+  .person-go {
+    display: block;
+    margin-top: 9px;
+    font-size: 12px;
+    color: var(--teal);
+    opacity: 0;
+    transition: 0.15s;
+  }
+  .person-h:hover .person-go,
+  .person-h:focus-visible .person-go {
+    opacity: 1;
+  }
+  .person-e {
+    font-size: 13px;
+    color: var(--mute);
+  }
+  .person-r {
+    font-size: 13px;
+    color: var(--teal);
+    margin-top: 7px;
+    font-weight: 600;
+  }
+  .person-x {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--mute);
+    margin-top: 3px;
+  }
+  .person-t {
+    font-size: 12.5px;
+    color: var(--mute);
+    margin-top: 5px;
+    line-height: 1.5;
+  }
+  .person-l {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 11px;
+    flex-wrap: wrap;
+  }
+  .person-l a {
+    font-size: 12px;
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .person-l a:hover {
+    text-decoration: underline;
+  }
+  .pi {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 26px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 26px;
+    margin-bottom: 32px;
+    align-items: center;
+  }
+  .pi .face {
+    margin: 0;
+    width: 120px;
+    height: 120px;
+    font-size: 36px;
+  }
+
+  /* ---------- alumni ---------- */
+  .alum {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    grid-column: 1 / -1;
+  }
+  .alum:first-of-type {
+    border-top: 1px solid var(--line);
+  }
+  .alum-n {
+    font-family: var(--disp);
+    font-size: 15.5px;
+    font-weight: 700;
+  }
+  .alum-n a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .alum-n a:hover {
+    color: var(--teal);
+  }
+  .alum-n span {
+    font-weight: 400;
+    color: var(--mute);
+    font-size: 13.5px;
+    margin-left: 6px;
+  }
+  .alum-d {
+    font-size: 13.5px;
+    color: var(--mute);
+    margin-top: 2px;
+  }
+  .alum-x {
+    font-size: 13.5px;
+    color: var(--mute);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ---------- gallery ---------- */
+  .albums {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
+  }
+  .album {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    overflow: hidden;
+    padding: 0;
+    text-align: left;
+    color: inherit;
+    transition: 0.15s;
+    width: 100%;
+  }
+  .album:hover {
+    border-color: #c6c1d3;
+  }
+  .album-i {
+    aspect-ratio: 4 / 3;
+    background: #eceaf1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #b0aabf;
+    letter-spacing: 0.1em;
+    overflow: hidden;
+  }
+  .album-i img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .album-m {
+    padding: 14px 15px 16px;
+  }
+  .album-d {
+    font-size: 12.5px;
+    color: var(--mute);
+  }
+  .album-t {
+    font-family: var(--disp);
+    font-size: 15.5px;
+    font-weight: 700;
+    margin-top: 4px;
+  }
+  .album-c {
+    font-size: 13px;
+    color: var(--mute);
+    margin-top: 3px;
+  }
+
+  /* ---------- lightbox ---------- */
+  .lb {
+    position: fixed;
+    inset: 0;
+    background: rgba(21, 19, 32, 0.94);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .lb-t {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #efeef4;
+    gap: 16px;
+  }
+  .lb-t h3 {
+    font-size: 17px;
+    margin: 0;
+  }
+  .lb-t p {
+    font-size: 13px;
+    color: #9a95ad;
+    margin: 2px 0 0;
+  }
+  .lb-x {
+    background: none;
+    border: 1px solid #3d3757;
+    color: #efeef4;
+    border-radius: 6px;
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+    flex: none;
+  }
+  .lb-s {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: 18px 0;
+    gap: 10px;
+  }
+  .lb-s img {
+    max-width: min(100%, 900px);
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .lb-nav {
+    background: none;
+    border: 1px solid #3d3757;
+    color: #efeef4;
+    border-radius: 6px;
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    flex: none;
+  }
+  .lb-r {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+  }
+  .lb-r button {
+    width: 72px;
+    height: 52px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background: #2b2640;
+    flex: none;
+    padding: 0;
+    overflow: hidden;
+  }
+  .lb-r button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .lb-r button.on {
+    border-color: #8b86a3;
+  }
+
+  /* ---------- rows ---------- */
+  .row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .row:first-of-type {
+    border-top: 1px solid var(--line);
+  }
+  .row-d {
+    font-size: 14px;
+    color: var(--mute);
+  }
+  .row-t {
+    font-family: var(--disp);
+    font-size: 16.5px;
+    font-weight: 600;
+  }
+  .row-b {
+    font-size: 14px;
+    color: var(--mute);
+    margin-top: 4px;
+  }
+
+  /* ---------- join ---------- */
+  .join {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 34px;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 36px;
+  }
+  .join h2 {
+    font-size: 23px;
+  }
+  .join p {
+    font-size: 15px;
+    color: var(--mute);
+  }
+  .join ol {
+    margin: 10px 0 0;
+    padding-left: 19px;
+    color: var(--mute);
+    font-size: 14.5px;
+    line-height: 1.95;
+  }
+
+  /* ---------- research areas ---------- */
+  .area-n {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--mute);
+    white-space: nowrap;
+  }
+  .area-s {
+    font-size: 15.5px;
+    color: #3f3b4e;
+    max-width: 68ch;
+    margin: 0 0 14px;
+  }
+  .area-empty {
+    font-size: 13.5px;
+    color: var(--mute);
+    margin: 22px 0 0;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  /* 주제별 논문 목록 접기. <details> 라 자바스크립트가 없어도 열린다. */
+  .disc {
+    margin-top: 18px;
+  }
+  .disc > summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 13.5px;
+    color: var(--mute);
+    border: 1px solid var(--line);
+    background: var(--card);
+    border-radius: 6px;
+    padding: 7px 13px;
+    transition: 0.15s;
+  }
+  .disc > summary::-webkit-details-marker {
+    display: none;
+  }
+  .disc > summary::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 4.5px solid currentColor;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    transition: transform 0.15s;
+  }
+  .disc[open] > summary::before {
+    transform: rotate(90deg);
+  }
+  .disc > summary:hover {
+    border-color: #c6c1d3;
+    color: var(--ink);
+  }
+  .disc[open] > summary {
+    color: var(--ink);
+  }
+  .disc-n {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--deep);
+    background: #f1eef5;
+    border-radius: 3px;
+    padding: 1px 6px;
+  }
+  .disc .minis {
+    margin-top: 6px;
+  }
+  .minis {
+    list-style: none;
+    margin: 22px 0 0;
+    padding: 0;
+  }
+  .mini {
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .mini:first-of-type {
+    border-top: 1px solid var(--line);
+  }
+  .mini-t {
+    font-family: var(--disp);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .mini-t a {
+    text-decoration: none;
+  }
+  .mini-t a:hover {
+    color: var(--teal);
+  }
+  .mini-m {
+    font-size: 13px;
+    color: var(--mute);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- misc ---------- */
+  .note {
+    background: #fff8e6;
+    border: 1px solid #ecdca8;
+    border-radius: 7px;
+    padding: 12px 15px;
+    font-size: 13.5px;
+    color: #6b5a1a;
+    margin-bottom: 22px;
+    line-height: 1.65;
+  }
+  .empty {
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    color: var(--mute);
+    font-size: 14px;
+    grid-column: 1 / -1;
+  }
+  .foot {
+    background: var(--card);
+    border-top: 1px solid var(--line);
+    padding: 30px 0 42px;
+    font-size: 13.5px;
+    color: var(--mute);
+  }
+  .foot-in {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .foot a {
+    color: var(--teal);
+    text-decoration: none;
+  }
+  .stale {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: #9d3838;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav-in {
+    height: auto;
+    padding: 11px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .nav-links {
+    margin-left: 0;
+    width: 100%;
+  }
+  .join {
+    grid-template-columns: 1fr;
+    padding: 26px;
+  }
+  .pi {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+  .row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .alum {
+    grid-template-columns: 1fr;
+  }
+  .alum-x {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  /* 개인 페이지 */
+  .crumb {
+    margin: 0 0 4px;
+    font-size: 13px;
+  }
+  .sec-n {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--mute);
+    margin-left: 6px;
+  }
+}

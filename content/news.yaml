@@ -1,0 +1,38 @@
+# 최신 항목이 위로. /add-news 커맨드가 최상단에 추가한다.
+# 이름 표기는 content/members.yaml 과 맞춘다.
+#
+# date 는 YYYY-MM — 월까지만 적는다. 랩 소식은 대개 학기·학위수여식 단위라
+# 일자를 적으면 확인할 수 없는 정밀도를 지어내게 된다. members.yaml 의
+# since / until 과도 같은 단위다.
+
+- date: 2026-08
+  title: Jaeyun Park and JangHyun Noh receive their MS degrees
+  body:
+
+- date: 2026-03
+  title: Three new MS students join the lab
+  body: DongSin Kim, SeungHoo Song, and Yoobin Shin.
+
+- date: 2025-03
+  title: Three new MS students join the lab
+  body: Gunho Choi, Jiyeong Shin, and Myeongbin Oh.
+
+- date: 2024-09
+  title: JangHyun Noh joins the lab as an MS student
+  body:
+
+- date: 2024-03
+  title: Jaeyun Park joins the lab as an MS student
+  body:
+
+- date: 2023-02
+  title: One undergraduate research intern joins the lab
+  body: From the Department of Electronic Engineering.
+
+- date: 2022-12
+  title: Four undergraduate research interns join the lab
+  body: From the Department of Data Technology.
+
+- date: 2022-09
+  title: Six undergraduate research interns join the lab
+  body: From the Department of Data Technology.

@@ -1,0 +1,139 @@
+# 영문 표기가 주, 한글 원래 명칭이 보조. 한글명을 모르면 name_ko를 비워둔다.
+# level: Undergraduate | Graduate
+#
+# term 은 "YYYY Spring" | "YYYY Fall". 국내 학기 표기로는 1학기 = Spring, 2학기 = Fall.
+# 화면 순서는 lib/content.ts 가 학기에서 파생한다 — 이 파일의 순서에 기대지 말 것.
+
+- term: 2026 Fall
+  name: Introduction to Programming 2
+  name_ko: 기초프로그래밍2
+  level: Undergraduate
+- term: 2026 Fall
+  name: Deep Learning
+  name_ko: 딥러닝
+  level: Undergraduate
+- term: 2026 Fall
+  name: Financial Intelligence
+  name_ko: 금융인텔리전스
+  level: Undergraduate
+
+- term: 2026 Spring
+  name: Introduction to Programming 1
+  name_ko: 기초프로그래밍1
+  level: Undergraduate
+- term: 2026 Spring
+  name: Machine Learning
+  name_ko: 머신러닝
+  level: Undergraduate
+- term: 2026 Spring
+  name: Graph Neural Networks
+  name_ko: 그래프신경망
+  level: Graduate
+
+- term: 2025 Fall
+  name: Introduction to Programming 2
+  name_ko: 기초프로그래밍2
+  level: Undergraduate
+- term: 2025 Fall
+  name: Statistical Data Analysis
+  name_ko: 통계적데이터분석
+  level: Undergraduate
+- term: 2025 Fall
+  name: Deep Learning
+  name_ko: 딥러닝
+  level: Undergraduate
+- term: 2025 Fall
+  name: Thesis Research
+  name_ko: 논문연구
+  level: Graduate
+
+- term: 2025 Spring
+  name: Introduction to Programming 1
+  name_ko: 기초프로그래밍1
+  level: Undergraduate
+- term: 2025 Spring
+  name: Deep Learning
+  name_ko: 딥러닝
+  level: Undergraduate
+- term: 2025 Spring
+  name: Machine Learning
+  name_ko: 머신러닝
+  level: Undergraduate
+- term: 2025 Spring
+  name: Advanced Deep Learning
+  name_ko: 고급딥러닝
+  level: Graduate
+
+# 아래 2024년 이전 항목은 기존 사이트에서 가져온 것이라 한글명이 비어 있다.
+
+- term: 2024 Fall
+  name: Big Data Programming
+  name_ko:
+  level: Undergraduate
+- term: 2024 Fall
+  name: Statistical Data Analysis
+  name_ko:
+  level: Undergraduate
+- term: 2024 Fall
+  name: Machine Learning
+  name_ko:
+  note: Machine learning in bioinformatics
+  level: Undergraduate
+
+- term: 2024 Spring
+  name: Deep Learning
+  name_ko:
+  level: Undergraduate
+- term: 2024 Spring
+  name: Mobile Computing
+  name_ko:
+  level: Undergraduate
+- term: 2024 Spring
+  name: Topics in Unstructured Data Processing
+  name_ko:
+  note: Graph neural networks
+  level: Undergraduate
+
+- term: 2023 Fall
+  name: Big Data Programming
+  name_ko:
+  level: Undergraduate
+- term: 2023 Fall
+  name: Statistical Data Analysis
+  name_ko:
+  level: Undergraduate
+- term: 2023 Fall
+  name: Artificial Intelligence
+  name_ko:
+  level: Undergraduate
+
+- term: 2023 Spring
+  name: Deep Learning
+  name_ko:
+  level: Undergraduate
+- term: 2023 Spring
+  name: Mobile Computing
+  name_ko:
+  level: Undergraduate
+
+- term: 2022 Fall
+  name: Big Data Programming
+  name_ko:
+  level: Undergraduate
+- term: 2022 Fall
+  name: Statistical Data Analysis
+  name_ko:
+  level: Undergraduate
+
+- term: 2022 Spring
+  name: Advanced Deep Learning
+  name_ko:
+  level: Graduate
+- term: 2022 Spring
+  name: Deep Learning
+  name_ko:
+  level: Undergraduate
+- term: 2022 Spring
+  name: Mobile Computing
+  name_ko:
+  level: Undergraduate

@@ -1,0 +1,39 @@
+# 갤러리 업로드 트리거. 크론이 아니라 파일 추가에 반응하므로 자동 비활성화 대상이 아니다.
+#
+# 학생 사용법: GitHub 웹에서 raw-photos/{앨범ID}/ 에 사진을 드래그 앤 드롭하고 커밋.
+# 이 워크플로가 리사이즈 → WebP → 썸네일 → EXIF 제거 → gallery.yaml 갱신 → 원본 삭제까지 한다.
+name: Process gallery uploads
+
+on:
+  push:
+    paths:
+      - 'raw-photos/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+
+      - run: npm run optimize-images
+
+      - name: Commit processed photos
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A public/images/gallery content/gallery.yaml raw-photos
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+          else
+            git commit -m "gallery: process uploaded photos"
+            git push
+          fi
