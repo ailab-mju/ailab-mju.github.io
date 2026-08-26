@@ -68,6 +68,19 @@
     font-size: 1rem;
     line-height: 1.72;
     -webkit-font-smoothing: antialiased;
+    /*
+     * 한국어를 어절 단위로 끊는다.
+     *
+     * 브라우저 기본값은 CJK 를 글자 단위로 끊는다 — 띄어쓰기가 없는 중국어·일본어
+     * 기준이다. 한국어에 그대로 걸리면 "AI·머신러닝 방 / 법을" 처럼 낱말 한가운데가
+     * 잘린다. keep-all 은 공백에서만 끊게 한다.
+     *
+     * 영문은 원래 낱말 중간에서 안 끊기므로 달라지는 게 없다. 다만 keep-all 은
+     * 아주 긴 토큰(URL·긴 저널명)도 안 끊어 넘침을 만들 수 있어, 들어갈 자리가
+     * 없을 때만 끊는 overflow-wrap 을 안전망으로 함께 둔다.
+     */
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
   a {
     color: inherit;
