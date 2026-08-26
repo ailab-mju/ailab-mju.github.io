@@ -118,6 +118,19 @@ Next.js(App Router) + `output: 'export'` 정적 사이트. 콘텐츠는 전부 `
   `workflow_run` 의 `head_sha` 는 갤러리 워크플로를 *촉발한* 커밋이라 사진 커밋이 빠진다.
 - `pro.html`(교수 연구업적 시스템 export)은 커밋하지 않는다. 내용은 `research.yaml` 에 있다.
 
+### 배포처가 둘이다
+- **GitHub Pages** — `main` 에 push 하면 `Deploy` 워크플로가 올린다. `ailab-mju.github.io`.
+- **학교 서버** — `ailab.mju.ac.kr`. 이쪽은 자동이 아니다. `npm run deploy` 를 사람이 돌린다
+  (`scripts/deploy-server.sh` 가 빌드해서 `/data/project/noalcohol/site` 로 rsync 한다.
+  그 디렉터리는 `noalcohol` 소유라 배포에 sudo 가 필요 없다).
+- 둘은 같은 커밋에서 나오지만 배포 시점이 다를 수 있다. **어긋나면 푸터의
+  `Last updated` 날짜가 서로 달라 눈에 띈다** — 그게 이 구조에서 드리프트를 잡는 방법이다.
+- Apache 설정은 `deploy/ailab-mju.conf` 에 있고 저장소가 정본이다. 서버에서 직접 고치지 말 것.
+  **이 vhost 는 사이트만 서빙하지 않는다** — `/static`, `/media`, `/OlinkWeb/`, `/TFNetPropX/`
+  가 같은 호스트에 얹혀 있다. 새 연구실 도구도 이 파일에 경로를 추가한다.
+- `npm run deploy` 는 커밋되지 않은 변경이 있으면 멈춘다. 푸터 날짜가 최종 커밋
+  날짜라, 그대로 올리면 화면 내용과 날짜가 어긋나기 때문이다.
+
 ### 배포 전 확인
 ```bash
 npm run build       # out/ 생성 확인

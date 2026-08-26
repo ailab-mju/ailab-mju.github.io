@@ -10,7 +10,8 @@
     "optimize-images": "node scripts/optimize-images.mjs",
     "optimize-member-photos": "node scripts/optimize-member-photos.mjs",
     "publish-preview": "bash scripts/publish-preview.sh",
-    "make-og": "node scripts/make-og.mjs"
+    "make-og": "node scripts/make-og.mjs",
+    "deploy": "bash scripts/deploy-server.sh"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
