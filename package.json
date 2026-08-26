@@ -13,10 +13,6 @@
     "make-og": "node scripts/make-og.mjs"
   },
   "dependencies": {
-    "css-select": "^6.0.0",
-    "css-tree": "^3.2.1",
-    "domutils": "^3.2.2",
-    "htmlparser2": "^10.1.0",
     "js-yaml": "^4.1.0",
     "next": "^14.2.35",
     "react": "^18.3.1",
