@@ -194,12 +194,15 @@
   .hd h2 {
     font-size: clamp(1.625rem, 3.6vw, 2.25rem);
   }
+  /* 여러 문단이 올 수 있다. 문단 사이는 첫 문단 위 여백보다 좁게 둔다. */
+  .hd .lede + .lede {
+    margin-top: 13px;
+  }
   .hd .lede {
     margin: 18px 0 0;
     color: var(--ink-2);
     max-width: 60ch;
     font-size: 1.03125rem;
-    white-space: pre-line;
   }
   .hd .cta {
     display: flex;
@@ -822,12 +825,27 @@
     font-size: 0.9375rem;
     color: var(--mute);
   }
-  .join ol {
+  /* Tailwind preflight 가 list-style 을 지우므로 마커를 직접 그린다. */
+  .checklist {
     margin: 10px 0 0;
-    padding-left: 19px;
+    padding: 0;
+    list-style: none;
     color: var(--mute);
     font-size: 0.90625rem;
     line-height: 1.95;
+  }
+  .checklist li {
+    position: relative;
+    padding-left: 15px;
+  }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.82em;
+    width: 5px;
+    height: 1px;
+    background: var(--line-i);
   }
 
   /* ---------- research areas ---------- */
@@ -1046,7 +1064,9 @@
   }
   .join-p {
     margin-top: 12px;
-    white-space: pre-line;
+  }
+  .join-p + .join-p {
+    margin-top: 10px;
   }
   .join-r {
     margin-top: 14px;

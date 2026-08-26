@@ -11,9 +11,15 @@ export default function JoinBox({ heading = true }: { heading?: boolean }) {
     <div className="join">
       <div>
         {heading && <h2>Join the lab</h2>}
-        <p className="join-p" lang="ko">
-          {lab.recruiting_ko.trim()}
-        </p>
+        {lab.recruiting_ko
+          .trim()
+          .split(/\n{2,}/)
+          .map((para) => para.replace(/\s*\n\s*/g, ' '))
+          .map((para) => (
+            <p className="join-p" lang="ko" key={para}>
+              {para}
+            </p>
+          ))}
         <a className="btn btn-p" href={`mailto:${lab.email}`}>
           Email {lab.email}
         </a>
@@ -22,11 +28,13 @@ export default function JoinBox({ heading = true }: { heading?: boolean }) {
         <p className="join-h" lang="ko">
           메일에 담아주실 것
         </p>
-        <ol lang="ko">
+        {/* 순서가 있는 목록이 아니다. ol 이면 번호가 의미를 갖는 것처럼 보이는데,
+            Tailwind preflight 가 마커를 지워서 실제로는 번호도 안 나왔다. */}
+        <ul className="checklist" lang="ko">
           {lab.recruiting_checklist_ko.map((item) => (
             <li key={item}>{item}</li>
           ))}
-        </ol>
+        </ul>
         <p className="join-r" lang="ko">
           {lab.recruiting_reply_ko}
         </p>

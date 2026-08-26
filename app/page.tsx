@@ -18,9 +18,16 @@ export default function Home() {
         <h1>{lab.name_en}</h1>
         {/* 소속은 제목 위의 라벨이 아니라 제목이 딸린 곳이다. 아래에 둔다. */}
         <p className="inst">{lab.department}</p>
-        <p className="lede" lang="ko">
-          {lab.intro_ko.trim()}
-        </p>
+        {/* 빈 줄로 나뉜 문단을 각각 <p> 로 낸다. pre-line 의 빈 줄보다 간격이 고르다. */}
+        {lab.intro_ko
+          .trim()
+          .split(/\n{2,}/)
+          .map((para) => para.replace(/\s*\n\s*/g, ' '))
+          .map((para) => (
+            <p className="lede" lang="ko" key={para}>
+              {para}
+            </p>
+          ))}
         <div className="cta">
           <Link className="btn btn-p" href="/join">
             Join the lab
