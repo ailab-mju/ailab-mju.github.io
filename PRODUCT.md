@@ -100,12 +100,15 @@ web
   국내 학회 논문 제목(원문 그대로 — 번역하면 인용이 어긋난다), 상·지원사업 이름.
 - **언어 전환 토글을 만들지 않는다.** 콘텐츠 두 벌 관리는 유지보수 실패의 원인이 된다.
 
-**미정으로 남은 것**
+**주소와 배포 (2026-08-26 확정)**
 
-- 도메인: 현재 `ailab-mju.github.io`. `ailab.mju.ac.kr` 로 옮길지 미정
-  (옮기면 DNS + `CNAME` + `lab.yaml` 의 `site_url` 을 함께 바꿔야 한다).
-- 현재 정식 저장소는 `ailab-mju/site-next` 이고, 라이브인 `ailab-mju.github.io` 를
-  언제 어떻게 덮어쓸지 미정이다.
+- 정본은 **`https://ailab.mju.ac.kr`** 이고 학교 서버(Apache)가 직접 서빙한다.
+  같은 호스트에 연구실 웹 도구가 경로로 붙는다(`/TFNetPropX/`, `/OlinkWeb/`, 앞으로 늘어남).
+  **이것 때문에 정점을 GitHub Pages 로 넘기지 않는다** — 넘기면 도구 경로가 죽는다.
+- `ailab-mju.github.io` 는 같은 커밋에서 나오는 예비 주소로 남긴다. 서버가 죽어도
+  볼 수 있는 곳이 하나 있어야 한다.
+- 이전 Jekyll 사이트는 지우지 않고 `ailab-mju.github.io` 의
+  `archive/jekyll-2024` 브랜치(커밋 272개)에 남겼다.
 
 ## Brand Commitments
 

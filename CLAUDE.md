@@ -135,11 +135,14 @@ Next.js(App Router) + `output: 'export'` 정적 사이트. 콘텐츠는 전부 `
 ```bash
 npm run build       # out/ 생성 확인
 ```
-- 커스텀 도메인을 쓴다면 저장소 루트의 `CNAME` 이 살아 있는지 확인한다.
-  워크플로가 `out/` 으로 복사하지만, 파일 자체가 지워지면 도메인이 끊긴다.
-- 현재 라이브 도메인은 `ailab-mju.github.io` 다. 저장소에 `CNAME` 이 없다.
-  `ailab.mju.ac.kr` 로 옮기려면 DNS 설정 후 저장소 Settings > Pages 에서 지정하고,
-  `content/lab.yaml` 의 `site_url` 도 함께 바꾼다.
+- **정본 주소는 `https://ailab.mju.ac.kr` 이고 이 서버가 직접 서빙한다.**
+  `ailab-mju.github.io` 는 같은 커밋에서 나오는 예비 주소다. 두 곳 다 canonical 로
+  학교 도메인을 가리킨다(`app/layout.tsx` 의 `alternates.canonical`).
+- **저장소에 `CNAME` 을 두지 말 것.** 학교 도메인은 Pages 가 아니라 이 서버가 맡는다.
+  `CNAME` 을 넣으면 배포 워크플로가 basePath 를 루트로 바꾸는 판단에만 영향을 주고,
+  실제 도메인 연결과는 무관해 혼란만 남는다.
+- 인증서는 Let's Encrypt 이고 certbot 타이머가 갱신한다. vhost 의 SSL 쪽
+  (`ailab-mju-le-ssl.conf`)은 certbot 이 만든 것이라 손대지 않는다.
 
 ## 남은 일
 

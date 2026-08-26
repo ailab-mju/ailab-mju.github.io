@@ -36,6 +36,10 @@ export const metadata: Metadata = {
     template: `%s · ${lab.name_short}`,
   },
   description: lab.tagline,
+  // 같은 내용이 학교 도메인과 GitHub Pages 두 곳에서 나간다.
+  // canonical 을 박아 두지 않으면 검색엔진이 둘을 별개 문서로 센다.
+  // metadataBase(= lab.site_url) 에 상대 경로가 붙어 페이지마다 자기 주소가 된다.
+  alternates: { canonical: './' },
   openGraph: {
     title: `${lab.name_en} · ${lab.university}`,
     description: lab.tagline,
