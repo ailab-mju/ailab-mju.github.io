@@ -33,6 +33,13 @@ export type AreaWithPapers = Area & {
 };
 export type ProjectRole = 'PI' | 'Co-PI' | 'Co-investigator';
 
+/**
+ * 과제가 지금 돌고 있는지. period 의 종료월과 기준일을 비교해 파생한다 —
+ * yaml 에 status 필드를 만들지 않는다. 사람이 적으면 끝난 과제가 영원히
+ * "진행 중" 으로 남는다.
+ */
+export type ProjectStatus = 'ongoing' | 'completed' | 'unknown';
+
 export type Project = {
   title: string;
   period?: string | null;
@@ -40,6 +47,34 @@ export type Project = {
   /** 주관기관 연구책임자 / 공동기관 연구책임자 / 참여연구자. 비면 표기하지 않는다. */
   role?: ProjectRole | null;
 };
+
+/** 빌드 타임에 status 를 붙인 과제. lib/content.ts 가 파생한다. */
+export type ProjectWithStatus = Project & { status: ProjectStatus };
+
+/**
+ * "2025.09–2026.08" 같은 표기에서 종료월의 마지막 날을 뽑는다.
+ * 구분자는 en dash·em dash·하이픈·물결을 모두 받는다 — 손으로 적는 값이라
+ * 어느 것이 들어올지 보장할 수 없다. 읽어낼 수 없으면 null.
+ */
+export function projectEnd(period?: string | null): string | null {
+  if (!period) return null;
+  const parts = period.split(/[–—~-]/).map((x) => x.trim());
+  const end = parts.length > 1 ? parts[parts.length - 1] : parts[0];
+  const m = end.match(/^(\d{4})(?:[.\-/](\d{1,2}))?/);
+  if (!m) return null;
+  const year = Number(m[1]);
+  const month = m[2] ? Number(m[2]) : 12;
+  if (month < 1 || month > 12) return null;
+  // 그 달의 마지막 날. 8월 과제는 8월 31일까지 진행 중이다.
+  return new Date(Date.UTC(year, month, 0)).toISOString().slice(0, 10);
+}
+
+/** 기준일(빌드 날짜)에 이 과제가 돌고 있는지. 종료월을 못 읽으면 unknown. */
+export function projectStatus(period: string | null | undefined, asOf: string): ProjectStatus {
+  const end = projectEnd(period);
+  if (!end) return 'unknown';
+  return end >= asOf ? 'ongoing' : 'completed';
+}
 
 export type Scope = 'international' | 'domestic';
 export type Kind = 'journal' | 'conference';

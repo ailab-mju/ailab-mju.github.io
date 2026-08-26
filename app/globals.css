@@ -403,6 +403,26 @@
     background: var(--ok-bg);
     color: var(--ok);
   }
+  /* 과제 진행 상태. 이모지를 쓰지 않는다 — 점은 CSS 로 그린다.
+     .disc > summary::before 의 삼각형과 같은 방식이다. */
+  .flag.live {
+    background: var(--ok-bg);
+    color: var(--ok);
+  }
+  .flag.live::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    margin-right: 5px;
+    vertical-align: 1px;
+  }
+  .flag.done {
+    background: var(--tint);
+    color: var(--mute);
+  }
   .flag.if {
     background: var(--info-bg);
     color: var(--info);
@@ -796,6 +816,16 @@
   .row-d {
     font-size: 0.875rem;
     color: var(--mute);
+  }
+  /* 과제 행의 왼쪽 칸: 상태 배지 위, 기간 아래. 상태가 세로로 훑인다. */
+  .proj-s {
+    display: block;
+    margin-bottom: 6px;
+  }
+  /* 끝난 과제는 한 단 물러난다. 목록을 보는 이유가 "지금 뭐가 도나" 라서. */
+  .row.is-done .row-t {
+    color: var(--mute);
+    font-weight: 500;
   }
   .row-t {
     font-family: var(--disp);

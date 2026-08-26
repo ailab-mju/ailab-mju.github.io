@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
-import { awardLabel, deriveAuthorRoles, normName, toISODate, unknownAuthorNames, type Album, type Area, type Award, type AreaWithPapers, type Course, type Lab, type Member, type NewsItem, type Project, type Publication, type PublicationRaw, type Role, type Venue, type Category } from './types';
+import { awardLabel, deriveAuthorRoles, normName, projectEnd, projectStatus, toISODate, unknownAuthorNames, type Album, type Area, type Award, type AreaWithPapers, type Course, type Lab, type Member, type NewsItem, type Project, type ProjectWithStatus, type Publication, type PublicationRaw, type Role, type Venue, type Category } from './types';
 
 /* ============================================================
  * content/*.yaml 을 빌드 타임에 읽어 파생값까지 계산한다.
@@ -23,7 +23,7 @@ export const lab: Lab = read<Lab>('lab.yaml');
 
 const researchFile = read<{ areas: Area[]; projects?: Project[] }>('research.yaml');
 export const areas: Area[] = researchFile.areas ?? [];
-export const projects: Project[] = researchFile.projects ?? [];
+const rawProjects: Project[] = researchFile.projects ?? [];
 
 export const venues: Venue[] = read<Venue[]>('venues.yaml') ?? [];
 
@@ -176,6 +176,27 @@ const MONTH_MS = 1000 * 60 * 60 * 24 * 30.44;
  * 플레이스홀더를 넣어두는 것만으로 경고가 꺼지면 장치가 무의미해진다.
  */
 const latestConfirmed = publications.find((p) => !p.todo);
+
+/**
+ * 과제 목록. 진행 중인 것을 먼저, 각 그룹 안에서는 늦게 끝나는 것부터 보여준다.
+ * "지금 뭐가 돌고 있나" 가 이 목록을 보는 이유라 그 순서가 곧 답이 되게 한다.
+ *
+ * 기준일은 빌드 날짜(= 최종 커밋 날짜)다. 실제 오늘이 아니라는 게 중요하다 —
+ * 아무도 커밋하지 않으면 상태도 그 날짜에 멈춘다. 푸터의 Last updated 와 같은
+ * 기준이라 둘이 어긋나지 않는다.
+ */
+export const projects: ProjectWithStatus[] = rawProjects
+  .map((p) => ({ ...p, status: projectStatus(p.period, lastUpdated) }))
+  .sort((a, b) => {
+    const rank = { ongoing: 0, unknown: 1, completed: 2 } as const;
+    if (rank[a.status] !== rank[b.status]) return rank[a.status] - rank[b.status];
+    return (projectEnd(b.period) ?? '').localeCompare(projectEnd(a.period) ?? '');
+  });
+
+export const projectCounts = {
+  ongoing: projects.filter((p) => p.status === 'ongoing').length,
+  completed: projects.filter((p) => p.status === 'completed').length,
+};
 
 export const staleness = (() => {
   if (!latestConfirmed) return { months: null as number | null, stale: false, since: null as string | null };
