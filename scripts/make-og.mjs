@@ -70,7 +70,8 @@ async function font() {
 }
 
 const titleLines = wrap(lab.name_en, 26);
-const taglineLines = wrap(lab.tagline, 52);
+// 27px Archivo 기준 한 줄에 들어가는 대략치. 좁게 잡으면 마지막 한 단어만 떨어진다.
+const taglineLines = wrap(lab.tagline, 62);
 
 // 제목 줄 수에 따라 아래 블록이 밀린다. 줄 수를 세지 않고 고정 y 를 쓰면
 // 이름이 길어졌을 때 태그라인과 겹친다.

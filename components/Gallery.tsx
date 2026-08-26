@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import AwardName from './AwardName';
 import { asset, type Album } from '@/lib/types';
 
 const src = (id: string, file: string) => asset(`/images/gallery/${id}/${file}`);
@@ -118,6 +119,16 @@ export default function Gallery({ albums }: { albums: Album[] }) {
               <div className="album-d">{a.date}</div>
               <div className="album-t">{a.title}</div>
               {a.caption && <div className="album-c">{a.caption}</div>}
+              {a.awards.length > 0 && (
+                // 카드에서는 영문 이름까지만. 원어 표기는 자리가 있는 라이트박스에서.
+                <div className="album-aw">
+                  {a.awards.map((w) => (
+                    <span key={`${w.date}-${w.title}`}>
+                      {w.title} · {w.member}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </button>
         ))}
@@ -141,6 +152,15 @@ export default function Gallery({ albums }: { albums: Album[] }) {
                 {album.date}
                 {album.caption ? ` · ${album.caption}` : ''} · {index + 1} / {total}
               </p>
+              {album.awards.length > 0 && (
+                <p className="lb-aw">
+                  {album.awards.map((w) => (
+                    <span key={`${w.date}-${w.title}`}>
+                      <AwardName award={w} /> · {w.member}
+                    </span>
+                  ))}
+                </p>
+              )}
             </div>
             <button ref={closeRef} type="button" className="lb-x" aria-label="Close" onClick={close}>
               ×

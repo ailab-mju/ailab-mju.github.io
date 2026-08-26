@@ -711,6 +711,39 @@
     font-weight: 700;
     margin-top: 4px;
   }
+  /* 앨범이 받은 상. 논문의 .pub-aw 와 같은 어휘를 쓴다 — 같은 뜻이면 같게 보여야 한다. */
+  .album-aw {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 9px;
+    font-size: 0.78125rem;
+    line-height: 1.45;
+  }
+  .album-aw span {
+    background: var(--award-bg);
+    color: var(--award);
+    border-radius: 3px;
+    padding: 3px 7px;
+  }
+  .album-aw span::before,
+  .lb-aw span::before {
+    content: '\2605';
+    margin-right: 5px;
+  }
+  .lb-aw {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 7px 0 0;
+    font-size: 0.8125rem;
+  }
+  .lb-aw span {
+    background: rgba(253, 244, 227, 0.15);
+    color: #f0d9a8;
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
   .album-c {
     font-size: 0.8125rem;
     color: var(--mute);
@@ -1097,10 +1130,6 @@
   }
   .join-p + .join-p {
     margin-top: 10px;
-  }
-  .join-r {
-    margin-top: 14px;
-    font-size: 0.84375rem;
   }
   .chips-t {
     margin-bottom: 20px;

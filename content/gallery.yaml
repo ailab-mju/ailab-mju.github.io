@@ -1,5 +1,8 @@
 # 이 파일은 scripts/optimize-images.mjs 가 갱신한다.
 # title / date / caption 은 사람이 고쳐도 되고, 다음 실행 때 유지된다.
+#
+# 수상 내역은 캡션에 적지 말 것. content/awards.yaml 에서 같은 달의 항목이
+# 자동으로 붙는다 — 두 벌로 적으면 상 이름을 고칠 때 한쪽만 고쳐진다.
 # photos 와 cover 는 실제 파일 목록에서 파생되므로 손대지 말 것.
 
 - id: commencement2026
@@ -24,7 +27,7 @@
 - id: bioinfo2025
   title: BIOINFO 2025
   date: 2025-10
-  caption: Poster presentations at the Korean Society for Bioinformatics annual conference. Jaeyun Park and JangHyun Noh received poster awards.
+  caption: Poster presentations at the Korean Society for Bioinformatics annual conference.
   cover: 2025_bioinfo_group_1.webp
   photos:
     - 2025_bioinfo_group_1.webp

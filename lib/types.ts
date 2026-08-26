@@ -15,7 +15,6 @@ export type Lab = {
   intro_ko: string;
   recruiting_ko: string;
   recruiting_checklist_ko: string[];
-  recruiting_reply_ko: string;
   email: string;
   office?: string | null;
   phone?: string | null;
@@ -224,6 +223,11 @@ export type Album = {
   caption?: string | null;
   cover?: string | null;
   photos: string[];
+  /**
+   * 이 행사에서 받은 상. awards.yaml 에서 같은 달(YYYY-MM)의 수상을 붙인다.
+   * 캡션에 손으로 적지 않는다 — 두 벌이 되면 한쪽만 고쳐져 어긋난다.
+   */
+  awards: Award[];
 };
 
 /* ---------------------------- helpers ---------------------------- */

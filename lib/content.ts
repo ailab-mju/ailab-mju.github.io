@@ -86,9 +86,27 @@ export const news: NewsItem[] = (read<NewsItem[]>('news.yaml') ?? [])
 
 export const courses: Course[] = read<Course[]>('courses.yaml') ?? [];
 
-/** 최신 앨범이 위로. 파일 순서에 기대지 않는다 — date 를 손으로 고치면 순서가 어긋난다. */
+/**
+ * 최신 앨범이 위로. 파일 순서에 기대지 않는다 — date 를 손으로 고치면 순서가 어긋난다.
+ *
+ * 수상은 awards.yaml 에서 같은 달(YYYY-MM)의 `award` 항목을 붙인다.
+ * 캡션에 손으로 적지 않는 이유는 news 와 같다 — 두 벌이 되면 상 이름을 고칠 때
+ * 한쪽만 고쳐져 어긋난다. 지원사업 선정(`grant`)은 행사가 아니므로 제외한다.
+ *
+ * 한 달에 행사가 둘이면 양쪽 앨범에 같은 상이 붙는다. 지금 6개 앨범의 달은
+ * 전부 다르다. 겹치는 날이 오면 그때 awards.yaml 에 앨범 id 를 적는 편이 낫다 —
+ * 그 전에 미리 필드를 만들지 않는다.
+ */
 export const albums: Album[] = (read<Album[]>('gallery.yaml') ?? [])
-  .map((a) => ({ ...a, date: toISODate(a.date) }))
+  .map((a) => {
+    const date = toISODate(a.date);
+    const month = date.slice(0, 7);
+    return {
+      ...a,
+      date,
+      awards: awards.filter((w) => w.kind === 'award' && w.date.slice(0, 7) === month),
+    };
+  })
   .sort(byDateDesc);
 
 /* ---------------------------- derived ---------------------------- */

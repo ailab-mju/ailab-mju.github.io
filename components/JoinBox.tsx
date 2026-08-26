@@ -35,9 +35,6 @@ export default function JoinBox({ heading = true }: { heading?: boolean }) {
             <li key={item}>{item}</li>
           ))}
         </ul>
-        <p className="join-r" lang="ko">
-          {lab.recruiting_reply_ko}
-        </p>
       </div>
     </div>
   );
