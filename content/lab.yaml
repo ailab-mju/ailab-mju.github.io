@@ -12,11 +12,7 @@ tagline: AI methods and software for multimodal biomedical data.
 # 같은 내용이 두 곳에서 서빙된다 — 학교 도메인(정본)과 GitHub Pages(예비).
 # 여기 적힌 쪽이 정본이 되고, Pages 에서 나가는 canonical 도 이쪽을 가리킨다.
 #
-# http 인 이유: 교내 방화벽이 인바운드 443 을 막고 있다. 인증서는 발급됐고
-# 교내에서는 https 가 열리지만, 외부에서는 닿지 않는다. canonical 과 og:image 가
-# 밖에서 못 여는 주소를 가리키면 검색엔진도 링크 미리보기도 깨진다.
-# 443 이 열리면 https 로 바꾸고 리다이렉트를 켠다 (deploy/ailab-mju.conf 참고).
-site_url: http://ailab.mju.ac.kr
+site_url: https://ailab.mju.ac.kr
 
 # 한국어를 두는 첫 번째 자리 — 홈 소개 문단
 #
