@@ -112,12 +112,12 @@
 
 - name: Seongmin Jeon
   slug: seongmin-jeon
-  name_ko:                    # TODO: 한글 이름 확인
+  name_ko: 전성민
   role: ms
   since: 2026-09
-  topic:                      # TODO: 연구 주제 한 줄 (영문)
+  topic:                      # 주제 정해지면 한 줄(영문). 비면 카드에 안 나온다
   photo: seongmin_jeon.webp
-  email:                      # TODO
+  email: smjeon0207@mju.ac.kr
   links: {}
 
 # ---------- Research interns ----------
