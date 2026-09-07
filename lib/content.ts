@@ -307,8 +307,52 @@ export const needsAttention = {
  * /news 에 나가는 목록. news.yaml + awards.yaml 파생 항목을 합친다.
  * 수상 소식을 news.yaml 에 손으로 적지 않는 이유는 두 벌이 되면 한쪽만 고쳐지기 때문이다.
  */
+/**
+ * 학생 논문 소식. publications.yaml 에서 파생한다 — news.yaml 에 손으로 적지 않는다.
+ * 수상 소식과 같은 이유다: 두 벌로 적으면 제목이나 저널명을 고칠 때 한쪽만 고쳐진다.
+ * 논문을 추가하면 축하 항목이 따라 생기고, 지우면 따라 사라진다.
+ *
+ * 두 조건을 모두 만족하는 논문만 낸다.
+ *
+ *   1. **SCIE 등재 저널.** 국내 학회 논문집(KIISE)까지 내보내면 한 달에 다섯 건이
+ *      한꺼번에 올라와 소식이 아니라 목록이 된다. 그건 /publications 가 맡는다.
+ *      SCIE 여부는 venues.yaml 의 scie 에서 온다 — 논문이 아니라 저널의 속성이다.
+ *   2. **1저자가 랩 구성원(지도교수 제외).** "누구의 논문인가" 를 가르는 것은 1저자다.
+ *      공동1저자면 둘 다 이름이 나가고, 졸업생도 포함한다(쓸 때는 학생이었다).
+ *
+ * 이름은 publications.yaml 의 저자 표기가 아니라 members.yaml 의 이름을 쓴다.
+ * 두 파일의 로마자 표기가 갈릴 수 있어서다(Janghyun / JangHyun).
+ * 화면에 나가는 사람 이름은 members.yaml 이 정본이다.
+ */
+const MEMBER_BY_NAME = new Map(members.map((m) => [normName(m.name), m]));
+
+const paperNews: { date: string; title: string; body: string }[] = publications.flatMap((p) => {
+  if (p.venueInfo?.scie !== true) return [];
+
+  const firstNames = p.first?.length ? p.first : p.authors.slice(0, 1);
+  const students = firstNames
+    .map((a) => MEMBER_BY_NAME.get(normName(a)))
+    .filter((m): m is Member => m !== undefined && m.role !== 'pi');
+  if (students.length === 0) return [];
+
+  const names = students.map((m) => m.name);
+  const who =
+    names.length === 1 ? names[0] : `${names.slice(0, -1).join(', ')} and ${names[names.length - 1]}`;
+  const venue = p.venueInfo.name_en || p.venueInfo.name;
+
+  return [
+    {
+      date: p.date.slice(0, 7),
+      // 게재 확정 전이면 그렇게 말한다. todo 는 저자·게재일·DOI 가 아직 확정되지 않았다는 표시다.
+      title: p.todo ? `${who}'s paper is accepted in ${venue}` : `${who} publishes in ${venue}`,
+      body: p.title,
+    },
+  ];
+});
+
 export const newsFeed: NewsItem[] = [
   ...news.map((n) => ({ ...n, date: String(n.date) })),
+  ...paperNews,
   ...awards.map((a) => ({
     date: a.date,
     title:

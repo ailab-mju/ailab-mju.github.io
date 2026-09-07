@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { newsFeed } from '@/lib/content';
+import { newsFeed, hasKorean } from '@/lib/content';
 
 export const metadata: Metadata = { title: 'News' };
 
@@ -32,7 +32,11 @@ export default function News() {
                       </>
                     )}
                   </div>
-                  {n.body && <div className="row-b">{n.body}</div>}
+                  {n.body && (
+                  <div className="row-b" lang={hasKorean(n.body) ? 'ko' : undefined}>
+                    {n.body}
+                  </div>
+                )}
                 </div>
               </li>
             ))}

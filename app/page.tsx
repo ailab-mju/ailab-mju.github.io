@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import JoinBox from '@/components/JoinBox';
 import PubRow from '@/components/PubRow';
-import { lab, areasWithPapers, publications, news } from '@/lib/content';
+import { lab, areasWithPapers, publications, newsFeed, hasKorean } from '@/lib/content';
 
 /** 마지막 단어를 반으로 자르지 않는다 — "batch effe…" 는 요약이 아니라 사고처럼 보인다. */
 function clip(text: string, max: number): string {
@@ -82,15 +82,36 @@ export default function Home() {
             All news &rarr;
           </Link>
         </div>
-        {news.slice(0, 3).map((n) => (
-          <div className="row" key={`${n.date}-${n.title}`}>
-            <div className="row-d">{String(n.date)}</div>
-            <div>
-              <div className="row-t">{n.title}</div>
-              {n.body && <div className="row-b">{n.body}</div>}
-            </div>
-          </div>
-        ))}
+        {/*
+          /news 와 같은 목록을 쓴다. 전에는 홈이 news.yaml 만 보고 /news 는 수상·논문까지
+          합친 피드를 봐서, "All news →" 가 미리보기와 다른 목록으로 이어졌다.
+        */}
+        <ol className="rows">
+          {newsFeed.slice(0, 3).map((n) => (
+            <li className="row" key={`${n.date}-${n.title}`}>
+              <div className="row-d">
+                <time dateTime={String(n.date)}>{String(n.date)}</time>
+              </div>
+              <div>
+                <div className="row-t">
+                  {n.title}
+                  {n.ko && (
+                    <>
+                      {' ('}
+                      <span lang="ko">{n.ko}</span>
+                      {')'}
+                    </>
+                  )}
+                </div>
+                {n.body && (
+                  <div className="row-b" lang={hasKorean(n.body) ? 'ko' : undefined}>
+                    {n.body}
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="sec">
