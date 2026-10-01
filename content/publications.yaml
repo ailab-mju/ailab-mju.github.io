@@ -32,6 +32,17 @@
 #   저널 홈페이지. 컨퍼런스 논문은 교신저자 지정이 없는 경우가 많다.
 
 - title: >-
+    scDECA: Integrating Gene-Cell interactions with Global Priors and Local
+    Structures in Single-Cell Transcriptomics
+  authors: [Myeongbin Oh, Minsik Oh]
+  corresponding: [Minsik Oh]
+  topics: [single-cell]
+  venue: BioData Mining
+  date: 2026-09-19          # accept 날짜. 실리면 게재일로 바꾸고 accepted 줄을 지운다
+  accepted: true
+  doi:                      # 게재 후 부여된다
+
+- title: >-
     Integrative evidence-knowledge marker selection enhances LLM-based cell type
     annotation in single-cell RNA-seq analysis
   authors: [Jiyeong Shin, Soyoung Jeong, Hyun Je Kim, Minsik Oh]

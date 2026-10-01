@@ -412,10 +412,17 @@
     background: var(--warn-bg);
     color: var(--warn);
   }
-  /* 게재 확정, 아직 안 실림. 확정된 사실이라 경고색(--warn)을 쓰지 않는다. */
+  /*
+   * 게재 확정, 아직 안 실림.
+   *
+   * 옆의 SCIE·IF·분류는 전부 "이 논문이 무엇인가" 를 말하는 채워진 배지다.
+   * 이건 "지금 어떤 상태인가" 라 종류가 다르다 — 색을 하나 더 쓰는 대신
+   * 테두리만 있는 형태로 구분한다. 확정된 사실이라 경고색을 쓰지 않는다.
+   */
   .flag.press {
-    background: var(--ok-bg);
-    color: var(--ok);
+    background: transparent;
+    border: 1px solid var(--line-i);
+    color: var(--ink);
   }
   .flag.scie {
     background: var(--ok-bg);
