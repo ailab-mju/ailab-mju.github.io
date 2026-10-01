@@ -116,6 +116,14 @@ export type PublicationRaw = {
   first?: string[] | null;
   /** 논문에 표기된 교신저자 전원. 컨퍼런스 논문은 대개 비어 있다. */
   corresponding?: string[] | null;
+  /**
+   * 게재 확정(accept)됐으나 아직 실리지 않은 논문. date 는 accept 날짜를 적는다.
+   *
+   * todo 와 다른 것이다 — todo 는 "적힌 값을 못 믿겠다", accepted 는 "값은 맞는데
+   * 아직 안 실렸다" 다. 둘을 섞으면 확정된 소식에 "확인 필요" 가 붙는다.
+   * 실리면 이 줄을 지우고 date 를 게재일로, doi 를 채운다.
+   */
+  accepted?: boolean;
   todo?: boolean;
 };
 

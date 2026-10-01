@@ -18,6 +18,11 @@
 # 이 논문들의 corresponding 은 지도교수이자 마지막 저자라는 근거로 적었다 —
 # 논문집 표기와 대조해 확정할 것.
 #
+# accepted: true — 게재 확정됐으나 아직 안 실린 논문. date 에 accept 날짜를 적는다.
+#   화면에 "In press" 가 붙고, /news 에 "... paper is accepted in ..." 으로 나간다.
+#   실리면 이 줄을 지우고 date 를 게재일로 바꾸고 doi 를 채운다 — 문장이 따라 바뀐다.
+#   todo 와 섞지 말 것: todo 는 "적힌 값을 못 믿겠다", accepted 는 "값은 맞는데 아직 안 실렸다".
+#
 # first / corresponding — 1저자(†)·교신저자(*) 표기.
 #   first 는 공동1저자일 때만 적는다. 비우면 authors 의 첫 사람이 1저자다.
 #   corresponding 은 논문에 표기된 교신저자 전원. 순서는 상관없다.

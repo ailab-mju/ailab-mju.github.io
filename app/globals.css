@@ -412,6 +412,11 @@
     background: var(--warn-bg);
     color: var(--warn);
   }
+  /* 게재 확정, 아직 안 실림. 확정된 사실이라 경고색(--warn)을 쓰지 않는다. */
+  .flag.press {
+    background: var(--ok-bg);
+    color: var(--ok);
+  }
   .flag.scie {
     background: var(--ok-bg);
     color: var(--ok);

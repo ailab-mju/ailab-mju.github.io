@@ -38,6 +38,9 @@ export default function VenueMeta({ pub }: { pub: Publication }) {
         <span className="flag if">IF {v.impact_factor.toFixed(1)}</span>
       )}
 
+      {/* 아직 안 실린 논문. 연도 옆에 붙어 "2026 · In press" 로 읽힌다. */}
+      {pub.accepted && <span className="flag press">In press</span>}
+
       {pub.todo && (
         <span className="flag todo" lang="ko">
           확인 필요

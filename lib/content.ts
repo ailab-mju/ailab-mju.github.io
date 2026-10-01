@@ -343,8 +343,10 @@ const paperNews: { date: string; title: string; body: string }[] = publications.
   return [
     {
       date: p.date.slice(0, 7),
-      // 게재 확정 전이면 그렇게 말한다. todo 는 저자·게재일·DOI 가 아직 확정되지 않았다는 표시다.
-      title: p.todo ? `${who}'s paper is accepted in ${venue}` : `${who} publishes in ${venue}`,
+      // 아직 안 실렸으면 그렇게 말한다. 실리는 날 accepted 줄을 지우면 문장이 바뀐다.
+      title: p.accepted
+        ? `${who}'s paper is accepted in ${venue}`
+        : `${who} publishes in ${venue}`,
       body: p.title,
     },
   ];
